@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Champions</title>
+    <link rel="stylesheet" href="styledebuff.css"
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="index.html">Marvel Contest of Champions FR BETA V.0</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="debuff.html">Debuffs</a></li>
+                <li><a href="champions.html">Champions</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Menu</a>
+                    <div class="dropdown-content">
+                        <a href="#option1">Option 1</a>
+                        <a href="#option2">Option 2</a>
+                        <a href="#option3">Option 3</a>
+                        <a href="#option4">Option 4</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Filtre et liste des personnages -->
+    <section id="home">
+        <select id="immunite-filter">
+            <option value="all">Tous</option>
+            <option value="Saignement">Saignement</option>
+            <option value="Poison">Poison</option>
+            <option value="Fatigue">Fatigue</option>
+            <option value="Dégénération">Dégénération</option>
+            <option value="Debuffs DOT">Debuffs DOT</option>
+            <option value="Buffs">Buffs</option>
+            <option value="Brise-Armure">Brise-Armure</option>
+            <option value="Incinération">Incinération</option>
+            <option value="Décharge">Décharge</option>
+            <option value="Armure pulvérisée">Armure pulvérisée</option>
+            <option value="Vague de Froid">Vague de Froid</option>
+            <option value="Engelure">Engelure</option>
+            <option value="Effets sans dégâts">Effets sans dégâts</option>
+            <option value="Debuffs">Tout les Debuffs</option>
+        </select>
+
+        <div id="personnages-list" class="personnages-list"></div>
+
+        <!-- Zone pour afficher le nom du débuff -->
+        <div id="debuff-name-display" class="debuff-name-display"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR • .</p>
+        <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
+    </footer>
+
+    <!-- Message pour mobile -->
+    <div class="mobile-message">
+        <p>Désolé, ce site n'est pas encore disponible sur téléphone. Veuillez utiliser un ordinateur ou mettre le mode "ordinateur".</p>
+        <img src="oups.png" alt="Oups">
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        // Afficher le message uniquement pour les écrans mobiles
+        if (window.innerWidth <= 768) {
+            document.querySelector('.mobile-message').style.display = 'block'; // Affiche le message pour mobile
+        }
+    </script>
+
+</body>
+</html>
