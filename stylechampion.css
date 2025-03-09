@@ -276,6 +276,44 @@ main h2 {
     min-height: 30px; /* Hauteur ajustée */
 }
 
+/* Contour coloré en fonction de la classe */
+.Science .photo-container img {
+    border: 4px solid #00FF00; /* Vert */
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.Tech .photo-container img {
+    border: 4px solid #00008B; /* Bleu foncé */
+    box-shadow: 0 0 10px #00008B;
+}
+
+.Cosmique .photo-container img {
+    border: 4px solid #87CEEB; /* Bleu clair */
+    box-shadow: 0 0 10px #87CEEB;
+}
+
+.Virtuose .photo-container img {
+    border: 4px solid #FF0000; /* Rouge */
+    box-shadow: 0 0 10px #FF0000;
+}
+
+.Mutant .photo-container img {
+    border: 4px solid #FFD700; /* Jaune */
+    box-shadow: 0 0 10px #FFD700;
+}
+
+.Mystique .photo-container img {
+    border: 4px solid #4B0082; /* Violet foncé */
+    box-shadow: 0 0 10px #4B0082;
+}
+
+/* Effet hover pour l'image */
+.photo-container img:hover {
+    transform: scale(1.05); /* Agrandir l'image au survol */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Effet de transition fluide */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); /* Change l'ombre du contour */
+}
+
 /* Ajustement de la taille des icônes */
 .personnage-classe2 img {
     width: 25%; /* Légèrement plus grand */

@@ -159,6 +159,112 @@ body {
     margin-top: 120px; /* Espacement sous le header */
 }
 
+.feature-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: rgb(255, 255, 255); /* Assure que le texte reste lisible */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.feature-card h3, .feature-card p, .feature-card a {
+    position: relative;
+    z-index: 2;
+}
+
+.feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Rend l'overlay plus sombre */
+    border-radius: 10px;
+    z-index: 1;
+}
+.feature-card .text-container {
+    position: relative;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent derrière le texte */
+    padding: 15px;
+    border-radius: 8px;
+    display: inline-block;
+}
+.feature-card {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet de survol */
+.feature-card:hover {
+    transform: scale(1.05); /* Légère augmentation de la taille */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour ressortir */
+}
+
+.feature-card h3, .feature-card p, .feature-card a {
+    position: relative;
+    z-index: 2;
+    transition: color 0.3s ease;
+}
+
+/* Change la couleur du texte au survol */
+.feature-card:hover h3,
+.feature-card:hover p,
+.feature-card:hover a {
+    color: #FF5722; /* Couleur personnalisée (orange par exemple) */
+}
+
+
+/* Images spécifiques */
+.feature-card.champions {
+    background-image: url('allheros.jpg');
+}
+
+.feature-card.debuffs {
+    background-image: url('debuffindex.png');
+}
+
+.google-form {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.google-form iframe {
+    max-width: 100%;
+    border: none;
+    margin: 0 auto;
+    display: block;
+    height: 1167px; /* ou ajuste selon tes besoins */
+}
+.btn-primary {
+    background-color: #FF5722; /* Couleur de fond du bouton */
+    color: #fff; /* Couleur du texte */
+    padding: 12px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #E64A19; /* Couleur du bouton au survol */
+}
+
 /* Section des fonctionnalités */
 .features {
     text-align: center;
@@ -198,14 +304,14 @@ body {
 .feature-card .btn-secondary {
     padding: 8px 15px;
     font-size: 14px;
-    background-color: #FF5722;
-    color: #fff;
+    background-color: #ffffff;
+    color: #000000;
     text-decoration: none;
     border-radius: 5px;
 }
 
 .feature-card .btn-secondary:hover {
-    background-color: #e64a19;
+    background-color: #ffffff;
 }
 
 /* Footer */
@@ -216,4 +322,39 @@ footer {
     color: #fff;
     width: 100%;
     margin-top: auto; /* Assurez-vous que le footer soit en bas */
+}
+/* Style pour le message sur mobile */
+.mobile-message {
+    display: none; /* Par défaut, caché */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    border-radius: 10px;
+    width: 80%; /* Ajuste la largeur du message */
+    max-width: 400px; /* Limite la taille du message */
+}
+
+/* Cacher tout le contenu pour mobile et afficher le message */
+@media (max-width: 768px) {
+    /* Cacher tout le contenu */
+    body > *:not(.mobile-message) {
+        display: none;
+    }
+
+    /* Afficher le message */
+    .mobile-message {
+        display: block;
+    }
+
+    /* Empêcher le défilement de la page */
+    body {
+        overflow: hidden;
+    }
 }

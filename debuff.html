@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marvel Champions</title>
-    <link rel="stylesheet" href="styledebuff.css"
+    <link rel="stylesheet" href="styledebuff.css">
 
     <!-- Header -->
     <header id="header">
@@ -31,23 +32,16 @@
     </header>
     <!-- Filtre et liste des personnages -->
     <section id="home">
-        <select id="immunite-filter">
-            <option value="all">Tous</option>
-            <option value="Saignement">Saignement</option>
-            <option value="Poison">Poison</option>
-            <option value="Fatigue">Fatigue</option>
-            <option value="Dégénération">Dégénération</option>
-            <option value="Debuffs DOT">Debuffs DOT</option>
-            <option value="Buffs">Buffs</option>
-            <option value="Brise-Armure">Brise-Armure</option>
-            <option value="Incinération">Incinération</option>
-            <option value="Décharge">Décharge</option>
-            <option value="Armure pulvérisée">Armure pulvérisée</option>
-            <option value="Vague de Froid">Vague de Froid</option>
-            <option value="Engelure">Engelure</option>
-            <option value="Effets sans dégâts">Effets sans dégâts</option>
-            <option value="Debuffs">Tout les Debuffs</option>
-        </select>
+        <div id="filter-container">
+            <h2>Filtres d'immunité</h2>
+            <div id="immunite-buttons" class="immunite-container"></div>
+            <button id="clear-filters" class="clear-filters-btn">Supprimer filtres</button>
+        </div>
+        
+        </div>
+        
+    </section>
+    
 
         <div id="personnages-list" class="personnages-list"></div>
 

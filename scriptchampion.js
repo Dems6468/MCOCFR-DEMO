@@ -7,36 +7,39 @@ document.addEventListener("DOMContentLoaded", function() {
             const searchInput = document.getElementById('search-input');
 
         // Fonction pour afficher les personnages
-function displayCharacters(list) {
-    personnageList.innerHTML = ''; // Réinitialise la liste à chaque affichage
-    list.forEach(perso => {
-        const persoElement = document.createElement('div');
-        persoElement.classList.add('personnage-card');
-        persoElement.innerHTML = `
-        <a href="characterchampion.html?nom=${encodeURIComponent(perso.nom)}">
-            <img src="${perso.photo}" alt="${perso.nom}" class="personnage-photo">
-        </a>
-        <h3>${perso.nom}</h3> <!-- Le nom n'est plus dans une balise <a> -->
-    `;
-    
-        // Ajout de l'icône de classe2 (à insérer ici)
-        if (perso.classe2) {
-            const classeContainer = document.createElement('div');
-            classeContainer.classList.add('personnage-classe2');
-
-            const iconImg = document.createElement('img');
-            iconImg.src = perso.classe2;  // <- Chemin de l'image
-            iconImg.alt = perso.nom;
-            iconImg.classList.add('classe-icon'); // Ajoute une classe pour le style
-
-            classeContainer.appendChild(iconImg);
-            persoElement.appendChild(classeContainer);
+        function displayCharacters(list) {
+            personnageList.innerHTML = ''; // Réinitialise la liste à chaque affichage
+            list.forEach(perso => {
+                const persoElement = document.createElement('div');
+                persoElement.classList.add('personnage-card', perso.classe); // Ajoute la classe dynamique ici
+                
+                persoElement.innerHTML = `
+                <a href="characterchampion.html?nom=${encodeURIComponent(perso.nom)}">
+                    <div class="photo-container">
+                        <img src="${perso.photo}" alt="${perso.nom}" class="personnage-photo">
+                    </div>
+                </a>
+                <h3>${perso.nom}</h3> <!-- Le nom n'est plus dans une balise <a> -->
+            `;
+        
+                // Ajout de l'icône de classe2 (si présente)
+                if (perso.classe2) {
+                    const classeContainer = document.createElement('div');
+                    classeContainer.classList.add('personnage-classe2');
+        
+                    const iconImg = document.createElement('img');
+                    iconImg.src = perso.classe2;  // <- Chemin de l'image
+                    iconImg.alt = perso.nom;
+                    iconImg.classList.add('classe-icon'); // Ajoute une classe pour le style
+        
+                    classeContainer.appendChild(iconImg);
+                    persoElement.appendChild(classeContainer);
+                }
+        
+                personnageList.appendChild(persoElement);
+            });
         }
-
-        personnageList.appendChild(persoElement);
-    });
-}
-
+        
 
             // Fonction pour trier les personnages par nom
             function sortCharacters(order, filteredData) {

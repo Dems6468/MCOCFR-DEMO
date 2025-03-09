@@ -1507,7 +1507,7 @@
         "Short Name": "Negasonic Teenage", 
         "classe": "Mutant", 
         "classe2": "faces/class_mutant7e84.png", 
-        "immunite": {"Saignement ": ["Réduction Précision Compétence Against Virtuose"], "Evade Réduction Précision Compétence": ["Against Virtuose"], "True Effect Réduction Précision Compétence": ["Against Virtuose"]}, 
+        "immunite": {"Saignement": ["Réduction Précision Compétence Against Virtuose"], "Réduction de Précision de Compétence Evasion": ["Against Virtuose"], "Réduction de Précision des Effets Directs": ["Against Virtuose"]}, 
         "photo": "faces/portrait_negasonicteenagewarhead343b.png", 
         "description": "JOSIANE JOESTAR"
     }, 
