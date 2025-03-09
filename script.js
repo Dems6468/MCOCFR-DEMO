@@ -199,7 +199,7 @@ const debuffIcons = {
 "Contrôles Inversés":"debuff/ci.png",
 "Rupture":"debuff/rupture.png",
 "Décharges":"debuff/decharge.png",
-"Ralentissement":"debuff/Slow.png",
+"Ralentissement":"debuff/slow.png",
 "Bloque Super-Pouvoir":"debuff/bloquesp.png",
 "Chancellement":"debuff/purge.png",
 "Etourdissement":"debuff/stun.png",
