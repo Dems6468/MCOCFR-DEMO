@@ -340,55 +340,57 @@ footer {
     width: 80%; /* Ajuste la largeur du message */
     max-width: 400px; /* Limite la taille du message */
 }
+/* Style pour le bouton hamburger */
+.hamburger {
+    display: none; /* Cacher le bouton par défaut */
+    flex-direction: column;
+    cursor: pointer;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+}
 
-/* MEDIA QUERIES POUR PETITS ÉCRANS (tablettes et téléphones) */
+.hamburger div {
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    transition: 0.4s;
+}
 @media (max-width: 768px) {
-    #header nav ul {
-        display: none; /* Cacher le menu horizontal pour les petits écrans */
+    /* Cacher le menu classique */
+    #navbar {
+        display: none;
     }
 
+    /* Afficher le bouton hamburger sur mobile */
     .hamburger {
-        display: flex; /* Afficher le bouton hamburger */
-        flex-direction: column;
-        cursor: pointer;
+        display: flex;
     }
 
-    .hamburger div {
-        width: 30px;
-        height: 4px;
-        margin: 6px 0;
-        background-color: #fff;
-        transition: 0.4s;
-    }
-
+    /* Menu déroulant actif quand on clique sur le hamburger */
     .nav-active {
-        display: none; /* Cacher le menu déroulant */
+        display: block; /* Afficher le menu */
     }
 
-    .nav-active ul {
-        display: block; /* Le menu déroulant devient vertical */
+    /* Personnalisation des liens dans le menu */
+    #navbar ul {
+        list-style: none;
+        padding: 0;
         background-color: #111;
+        margin: 0;
         width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-    }
-
-    .nav-active ul li {
-        margin-bottom: 10px;
         text-align: center;
     }
 
-    .nav-active ul li a {
-        color: #fff;
+    #navbar ul li {
+        padding: 15px;
+    }
+
+    #navbar ul li a {
+        color: white;
         text-decoration: none;
         font-size: 18px;
-        padding: 10px 0;
-        display: block;
     }
 }
 
-@media (max-width: 480px) {
-    .mobile-message {
-        display: block; /* Afficher le message mobile */
-    }
-}
+
