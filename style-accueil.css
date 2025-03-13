@@ -341,20 +341,54 @@ footer {
     max-width: 400px; /* Limite la taille du message */
 }
 
-/* Cacher tout le contenu pour mobile et afficher le message */
+/* MEDIA QUERIES POUR PETITS ÉCRANS (tablettes et téléphones) */
 @media (max-width: 768px) {
-    /* Cacher tout le contenu */
-    body > *:not(.mobile-message) {
-        display: none;
+    #header nav ul {
+        display: none; /* Cacher le menu horizontal pour les petits écrans */
     }
 
-    /* Afficher le message */
-    .mobile-message {
+    .hamburger {
+        display: flex; /* Afficher le bouton hamburger */
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .hamburger div {
+        width: 30px;
+        height: 4px;
+        margin: 6px 0;
+        background-color: #fff;
+        transition: 0.4s;
+    }
+
+    .nav-active {
+        display: none; /* Cacher le menu déroulant */
+    }
+
+    .nav-active ul {
+        display: block; /* Le menu déroulant devient vertical */
+        background-color: #111;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .nav-active ul li {
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .nav-active ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 10px 0;
         display: block;
     }
+}
 
-    /* Empêcher le défilement de la page */
-    body {
-        overflow: hidden;
+@media (max-width: 480px) {
+    .mobile-message {
+        display: block; /* Afficher le message mobile */
     }
 }
