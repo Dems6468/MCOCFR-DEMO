@@ -7,53 +7,16 @@
     <title>Accueil | MCOCFR</title>
     <link rel="stylesheet" href="style-accueil.css"> <!-- Nouveau fichier CSS -->
 </head>
-<style>
-    /* Style pour cacher tout le contenu sauf les images et le message sur mobile */
-    .mobile-message {
-        display: none; /* Par défaut, caché */
-        text-align: center;
-        margin-top: 100px;
-    }
-
-    /* Cacher tout le contenu pour mobile et afficher les images et le message */
-    @media (max-width: 768px) {
-        /* Cacher tout le contenu sauf le message */
-         header, nav {
-            display: none; /* Masquer le header et le menu sur mobile */
-        }
-
-        /* Cacher tout le contenu normal sur mobile */
-        body > *:not(.mobile-message) {
-            display: none;
-        }
-
-        /* Afficher les images et le message pour les mobiles */
-        .mobile-message {
-            display: block;
-        }
-
-        /* Ajouter du style aux images */
-        .mobile-message img {
-            width: 50%;
-            margin: 20px auto;
-            display: block;
-        }
-
-        /* Style pour le message d'avertissement */
-        .mobile-message p {
-            font-size: 24px;
-            color: #FF5722;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-    }
-</style>
-</head>
-<body>
+    
 <body>
     <header id="header">
         <div class="logo">
             <a href="index.html">MCOC FR BETA V0.0 </a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
         <nav>
             <ul>
