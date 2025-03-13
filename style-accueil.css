@@ -340,73 +340,79 @@ footer {
     width: 80%; /* Ajuste la largeur du message */
     max-width: 400px; /* Limite la taille du message */
 }
-/* Style pour le bouton hamburger */
+/* Par défaut, cacher le hamburger sur les écrans plus grands (ordinateur) */
 .hamburger {
-    display: none; /* Cacher le bouton par défaut */
-}
-
-#navbar {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #333;
-}
-
-/* Cacher le menu sur les petits écrans par défaut */
-@media (max-width: 768px) {
-    #navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background-color: #333;
-        transform: translateX(-100%); /* Cacher le menu hors de l'écran */
-        transition: transform 0.3s ease-in-out; /* Animation du menu */
-    }
-
-    /* Afficher le menu quand il a la classe 'nav-active' */
-    #navbar.nav-active {
-        transform: translateX(0); /* Le menu glisse dans l'écran */
-    }
-
-    #navbar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        text-align: center;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    #navbar ul li {
-        padding: 15px;
-        font-size: 18px;
-    }
-
-    #navbar ul li a {
-        color: white;
-        text-decoration: none;
-    }
-}
-
-/* Afficher le bouton hamburger uniquement sur mobile */
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: none;
     cursor: pointer;
     width: 30px;
     height: 21px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .hamburger div {
     width: 30px;
     height: 4px;
-    background-color: white;
+    background-color: black;
     transition: 0.4s;
 }
+
+/* Afficher le hamburger seulement sur les écrans plus petits */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    #navbar {
+        position: fixed;
+        top: 0;
+        left: -250px; /* Le menu est caché sur le côté gauche par défaut */
+        width: 250px;
+        height: 100%;
+        background-color: #333;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    #navbar ul {
+        list-style: none;
+        padding: 20px;
+        text-align: left;
+        margin-top: 50px;
+    }
+
+    #navbar ul li {
+        margin: 20px 0;
+    }
+
+    #navbar ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    #navbar.nav-active {
+        left: 0; /* Affiche le menu en poussant tout le côté gauche */
+    }
+
+    /* Ajouter des styles pour le bouton hamburger en croix quand le menu est actif */
+    .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg);
+        position: relative;
+        top: 9px;
+    }
+
+    .hamburger.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg);
+        position: relative;
+        top: -9px;
+    }
+}
+
 
 
 
