@@ -343,18 +343,6 @@ footer {
 /* Style pour le bouton hamburger */
 .hamburger {
     display: none; /* Cacher le bouton par défaut */
-    flex-direction: column;
-    cursor: pointer;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-}
-
-.hamburger div {
-    width: 30px;
-    height: 4px;
-    background-color: white;
-    transition: 0.4s;
 }
 
 #navbar {
