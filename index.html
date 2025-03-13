@@ -124,10 +124,13 @@
 </div>
 
 <script>
-    // Afficher le message uniquement pour les écrans mobiles
-    if (window.innerWidth <= 768) {
-        document.querySelector('.mobile-message').style.display = 'block'; // Affiche le message pour mobile
-    }
+ // Afficher ou cacher le menu avec le bouton hamburger
+        const hamburger = document.getElementById("hamburger");
+        const navbar = document.getElementById("navbar");
+
+        hamburger.addEventListener("click", function() {
+            navbar.classList.toggle("nav-active"); // Active ou désactive le menu
+        });
 </script>
 
 </body>
