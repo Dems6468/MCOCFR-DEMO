@@ -5,55 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil | MCOCFR</title>
-    <link rel="stylesheet" href="style-accueil.css"> <!-- Nouveau fichier CSS -->
+    <link rel="stylesheet" href="style-accueil.css"> <!-- Lien vers le fichier CSS -->
 </head>
-<style>
-    /* Style pour cacher tout le contenu sauf les images et le message sur mobile */
-    .mobile-message {
-        display: none; /* Par défaut, caché */
-        text-align: center;
-        margin-top: 100px;
-    }
-
-    /* Cacher tout le contenu pour mobile et afficher les images et le message */
-    @media (max-width: 768px) {
-        /* Cacher tout le contenu sauf le message */
-         header, nav {
-            display: none; /* Masquer le header et le menu sur mobile */
-        }
-
-        /* Cacher tout le contenu normal sur mobile */
-        body > *:not(.mobile-message) {
-            display: none;
-        }
-
-        /* Afficher les images et le message pour les mobiles */
-        .mobile-message {
-            display: block;
-        }
-
-        /* Ajouter du style aux images */
-        .mobile-message img {
-            width: 50%;
-            margin: 20px auto;
-            display: block;
-        }
-
-        /* Style pour le message d'avertissement */
-        .mobile-message p {
-            font-size: 24px;
-            color: #FF5722;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-    }
-</style>
-</head>
-<body>
 <body>
     <header id="header">
         <div class="logo">
-            <a href="index.html">Marvel Contest of Champions FR BETA V.0</a>
+            <a href="index.html">MCOCFR BETA</a>
         </div>
         <nav>
             <ul>
@@ -71,8 +28,34 @@
                     </div>
                 </li>
             </ul>
+        <!-- Menu hamburger -->
+            <div class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </nav>
     </header>
+
+<div class="sidebar">
+    <a href="index.html">Accueil</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="champions.html">Champions</a>
+    <a href="#contact">Contact</a>
+    
+    <!-- Menu déroulant (Dropdown) -->
+    <div class="dropdown">
+        <a href="#" class="dropbtn">Menu</a>
+        <div class="dropdown-content">
+            <a href="#option1">Option 1</a>
+            <a href="#option2">Option 2</a>
+            <a href="#option3">Option 3</a>
+            <a href="#option4">Option 4</a>
+        </div>
+    </div>
+</div>
+
+
 
     <main>
         <section class="welcome">
@@ -136,36 +119,25 @@
             </div>
         </section>
     </main>
-    
-<!-- Section Google Form -->
+
+    <!-- Section Google Form -->
     <section class="google-form">
         <div class="form-container">
             <!-- Bouton redirigeant vers le Google Form -->
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGYFCZFzKiiCS4UpifWD-SsOktDurG9RqDhwZgw6yy0m3gkA/viewform" target="_blank" class="btn-primary">Donner ton avis</a>
         </div>
     </section>
-    
-
+ <script>
+        // Fonction pour ouvrir/fermer le volet latéral
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active'); // Active ou désactive la classe 'active'
+        }
+    </script>
     <footer>
-        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR • .</p>
+        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 </p>
+        <p>• Made in FRANCE FR • </p>
         <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
     </footer>
-
-
-    
- <!-- Message pour mobile -->
- <div class="mobile-message">
-    <p>Désolé, ce site n'est pas encore disponible sur téléphone. Veuillez utiliser un ordinateur ou mettre le mode "ordinateur".</p>
-    
-    <img src="oups.png" alt="Oups">
-</div>
-
-<script>
-    // Afficher le message uniquement pour les écrans mobiles
-    if (window.innerWidth <= 768) {
-        document.querySelector('.mobile-message').style.display = 'block'; // Affiche le message pour mobile
-    }
-</script>
-
 </body>
 </html>
