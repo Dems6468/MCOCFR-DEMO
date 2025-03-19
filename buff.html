@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marvel Champions</title>
+    <link rel="stylesheet" href="stylebuff.css">
+
+    <!-- Header -->
+    <header id="header">
+        <div class="logo">
+            <a href="index.html">Marvel Contest of Champions FR BETA V.0</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="buff.html">Buffs</a></li>
+                <li><a href="debuff.html">Debuffs</a></li>
+                <li><a href="champions.html">Champions</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Menu</a>
+                    <div class="dropdown-content">
+                        <a href="#option1">Option 1</a>
+                        <a href="#option2">Option 2</a>
+                        <a href="#option3">Option 3</a>
+                        <a href="#option4">Option 4</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Filtre et liste des personnages -->
+    <section id="home">
+        <div id="filter-container">
+            <h2>Filtre de buff</h2>
+            <div id="buff-buttons" class="buff-container"></div>
+            <button id="clear-filters" class="clear-filters-btn">Supprimer filtres</button>
+        </div>
+        
+        </div>
+        
+    </section>
+    
+
+        <div id="personnages-list" class="personnages-list"></div>
+
+        <!-- Zone pour afficher le nom du débuff -->
+        <div id="buff-name-display" class="buff-name-display"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR • .</p>
+        <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
+    </footer>
+
+    <!-- Message pour mobile -->
+    <div class="mobile-message">
+        <p>Désolé, ce site n'est pas encore disponible sur téléphone. Veuillez utiliser un ordinateur ou mettre le mode "ordinateur".</p>
+        <img src="oups.png" alt="Oups">
+    </div>
+
+    <script src="scriptbuff.js"></script>
+
+    <script>
+        // Afficher le message uniquement pour les écrans mobiles
+        if (window.innerWidth <= 768) {
+            document.querySelector('.mobile-message').style.display = 'block'; // Affiche le message pour mobile
+        }
+    </script>
+
+</body>
+</html>

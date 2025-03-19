@@ -4,11 +4,10 @@
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Marvel Champions</title>
-    <link rel="stylesheet" href="stylechampion.css">
+    <title>Marvel Champions</title>
+    <link rel="stylesheet" href="stylechampion1.css">
 </head>
 <body>
-     <body>
     <!-- Header -->
     <header id="header">
         <div class="logo">
@@ -17,6 +16,7 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
+                <li><a href="buff.html">Buffs</a></li>
                 <li><a href="debuff.html">Debuffs</a></li>
                 <li><a href="champions.html">Champions</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -33,12 +33,17 @@
         </nav>
     </header>
 
-    <main id="character-details">
-        <!-- Détails du personnage seront injectés ici -->
+    <!-- Nom du personnage sous le header -->
+    <div class="character-name">
+        <h1 id="character-name-title"></h1>
+    </div>
+
+    <main id="character-details" class="character-container">
+        <!-- Détails du personnage -->
     </main>
 
     <footer>
-        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR • .</p>
+        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR.</p>
         <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
     </footer>
 
@@ -48,22 +53,58 @@
             const urlParams = new URLSearchParams(window.location.search);
             const nom = urlParams.get('nom');
 
-            // Charger les données JSON
             fetch('championsData.json')
                 .then(response => response.json())
                 .then(data => {
                     const personnage = data.find(perso => perso.nom === nom);
 
                     if (personnage) {
+                        // Affichage du nom sous le header
+                        document.getElementById('character-name-title').innerText = personnage.nom;
+
                         const characterDetails = document.getElementById('character-details');
                         characterDetails.innerHTML = `
                             <div class="character-card">
-                                <h2>${personnage.nom}</h2>
-                                <img src="${personnage.photo}" alt="${personnage.nom}" class="character-photo">
+                                <div class="character-header">
+                                    <div class="character-images">
+                                        <div class="image-container">
+                                            <img src="${personnage.photo}" alt="${personnage.nom}" class="character-photo">
+                                        </div>
+                                        <div class="image-container">
+                                            <img src="${personnage.photo2}" alt="${personnage.nom}" class="character-photo">
+                                        </div>
+                                    </div>
+                                    <!-- Buffs et Debuffs à droite des images -->
+                                    <div class="character-buffs-debuffs">
+                                        <div class="character-buffs">
+                                            <h3>Buffs</h3>
+                                            <p>${personnage.buffs ? personnage.buffs.join(', ') : 'Aucun Buff disponible'}</p>
+                                        </div>
+                                        <div class="character-debuffs">
+                                            <h3>Debuffs</h3>
+                                            <p><strong>Classe :</strong> ${personnage.immunite ? Object.entries(personnage.immunite).map(([key, value]) => `${key}: ${value.join(', ')}`).join('; ') 
+                                          : 'Aucune classe disponible'} </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Tags sous les images -->
+                                <div class="character-tags">
+                                    <h3>Tags</h3>
+                                    <p>${personnage.tags ? personnage.tags.join(', ') : 'Aucun Tag disponible'}</p>
+                                </div>
+
+                                <!-- Informations sur le personnage -->
                                 <div class="character-info">
                                     <p><strong>Classe :</strong> ${personnage.classe}</p>
                                     <p><strong>Description :</strong> ${personnage.description}</p>
-                                    <!-- Ajoute d'autres informations ici -->
+                                </div>
+
+                                <!-- Autres informations -->
+                                <div class="character-extra">
+                                    <h3>Autres Infos</h3>
+                                    <p>À remplir plus tard...</p>
                                 </div>
                             </div>
                         `;

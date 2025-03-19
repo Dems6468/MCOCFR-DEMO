@@ -17,31 +17,31 @@ let selectedImmunities = new Set();
 
 async function populateImmunityButtons() {
     const debuffsData = await fetchDebuffsData();
-    const filterContainer = document.getElementById('immunite-buttons');
+    const filterContainer = document.getElementById('buff-buttons');
 
     let uniqueImmunities = new Set();
     debuffsData.forEach(character => {
-        Object.keys(character.immunite).forEach(immunite => uniqueImmunities.add(immunite));
+        Object.keys(character.buff).forEach(buff => uniqueImmunities.add(buff));
     });
 
     uniqueImmunities = Array.from(uniqueImmunities).sort();
 
-    filterContainer.innerHTML = uniqueImmunities.map(immunite =>
-        `<button class="immunite-btn" data-immunite="${immunite}">${immunite}</button>`
+    filterContainer.innerHTML = uniqueImmunities.map(buff =>
+        `<button class="buff-btn" data-buff="${buff}">${buff}</button>`
     ).join('');
 
     document.getElementById('clear-filters').addEventListener('click', () => clearFilters(debuffsData));
 
-    document.querySelectorAll('.immunite-btn').forEach(button => {
+    document.querySelectorAll('.buff-btn').forEach(button => {
         button.addEventListener('click', () => toggleImmunity(button, debuffsData));
     });
 }
 
 function toggleImmunity(button, debuffsData) {
-    const immunite = button.dataset.immunite;
+    const buff = button.dataset.buff;
 
-    if (selectedImmunities.has(immunite)) {
-        selectedImmunities.delete(immunite);
+    if (selectedImmunities.has(buff)) {
+        selectedImmunities.delete(buff);
         button.classList.remove("active");
 
         // Si c'était le dernier filtre sélectionné, on vide l'affichage
@@ -50,7 +50,7 @@ function toggleImmunity(button, debuffsData) {
             return;
         }
     } else {
-        selectedImmunities.add(immunite);
+        selectedImmunities.add(buff);
         button.classList.add("active");
     }
 
@@ -68,29 +68,29 @@ function filterBySelectedImmunities(debuffsData) {
     }
 
     const filteredCharacters = debuffsData.filter(character =>
-        [...selectedImmunities].every(immunite => Object.keys(character.immunite).includes(immunite))
+        [...selectedImmunities].every(buff => Object.keys(character.buff).includes(buff))
     );
 
     let relatedImmunities = new Set();
     filteredCharacters.forEach(character =>
-        Object.keys(character.immunite).forEach(immunite => relatedImmunities.add(immunite))
+        Object.keys(character.buff).forEach(buff => relatedImmunities.add(buff))
     );
 
-    document.querySelectorAll('.immunite-btn').forEach(button => {
-        button.style.opacity = relatedImmunities.has(button.dataset.immunite) ? "1" : "0.3";
+    document.querySelectorAll('.buff-btn').forEach(button => {
+        button.style.opacity = relatedImmunities.has(button.dataset.buff) ? "1" : "0.3";
     });
 
     if (filteredCharacters.length === 0) {
         personnagesList.innerHTML = '<p>Aucun personnage trouvé.</p>';
     } else {
         filteredCharacters.forEach(character => {
-            const immuniteImages = Object.keys(character.immunite).map(immunite => `
+            const buffImages = Object.keys(character.buff).map(buff => `
                 <div class="debuff-icon-container" style="position: relative;">
-                    <img src="${debuffIcons[immunite]}" alt="${immunite}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${immunite}')"/>
+                    <img src="${debuffIcons[buff]}" alt="${buff}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${buff}')"/>
                     <div class="debuff-tooltip" style="display:none; position: absolute; top: 25px; background-color: #333; color: white; padding: 5px; border-radius: 5px; font-size: 14px; text-align: center;">
-                        <img src="${debuffIcons[immunite]}" alt="${immunite}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
-                        <strong>${immunite}</strong><br/>
-                        ${character.immunite[immunite] ? character.immunite[immunite].join(', ') : ''}
+                        <img src="${debuffIcons[buff]}" alt="${buff}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
+                        <strong>${buff}</strong><br/>
+                        ${character.buff[buff] ? character.buff[buff].join(', ') : ''}
                     </div>
                 </div>
             `).join('');
@@ -102,7 +102,7 @@ function filterBySelectedImmunities(debuffsData) {
                         <img src="${character.photo}" alt="${character.nom}">
                     </div>
                     <h3>${character.nom}</h3>
-                    <div class="immunite-icons">${immuniteImages}</div>
+                    <div class="buff-icons">${buffImages}</div>
                 </div>
             `;
         });
@@ -114,13 +114,13 @@ function displayAllCharacters(debuffsData) {
     personnagesList.innerHTML = '';
 
     debuffsData.forEach(character => {
-        const immuniteImages = Object.keys(character.immunite).map(immunite => `
+        const buffImages = Object.keys(character.buff).map(buff => `
             <div class="debuff-icon-container" style="position: relative;">
-                <img src="${debuffIcons[immunite]}" alt="${immunite}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${immunite}')"/>
+                <img src="${debuffIcons[buff]}" alt="${buff}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${buff}')"/>
                 <div class="debuff-tooltip">
-                    <img src="${debuffIcons[immunite]}" alt="${immunite}"><br/>
-                    <strong>${immunite}</strong><br/>
-                    ${character.immunite[immunite] ? character.immunite[immunite].join(', ') : ''}
+                    <img src="${debuffIcons[buff]}" alt="${buff}"><br/>
+                    <strong>${buff}</strong><br/>
+                    ${character.buff[buff] ? character.buff[buff].join(', ') : ''}
                 </div>
             </div>
         `).join('');
@@ -133,7 +133,7 @@ function displayAllCharacters(debuffsData) {
                     <img src="${character.photo}" alt="${character.nom}">
                 </div>
                 <h3>${character.nom}</h3>
-                <div class="immunite-icons">${immuniteImages}</div>
+                <div class="buff-icons">${buffImages}</div>
             </div>
         `;
     });
@@ -141,7 +141,7 @@ function displayAllCharacters(debuffsData) {
 
 function clearFilters() {
     selectedImmunities.clear();
-    document.querySelectorAll('.immunite-btn').forEach(button => {
+    document.querySelectorAll('.buff-btn').forEach(button => {
         button.classList.remove("active");
         button.style.opacity = "1";
     });
@@ -224,7 +224,7 @@ async function displayDebuffs(event) {
 
     // Filtrer les personnages qui possèdent **toutes** les immunités sélectionnées
     const filteredDebuffs = debuffsData.filter(p => 
-        selectedOptions.every(immunite => Object.keys(p.immunite).includes(immunite))
+        selectedOptions.every(buff => Object.keys(p.buff).includes(buff))
     );
 
     // Affichage des résultats
@@ -232,13 +232,13 @@ async function displayDebuffs(event) {
         personnagesList.innerHTML = '<p>Aucun personnage trouvé pour ces immunités.</p>';
     } else {
         filteredDebuffs.forEach(character => {
-            const immuniteImages = Object.keys(character.immunite).map(immunite => `
+            const buffImages = Object.keys(character.buff).map(buff => `
                 <div class="debuff-icon-container" style="position: relative;">
-                    <img src="${debuffIcons[immunite]}" alt="${immunite}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${immunite}')"/>
+                    <img src="${debuffIcons[buff]}" alt="${buff}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${buff}')"/>
                     <div class="debuff-tooltip" style="display:none; position: absolute; top: 25px; background-color: #333; color: white; padding: 5px; border-radius: 5px; font-size: 14px; text-align: center;">
-                        <img src="${debuffIcons[immunite]}" alt="${immunite}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
-                        <strong>${immunite}</strong><br/>
-                        ${character.immunite[immunite] ? character.immunite[immunite].join(', ') : ''}
+                        <img src="${debuffIcons[buff]}" alt="${buff}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
+                        <strong>${buff}</strong><br/>
+                        ${character.buff[buff] ? character.buff[buff].join(', ') : ''}
                     </div>
                 </div>
             `).join('');
@@ -251,7 +251,7 @@ async function displayDebuffs(event) {
                         <img src="${character.photo}" alt="${character.nom}">
                     </div>
                     <h3>${character.nom}</h3>
-                    <div class="immunite-icons">${immuniteImages}</div>
+                    <div class="buff-icons">${buffImages}</div>
                 </div>
             `;
         });
@@ -264,13 +264,13 @@ function displayAllCharacters(debuffsData) {
     personnagesList.innerHTML = '';
 
     debuffsData.forEach(character => {
-        const immuniteImages = Object.keys(character.immunite).map(immunite => `
+        const buffImages = Object.keys(character.buff).map(buff => `
             <div class="debuff-icon-container" style="position: relative;">
-                <img src="${debuffIcons[immunite]}" alt="${immunite}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${immunite}')"/>
+                <img src="${debuffIcons[buff]}" alt="${buff}" class="debuff-icon" onclick="toggleDebuffInfo(event, '${buff}')"/>
                 <div class="debuff-tooltip" style="display:none; position: absolute; top: 25px; background-color: #333; color: white; padding: 5px; border-radius: 5px; font-size: 14px; text-align: center;">
-                    <img src="${debuffIcons[immunite]}" alt="${immunite}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
-                    <strong>${immunite}</strong><br/>
-                    ${character.immunite[immunite] ? character.immunite[immunite].join(', ') : ''}
+                    <img src="${debuffIcons[buff]}" alt="${buff}" style="width: 30px; height: 30px; margin-bottom: 5px;"><br/>
+                    <strong>${buff}</strong><br/>
+                    ${character.buff[buff] ? character.buff[buff].join(', ') : ''}
                 </div>
             </div>
         `).join('');
@@ -283,21 +283,21 @@ function displayAllCharacters(debuffsData) {
                     <img src="${character.photo}" alt="${character.nom}">
                 </div>
                 <h3>${character.nom}</h3>
-                <div class="immunite-icons">${immuniteImages}</div>
+                <div class="buff-icons">${buffImages}</div>
             </div>
         `;
     });
 }
 
 // Mettre à jour l'écouteur d'événement
-document.getElementById('immunite-filter').addEventListener('change', displayDebuffs);
+document.getElementById('buff-filter').addEventListener('change', displayDebuffs);
 
 // Affichage initial sans filtre
 displayDebuffs({ target: { selectedOptions: [{ value: 'all' }] } });
 
 
 // Fonction pour afficher/masquer l'info du débuff (tooltip)
-function toggleDebuffInfo(event, immunite) {
+function toggleDebuffInfo(event, buff) {
     const tooltip = event.target.nextElementSibling; // Trouve le tooltip juste après l'icône
     const allTooltips = document.querySelectorAll('.debuff-tooltip');
     
@@ -321,7 +321,7 @@ document.addEventListener('click', function(event) {
 });
 
 // Initialiser l'affichage des debuffs (sans filtre)
-document.getElementById('immunite-filter').addEventListener('change', displayDebuffs);
+document.getElementById('buff-filter').addEventListener('change', displayDebuffs);
 
 // Appel initial sans filtre
 displayDebuffs({ target: { value: 'all' } });

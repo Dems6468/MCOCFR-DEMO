@@ -4,32 +4,57 @@
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel Champions</title>
+    <title>Débuffs | MCOCFR BETA</title>
     <link rel="stylesheet" href="styledebuff.css">
-
+</head>
+<!-- Header Mobile -->
+<header id="header-mobile">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="" />
+           MCOCFR BETA </a>
+    </div>
+    <!-- Icône pour ouvrir et fermer le menu -->
+<span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+</header>
+<body>
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="champions.html">Champions</a>
+    <a href="#contact">Contact</a>
+    <a href="#">Option 1</a>
+    <a href="#">Option 2</a>
+    <a href="#">Option 3</a>
+    <a href="#">Option 4</a>
+</div>
     <!-- Header -->
     <header id="header">
         <div class="logo">
-            <a href="index.html">Marvel Contest of Champions FR BETA V.0</a>
+            <a href="index.html">
+                <img src="favicon-96x96.png" alt="Logo MCOCFR" class="logo-pc" />
+                MCOC FR BETA
+            </a>
         </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="debuff.html">Debuffs</a></li>
-                <li><a href="champions.html">Champions</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Menu</a>
-                    <div class="dropdown-content">
-                        <a href="#option1">Option 1</a>
-                        <a href="#option2">Option 2</a>
-                        <a href="#option3">Option 3</a>
-                        <a href="#option4">Option 4</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="debuff.html">Debuffs</a></li>
+                    <li><a href="champions.html">Champions</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Menu</a>
+                        <div class="dropdown-content">
+                            <a href="#option1">Option 1</a>
+                            <a href="#option2">Option 2</a>
+                            <a href="#option3">Option 3</a>
+                            <a href="#option4">Option 4</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
     <!-- Filtre et liste des personnages -->
     <section id="home">
         <div id="filter-container">
@@ -55,20 +80,41 @@
         <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
     </footer>
 
-    <!-- Message pour mobile -->
-    <div class="mobile-message">
-        <p>Désolé, ce site n'est pas encore disponible sur téléphone. Veuillez utiliser un ordinateur ou mettre le mode "ordinateur".</p>
-        <img src="oups.png" alt="Oups">
-    </div>
-
     <script src="script.js"></script>
-
     <script>
-        // Afficher le message uniquement pour les écrans mobiles
-        if (window.innerWidth <= 768) {
-            document.querySelector('.mobile-message').style.display = 'block'; // Affiche le message pour mobile
+        // Initialiser le menu à l'état fermé
+        window.onload = function() {
+            const menu = document.getElementById("side-menu");
+            menu.style.left = "-250px";  // Assure que le menu est caché dès le départ
+        };
+    
+        // Fonction pour ouvrir ou fermer le menu latéral
+        function toggleMenu() {
+            const menu = document.getElementById("side-menu");
+    
+            // Vérifie si le menu est caché à gauche ou ouvert
+            if (menu.style.left === "-250px") {
+                menu.style.left = "0";  // Ouvre le menu (glissement vers la droite)
+            } else {
+                menu.style.left = "-250px";  // Ferme le menu (glissement vers la gauche)
+            }
+        }
+    
+        // Fonction pour fermer le menu en cliquant sur la croix
+        function closeMenu() {
+            document.getElementById("side-menu").style.left = "-250px";
+        }
+    
+        // Ferme le menu en cliquant en dehors de celui-ci
+        window.onclick = function(event) {
+            const menu = document.getElementById("side-menu");
+            const menuIcon = document.querySelector(".menu-icon");
+    
+            // Si l'utilisateur clique en dehors du menu et de l'icône du menu
+            if (!menu.contains(event.target) && event.target !== menuIcon) {
+                menu.style.left = "-250px"; // Ferme le menu
+            }
         }
     </script>
-
 </body>
 </html>

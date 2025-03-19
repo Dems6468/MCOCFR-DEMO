@@ -1,360 +1,898 @@
-main {
-    flex: 1;
+    
+
+@media (min-width: 768px) {
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    #header-mobile {
+        display: none;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        background: url('espace.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .logo a {
+        text-decoration: none; /* Supprime le soulignement */
+        color: inherit; /* Utilise la couleur par défaut du texte */
+        font-weight: bold; /* Pour garder l'effet du logo */
+    }
+    .side-menu {
+        display: none;
+    }
+    /* Style pour le lien enveloppant le logo et le texte */
+.welcome-link {
+    text-decoration: none; /* Pour enlever la ligne sous le texte du lien */
+    color: inherit; /* Hérite la couleur du texte parent (ici blanc par défaut) */
+    display: block; /* Fais en sorte que tout soit cliquable */
 }
 
-html, body {
-    height: 100%;
-    margin: 0;
+/* Section d'accueil pleine page */
+#welcome-screen {
+    text-align: center;
+    padding: 8%;
+    margin-top: 0; /* Retirer la marge du haut pour qu'il n'y ait pas d'espace supplémentaire */
+    margin-bottom: 0; /* Pas de marge en bas */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('indexban.jpg');
+    background-size: cover; /* Couvre toute la section */
+    background-position: center; /* Centre l'image dans la section */
+    background-repeat: no-repeat; /* Empêche l'image de se répéter */
+    background-attachment: fixed; /* L'image reste fixe lors du défilement */
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    color: white; /* Assure que le texte soit en blanc */
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
+    border-radius: 8px;
+    position: relative; /* Nécessaire pour le pseudo-élément ::before */
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    background: url('espace.webp') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-.logo a {
-    text-decoration: none; /* Supprime le soulignement */
-    color: inherit; /* Utilise la couleur par défaut du texte */
-    font-weight: bold; /* Pour garder l'effet du logo */
-}
-
-/* Header */
-#header {
-    position: fixed;
+/* Image responsive et prenant toute la largeur */
+#welcome-screen img {
+    position: absolute; /* Pour la mettre en arrière-plan */
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #111;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    z-index: 10;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    animation: slide-down 0.5s ease-out;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    transform: translateY(0);
+    height: 100%;
+    object-fit: cover; /* Couvre tout l'espace tout en préservant les proportions */
 }
 
-
-#header.scrolled {
-    background-color: #333; /* Changement de couleur lorsque la page est scrollée */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+/* Overlay avec transparence */
+#welcome-screen .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fond semi-transparent */
+    z-index: 1;
 }
 
-/* Effet de survol des liens du header */
-#header nav ul li a:hover {
-    color: #ff5722;
-}
-
-/* Effet de survol des liens du header */
-#header nav ul {
-    display: flex; /* Onglets côte à côte */
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-#header nav ul li {
-    margin-right: 20px;
-}
-
-#header nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 16px;
-    font-weight: bold;
+/* Texte visible sur l'image */
+#welcome-screen .welcome-text {
     position: relative;
-    transition: all 0.3s ease;
+    z-index: 2;
+    color: white;
+    padding: 20px;
 }
 
-/* Effet de déplacement et surlignage diagonal */
-#header nav ul li a::before {
+/* Styles pour le texte */
+#welcome-screen h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+
+#welcome-screen p {
+    font-size: 1.5em;
+}
+.welcome {
+   display: none;
+}
+/* Lorsque l'utilisateur commence à faire défiler, l'écran d'accueil disparaît */
+body.scrolled #welcome-screen {
+    opacity: 0;
+    transform: translateY(-100%); /* Déplace l'écran d'accueil vers le haut */
+}
+
+/* Quand l'écran d'accueil a disparu, le body peut scroller */
+body {
+    overflow-y: auto;
+    height: auto; /* Permet au body de prendre la hauteur du contenu */
+}
+    /* Header */
+    #header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #111;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        animation: slide-down 0.5s ease-out;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        transform: translateY(0);
+    }
+    .logo-pc {
+        height: 40px; /* Ajuste la taille selon ton design */
+        vertical-align: middle;
+        margin-right: 10px;
+    }
+
+    #header.scrolled {
+        background-color: #333; /* Changement de couleur lorsque la page est scrollée */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    /* Effet de survol des liens du header */
+    #header nav ul li a:hover {
+        color: #ff5722;
+    }
+
+    /* Effet de survol des liens du header */
+    #header nav ul {
+        display: flex; /* Onglets côte à côte */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #header nav ul li {
+        margin-right: 20px;
+    }
+
+    #header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    /* Effet de déplacement et surlignage diagonal */
+    #header nav ul li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #FF5722;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-in-out;
+        z-index: -1; /* Place le surlignage derrière le texte */
+    }
+
+    /* Au survol, on applique l'effet diagonal avec une animation */
+    #header nav ul li a:hover {
+        color: #000; /* Changer la couleur du texte sur le survol */
+        transform: translateY(-5px) rotate(-5deg); /* Effet de déplacement et de rotation */
+    }
+
+    #header nav ul li a:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown .dropbtn {
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #FF5722;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #222;
+        min-width: 160px;
+        z-index: 1;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        font-size: 16px;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #FF5722;
+    }
+
+
+    /* Section d'accueil */
+    .welcome {
+        text-align: center;
+        padding: 50px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 8px;
+        margin: 20px auto;
+        width: 80%;
+        max-width: 800px;
+        box-sizing: border-box;
+        margin-top: 120px; /* Espacement sous le header */
+    }
+
+    .feature-card {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        color: rgb(255, 255, 255); /* Assure que le texte reste lisible */
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .feature-card h3, .feature-card p, .feature-card a {
+        position: relative;
+        z-index: 2;
+    }
+
+    .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7); /* Rend l'overlay plus sombre */
+        border-radius: 10px;
+        z-index: 1;
+    }
+    .feature-card .text-container {
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent derrière le texte */
+        padding: 15px;
+        border-radius: 8px;
+        display: inline-block;
+    }
+    .feature-card {
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Effet de survol */
+    .feature-card:hover {
+        transform: scale(1.05); /* Légère augmentation de la taille */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour ressortir */
+    }
+
+    .feature-card h3, .feature-card p, .feature-card a {
+        position: relative;
+        z-index: 2;
+        transition: color 0.3s ease;
+    }
+
+    /* Change la couleur du texte au survol */
+    .feature-card:hover h3,
+    .feature-card:hover p,
+    .feature-card:hover a {
+        color: #FF5722; /* Couleur personnalisée (orange par exemple) */
+    }
+
+
+    /* Images spécifiques */
+    .feature-card.champions {
+        background-image: url('allheros.jpg');
+    }
+
+    .feature-card.debuffs {
+        background-image: url('debuffindex.png');
+    }
+
+    .google-form {
+        text-align: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .google-form iframe {
+        max-width: 100%;
+        border: none;
+        margin: 0 auto;
+        display: block;
+        height: 1167px; /* ou ajuste selon tes besoins */
+    }
+    .btn-primary {
+        background-color: #FF5722; /* Couleur de fond du bouton */
+        color: #fff; /* Couleur du texte */
+        padding: 12px 20px;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #E64A19; /* Couleur du bouton au survol */
+    }
+
+    /* Section des fonctionnalités */
+    .features {
+        text-align: center;
+        padding: 40px;
+    }
+
+    .features h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .feature-card {
+        display: inline-block;
+        width: 250px;
+        background-color: rgba(34, 34, 34, 0.7);
+        padding: 20px;
+        margin: 20px;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: scale(1.05);
+    }
+
+    .feature-card h3 {
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .feature-card p {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .feature-card .btn-secondary {
+        padding: 8px 15px;
+        font-size: 14px;
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .feature-card .btn-secondary:hover {
+        background-color: #ffffff;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #111;
+        padding: 20px;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        margin-top: auto; /* Assurez-vous que le footer soit en bas */
+    }
+    #header-mobile {
+        display: none;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #111;
+        padding: 10px 15px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+
+}
+        
+/* Mobile */
+@media (max-width: 768px) {
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: url('espace.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Permet d'empiler les éléments verticalement */
+    }
+    welcome-screen {
+        display: none;
+    }.welcome-link {
+        display: none;
+    }
+    /* Section d'accueil pleine page */
+    #welcome-screen img {
+       display: none;
+    }
+    /* Overlay avec transparence */
+    #welcome-screen .overlay {
+      display: none;
+    }
+    
+    /* Texte visible sur l'image */
+    #welcome-screen .welcome-text {
+       display: none;
+    }
+    
+    
+    body {
+        font-size: 1rem; /* Taille de police adaptée */
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; /* Centre tout le contenu horizontalement */
+    }
+
+    .logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+   /* Masquer le header classique */
+    #header {
+        display: none;
+    }
+
+    /* Afficher le header mobile */
+    #header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #111;
+        padding: 10px 15px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+
+    #header-mobile .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+
+    #header-mobile .logo img {
+        height: 30px;  /* Ajuste la taille du logo favicon */
+        margin-right: 10px;
+    }
+
+    #header-mobile a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    /* Icône de menu sur mobile */
+    .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+    }    
+
+    #header.scrolled {
+        background-color: #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    #header nav ul {
+        display: flex;
+        flex-direction: column; /* Onglets verticalement sur mobile */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    #header nav ul li {
+        margin-bottom: 2rem;
+    }
+
+    #header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    #header nav ul li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #FF5722;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-in-out;
+        z-index: -1;
+    }
+
+    #header nav ul li a:hover {
+        color: #000;
+        transform: translateY(-5%) rotate(-5deg);
+    }
+
+    #header nav ul li a:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown .dropbtn {
+        background-color: #111;
+        color: white;
+        padding: 3%;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #FF5722;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #222;
+        min-width: 80%;
+        z-index: 1;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 4% 5%;
+        text-decoration: none;
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #FF5722;
+    }
+
+    /* Section d'accueil */
+.welcome {
+    text-align: center;
+    padding: 8%;
+    margin-top: 0; /* Retirer la marge du haut pour qu'il n'y ait pas d'espace supplémentaire */
+    margin-bottom: 0; /* Pas de marge en bas */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('allheros.jpg');
+    background-size: cover; /* Couvre toute la section */
+    background-position: center; /* Centre l'image dans la section */
+    background-repeat: no-repeat; /* Empêche l'image de se répéter */
+    background-attachment: fixed; /* L'image reste fixe lors du défilement */
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    color: white; /* Assure que le texte soit en blanc */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+    position: relative; /* Nécessaire pour le pseudo-élément ::before */
+}
+.welcome::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    z-index: -1; /* Place l'overlay en arrière-plan */
+}
+   .welcome h1 {
+        font-size: 3rem; /* Taille du titre plus petite sur mobile */
+        margin-bottom: 20px; /* Marge entre le titre et le texte */
+    }
+
+    .welcome p {
+        font-size: 1.5rem; /* Taille du paragraphe plus petite sur mobile */
+    }
+    /* Feature Card */
+    .feature-card {
+        position: relative;
+        color: rgb(255, 255, 255);
+        padding: 6%;
+        border-radius: 10px;
+        text-align: center;
+        font-weight: bold;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        width: 80%;
+        margin: 4% auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('.png');
+        background-size: cover; /* Pour bien ajuster l'image */
+        background-position: center;
+    }
+
+    .feature-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .feature-card h3 {
+        font-size: 1.8rem;
+    }
+
+    .feature-card p {
+        font-size: 1.5rem;
+    }
+
+    .feature-card a {
+        font-size: 1.5rem;
+    }
+
+    .feature-card .text-container {
+        position: relative;
+        z-index: 2;
+        background: rgba(0, 0, 0, 0.6); /* Fond sombre pour améliorer la lisibilité du texte */
+        padding: 4%;
+        border-radius: 8px;
+        display: inline-block;
+        color: #fff; /* Assurer que le texte est blanc */
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Ajout d'ombre sur le texte pour une meilleure lisibilité */
+    }
+
+    .feature-card.champions {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('allheros.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Carte Debuffs avec son image de fond spécifique + filtre sombre */
+    .feature-card.debuffs {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('debuffindex.png');
+        background-size: cover;
+        background-position: center;
+    }
+
+    /* Google Form */
+    .google-form {
+        text-align: center;
+        margin-top: 8%;
+        margin-bottom: 8%;
+    }
+
+    .google-form iframe {
+        max-width: 100%;
+        border: none;
+        margin: 0 auto;
+        display: block;
+        height: 60vh; /* Ajuste à hauteur de l'écran */
+    }
+
+    /* Buttons */
+    .btn-primary {
+        background-color: #FF5722;
+        color: #fff;
+        padding: 3% 6%;
+        font-size: 1.5rem;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        border-radius: 5px;
+        margin-top: 4%;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #E64A19;
+    }
+
+    .btn-secondary {
+        font-size: 1.4rem;
+        padding: 2% 4%;
+        background-color: #ffffff;
+        color: #000000;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn-secondary:hover {
+        background-color: #eeeeee;
+    }
+
+    /* Features Section */
+    .features {
+        text-align: center;
+        padding: 6%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .features h2 {
+        font-size: 2.2rem;
+        width: 100%;
+    }
+
+    .feature-card {
+        display: inline-block;
+        width: 80%; /* Deux cartes sur une ligne sur mobile */
+        background-color: rgba(34, 34, 34, 0.7);
+        padding: 5%;
+        margin: 5%;
+        border-radius: 35px;
+        text-align: center;
+    }
+
+    .feature-card:hover {
+        transform: scale(1.05);
+    }
+
+    .feature-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .feature-card p {
+        font-size: 1.4rem;
+    }
+
+    .feature-card .btn-secondary {
+        padding: 3% 5%;
+        font-size: 1.3rem;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #111;
+        padding: 6%;
+        text-align: center;
+        color: #fff;
+        width: 100%;
+        margin-top: auto;
+        box-sizing: border-box;
+        max-width: 100%;
+    }
+
+/* Menu latéral (caché par défaut) */
+.side-menu {
     height: 100%;
-    background-color: #FF5722;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.4s ease-in-out;
-    z-index: -1; /* Place le surlignage derrière le texte */
-}
-
-/* Au survol, on applique l'effet diagonal avec une animation */
-#header nav ul li a:hover {
-    color: #000; /* Changer la couleur du texte sur le survol */
-    transform: translateY(-5px) rotate(-5deg); /* Effet de déplacement et de rotation */
-}
-
-#header nav ul li a:hover::before {
-    transform: scaleX(1);
-    transform-origin: left;
-}
-
-/* Dropdown Menu */
-.dropdown {
-    position: relative;
-}
-
-.dropdown .dropbtn {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Menu complètement à gauche, hors de la vue */
     background-color: #111;
-    color: white;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
+    overflow-x: hidden;
+    padding-top: 60px;
+    z-index: 1000;
+    transition: left 0.3s ease;  /* Animation pour l'ouverture/fermeture */
+}
+
+/* L'icône du menu */
+.menu-icon {
+    font-size: 30px;
     cursor: pointer;
+    color: white;
+}
+
+.side-menu a {
+    font-size: 1.6rem; /* Taille de police plus petite pour mobile */
+    color: #fff; /* Couleur du texte */
     text-decoration: none;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #FF5722;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #222;
-    min-width: 160px;
-    z-index: 1;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.dropdown:hover .dropdown-content {
+    padding: 10px 20px; /* Espacement plus généreux pour améliorer la lisibilité */
     display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.side-menu a {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Ombre pour le texte */
 }
 
-.dropdown-content a {
-    color: #fff;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    font-size: 16px;
+/* Effet au survol */
+.side-menu a:hover {
+    background-color: #FF5722; /* Changer la couleur de fond au survol */
+    color: #fff; /* Garder le texte blanc au survol */
+    border-radius: 5px; /* Ajouter des coins arrondis */
 }
 
-.dropdown-content a:hover {
-    background-color: #FF5722;
-}
-
-
-/* Section d'accueil */
-.welcome {
-    text-align: center;
-    padding: 50px;
-    background-color: rgba(0, 0, 0, 0.7);
-    border-radius: 8px;
-    margin: 20px auto;
-    width: 80%;
-    max-width: 800px;
-    box-sizing: border-box;
-    margin-top: 120px; /* Espacement sous le header */
-}
-
-.feature-card {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    color: rgb(255, 255, 255); /* Assure que le texte reste lisible */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-}
-
-.feature-card h3, .feature-card p, .feature-card a {
-    position: relative;
-    z-index: 2;
-}
-
-.feature-card::before {
-    content: "";
+/* Si tu veux styliser la croix de fermeture */
+.side-menu .close-btn {
+    font-size: 2rem; /* Taille plus grande pour la croix */
+    color: white; /* Couleur blanche pour la croix */
+    padding: 10px 20px;
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Rend l'overlay plus sombre */
-    border-radius: 10px;
-    z-index: 1;
-}
-.feature-card .text-container {
-    position: relative;
-    z-index: 2;
-    background: rgba(0, 0, 0, 0.6); /* Fond semi-transparent derrière le texte */
-    padding: 15px;
-    border-radius: 8px;
-    display: inline-block;
-}
-.feature-card {
-    position: relative;
-    background-size: cover;
-    background-position: center;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    font-weight: bold;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    left: 10px;
+    cursor: pointer;
 }
 
-/* Effet de survol */
-.feature-card:hover {
-    transform: scale(1.05); /* Légère augmentation de la taille */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre portée pour ressortir */
-}
-
-.feature-card h3, .feature-card p, .feature-card a {
-    position: relative;
-    z-index: 2;
-    transition: color 0.3s ease;
-}
-
-/* Change la couleur du texte au survol */
-.feature-card:hover h3,
-.feature-card:hover p,
-.feature-card:hover a {
-    color: #FF5722; /* Couleur personnalisée (orange par exemple) */
-}
-
-
-/* Images spécifiques */
-.feature-card.champions {
-    background-image: url('allheros.jpg');
-}
-
-.feature-card.debuffs {
-    background-image: url('debuffindex.png');
-}
-
-.google-form {
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 40px;
-}
-
-.google-form iframe {
-    max-width: 100%;
-    border: none;
-    margin: 0 auto;
-    display: block;
-    height: 1167px; /* ou ajuste selon tes besoins */
-}
-.btn-primary {
-    background-color: #FF5722; /* Couleur de fond du bouton */
-    color: #fff; /* Couleur du texte */
-    padding: 12px 20px;
-    font-size: 16px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-}
-
-.btn-primary:hover {
-    background-color: #E64A19; /* Couleur du bouton au survol */
-}
-
-/* Section des fonctionnalités */
-.features {
-    text-align: center;
-    padding: 40px;
-}
-
-.features h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-}
-
-.feature-card {
-    display: inline-block;
-    width: 250px;
-    background-color: rgba(34, 34, 34, 0.7);
-    padding: 20px;
-    margin: 20px;
-    border-radius: 8px;
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: scale(1.05);
-}
-
-.feature-card h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
-}
-
-.feature-card p {
-    font-size: 16px;
-    margin-bottom: 15px;
-}
-
-.feature-card .btn-secondary {
-    padding: 8px 15px;
-    font-size: 14px;
-    background-color: #ffffff;
-    color: #000000;
-    text-decoration: none;
+/* Assurer que la croix est toujours visible */
+.side-menu .close-btn:hover {
+    background-color: rgba(255, 87, 34, 0.8); /* Couleur de fond au survol */
     border-radius: 5px;
 }
 
-.feature-card .btn-secondary:hover {
-    background-color: #ffffff;
-}
-
-/* Footer */
-footer {
-    background-color: #111;
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-    width: 100%;
-    margin-top: auto; /* Assurez-vous que le footer soit en bas */
-}
-/* Style pour le message sur mobile */
-.mobile-message {
-    display: none; /* Par défaut, caché */
-    background-color: rgba(0, 0, 0, 0.8);
+/* Icône de menu sur mobile */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
     color: white;
-    font-size: 20px;
-    padding: 20px;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    border-radius: 10px;
-    width: 80%; /* Ajuste la largeur du message */
-    max-width: 400px; /* Limite la taille du message */
+    display: block; /* Affiche l'icône sur mobile */
 }
-
-/* Cacher tout le contenu pour mobile et afficher le message */
-@media (max-width: 768px) {
-    /* Cacher tout le contenu */
-    body > *:not(.mobile-message) {
-        display: none;
+  .menu-icon {
+        display: block; /* Affiche l'icône sur mobile */
     }
 
-    /* Afficher le message */
-    .mobile-message {
-        display: block;
+    .side-menu {
+        width: 250px; /* Taille du menu latéral */
     }
 
-    /* Empêcher le défilement de la page */
-    body {
-        overflow: hidden;
+    #header {
+        display: none; /* Cache le header classique sur mobile */
     }
+
 }
