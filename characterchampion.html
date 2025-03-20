@@ -126,19 +126,28 @@
                         statsList.appendChild(li);
                     });
 
-                    // Affichage des Buffs
-                    document.getElementById('character-buffs').innerText = personnage.buff.join(', ') || 'Aucun Buff disponible';
+                   // Affichage des Buffs
+                    const buffsList = document.getElementById('character-buffs');
+                    const buffs = Object.entries(personnage["buff"]).map(([key, value]) => `${key}: ${value.join(', ')}`).join('; ') || 'Aucun Buff disponible';
+                    buffsList.innerText = buffs;
 
-                    // Affichage des Debuffs
-                    document.getElementById('character-debuffs').innerText = personnage.immunite.join(', ') || 'Aucun Debuff disponible';
+                   // Affichage des Debuffs
+                    const debuffsList = document.getElementById('character-debuffs');
+                    const debuffs = personnage["immunite"] ? Object.entries(personnage["immunite"]).map(([key, value]) => `${key}: ${value.join(', ')}`).join('; ') : 'Aucun Debuff disponible';
+                    debuffsList.innerText = debuffs;
 
-                    // Affichage des Tags
+             // Affichage des Tags
                     const tagsList = document.getElementById('character-tags');
-                    personnage.tags.forEach(tag => {
-                        const li = document.createElement('li');
-                        li.innerText = tag;
-                        tagsList.appendChild(li);
-                    });
+                    // Si les tags ne sont pas définis, on peut les laisser vides ou afficher un message par défaut
+                    if (personnage["tags"] && personnage["tags"].length > 0) {
+                        personnage["tags"].forEach(tag => {
+                            const li = document.createElement('li');
+                            li.innerText = tag;
+                            tagsList.appendChild(li);
+                        });
+                    } else {
+                        tagsList.innerHTML = "<li>Aucun tag disponible</li>";
+                    }
                 } else {
                     document.getElementById('character-details').innerHTML = `<p>Personnage non trouvé.</p>`;
                 }
