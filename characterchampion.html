@@ -133,7 +133,7 @@
                         const ul = document.createElement('ul');
                         Object.entries(buffs).forEach(([key, value]) => {
                             const li = document.createElement('li');
-                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Aucun effet'}`;
+                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Aucun détail'}`;
                             ul.appendChild(li);
                         });
                         buffsList.appendChild(ul);
@@ -149,7 +149,7 @@
                         const ul = document.createElement('ul');
                         Object.entries(debuffs).forEach(([key, value]) => {
                             const li = document.createElement('li');
-                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Aucune immunité'}`;
+                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Natif'}`;
                             ul.appendChild(li);
                         });
                         debuffsList.appendChild(ul);
