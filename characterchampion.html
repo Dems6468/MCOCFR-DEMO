@@ -127,10 +127,10 @@
                     });
 
                     // Affichage des Buffs
-                    document.getElementById('character-buffs').innerText = personnage.buffs.join(', ') || 'Aucun Buff disponible';
+                    document.getElementById('character-buffs').innerText = personnage.buff.join(', ') || 'Aucun Buff disponible';
 
                     // Affichage des Debuffs
-                    document.getElementById('character-debuffs').innerText = personnage.debuffs.join(', ') || 'Aucun Debuff disponible';
+                    document.getElementById('character-debuffs').innerText = personnage.immunite.join(', ') || 'Aucun Debuff disponible';
 
                     // Affichage des Tags
                     const tagsList = document.getElementById('character-tags');
