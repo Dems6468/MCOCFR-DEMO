@@ -1426,7 +1426,10 @@
         "classe2": "faces/class_mystic0b9f.png", 
         "buff": {"Nullify": ["SP1", "SP3"], "Power Lock": ["SP2 → 85% Chance"], "Power Steal": ["SP2 → 33% Enemy Power"], "Precision": ["Synergy [Heimdall] & Dash Back & Hold Block"], "Fury": ["Synergy [Spot] & Opponent at 0 power"], "Unblockable": ["Synergy [Wong] & SP1 while Opponent has 1+ Buff"]}, 
         "immunite": {"Saignement": ["Synergie [Purgatory]"]}, 
-        "photo": "faces/portrait_magik9f6e.png", 
+       "photo": [
+        "faces/portrait_magik9f6e.png", 
+        "faces/magik2.png", 
+        "faces/magik3.png"  ],
         "description": "JOSIANE JOESTAR"
     }, 
     {
