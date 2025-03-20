@@ -104,3 +104,35 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => console.error('Erreur de chargement du JSON:', error));
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const images = document.querySelectorAll('.carousel-image');
+    let currentIndex = 0;
+
+    // Fonction pour afficher l'image courante
+    function showImage(index) {
+        images.forEach((img, i) => {
+            if (i === index) {
+                img.style.display = 'block';  // Afficher l'image courante
+            } else {
+                img.style.display = 'none';  // Cacher les autres images
+            }
+        });
+    }
+
+    // Initialiser l'affichage de la première image
+    showImage(currentIndex);
+
+    // Bouton "Suivant"
+    document.getElementById('nextBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % images.length;  // Passer à l'image suivante
+        showImage(currentIndex);
+    });
+
+    // Bouton "Précédent"
+    document.getElementById('prevBtn').addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;  // Passer à l'image précédente
+        showImage(currentIndex);
+    });
+});
+
