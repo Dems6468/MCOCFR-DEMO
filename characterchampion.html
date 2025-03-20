@@ -1,119 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marvel Champions</title>
+    <title>Iron Man - Marvel Contest of Champions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="stylechampion1.css">
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="logo">
-            <a href="index.html">Marvel Contest of Champions FR BETA V.0</a>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Accueil</a></li>
-                <li><a href="buff.html">Buffs</a></li>
-                <li><a href="debuff.html">Debuffs</a></li>
-                <li><a href="champions.html">Champions</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropbtn">Menu</a>
-                    <div class="dropdown-content">
-                        <a href="#option1">Option 1</a>
-                        <a href="#option2">Option 2</a>
-                        <a href="#option3">Option 3</a>
-                        <a href="#option4">Option 4</a>
-                    </div>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Nom du personnage sous le header -->
-    <div class="character-name">
-        <h1 id="character-name-title"></h1>
+<!-- Header -->
+<header id="header">
+    <div class="logo">
+        <a href="index.html">Marvel Contest of Champions</a>
     </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="buff.html">Buffs</a></li>
+            <li><a href="debuff.html">Debuffs</a></li>
+            <li><a href="champions.html">Champions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <main id="character-details" class="character-container">
-        <!-- Détails du personnage -->
-    </main>
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-text">
+        <h1 id="character-name"></h1>
+        <p class="subtitle" id="character-subtitle"></p>
+    </div>
+    <div class="hero-carousel">
+        <div class="carousel-container">
+            <div class="carousel" id="character-carousel">
+                <!-- Les images du carousel seront ajoutées ici dynamiquement -->
+            </div>
+        </div>
+        <div class="carousel-navigation">
+            <button id="prevBtn" class="carousel-button">←</button>
+            <button id="nextBtn" class="carousel-button">→</button>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <p>Version 0.0 • DERNIERE MISE A JOUR LE 08 MARS 2025 • Made in FRANCE FR.</p>
-        <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
-    </footer>
+<!-- Character Details Section -->
+<main class="character-details">
+    <section class="card description-card">
+        <h2>Description</h2>
+        <p id="character-description"></p>
+    </section>
 
-    <script src="scriptchampion.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const nom = urlParams.get('nom');
+    <section class="card stats-card">
+        <h2>Statistiques</h2>
+        <ul id="character-stats">
+            <!-- Les statistiques du personnage seront ajoutées ici dynamiquement -->
+        </ul>
+    </section>
 
-            fetch('championsData.json')
-                .then(response => response.json())
-                .then(data => {
-                    const personnage = data.find(perso => perso.nom === nom);
+    <section class="card buffs-card">
+        <h2>Buffs</h2>
+        <p id="character-buffs"></p>
+    </section>
 
-                    if (personnage) {
-                        // Affichage du nom sous le header
-                        document.getElementById('character-name-title').innerText = personnage.nom;
+    <section class="card debuffs-card">
+        <h2>Debuffs</h2>
+        <p id="character-debuffs"></p>
+    </section>
 
-                        const characterDetails = document.getElementById('character-details');
-                        characterDetails.innerHTML = `
-                            <div class="character-card">
-                                <div class="character-header">
-                                    <div class="character-images">
-                                        <div class="image-container">
-                                            <img src="${personnage.photo}" alt="${personnage.nom}" class="character-photo">
-                                        </div>
-                                        <div class="image-container">
-                                            <img src="${personnage.photo2}" alt="${personnage.nom}" class="character-photo">
-                                        </div>
-                                    </div>
-                                    <!-- Buffs et Debuffs à droite des images -->
-                                    <div class="character-buffs-debuffs">
-                                        <div class="character-buffs">
-                                            <h3>Buffs</h3>
-                                            <p>${personnage.buffs ? personnage.buffs.join(', ') : 'Aucun Buff disponible'}</p>
-                                        </div>
-                                        <div class="character-debuffs">
-                                            <h3>Debuffs</h3>
-                                            <p><strong>Classe :</strong> ${personnage.immunite ? Object.entries(personnage.immunite).map(([key, value]) => `${key}: ${value.join(', ')}`).join('; ') 
-                                          : 'Aucune classe disponible'} </p>
-                                        </div>
+    <section class="card tags-card">
+        <h2>Tags</h2>
+        <ul id="character-tags">
+            <!-- Les tags du personnage seront ajoutés ici dynamiquement -->
+        </ul>
+    </section>
+</main>
 
-                                    </div>
-                                </div>
+<!-- Footer -->
+<footer>
+    <p>Version 0.0 • Dernière mise à jour le 08 mars 2025 • Made in France</p>
+    <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
+</footer>
 
-                                <!-- Tags sous les images -->
-                                <div class="character-tags">
-                                    <h3>Tags</h3>
-                                    <p>${personnage.tags ? personnage.tags.join(', ') : 'Aucun Tag disponible'}</p>
-                                </div>
+<script src="scriptchampion.js"></script>
 
-                                <!-- Informations sur le personnage -->
-                                <div class="character-info">
-                                    <p><strong>Classe :</strong> ${personnage.classe}</p>
-                                    <p><strong>Description :</strong> ${personnage.description}</p>
-                                </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const nom = urlParams.get('nom');
 
-                                <!-- Autres informations -->
-                                <div class="character-extra">
-                                    <h3>Autres Infos</h3>
-                                    <p>À remplir plus tard...</p>
-                                </div>
-                            </div>
-                        `;
-                    } else {
-                        document.getElementById('character-details').innerHTML = `<p>Personnage non trouvé.</p>`;
-                    }
-                })
-                .catch(error => console.error('Erreur de chargement des détails du personnage:', error));
-        });
-    </script>
+        fetch('championsData.json')
+            .then(response => response.json())
+            .then(data => {
+                const personnage = data.find(perso => perso.nom === nom);
+
+                if (personnage) {
+                    // Affichage du nom et de la sous-titre du personnage
+                    document.getElementById('character-name').innerText = personnage.nom;
+                    document.getElementById('character-subtitle').innerText = personnage.subtitle;
+
+                    // Affichage des images dans le carousel
+                    const carousel = document.getElementById('character-carousel');
+                    personnage.photos.forEach(photo => {
+                        const img = document.createElement('img');
+                        img.src = photo;
+                        img.alt = personnage.nom;
+                        img.classList.add('carousel-image');
+                        carousel.appendChild(img);
+                    });
+
+                    // Affichage de la description du personnage
+                    document.getElementById('character-description').innerText = personnage.description;
+
+                    // Affichage des statistiques
+                    const statsList = document.getElementById('character-stats');
+                    const stats = [
+                        `Classe: ${personnage.classe}`,
+                        `Rareté: ${personnage.rarete}`,
+                        `Catégorie: ${personnage.categorie}`,
+                        `Type: ${personnage.type}`
+                    ];
+                    stats.forEach(stat => {
+                        const li = document.createElement('li');
+                        li.innerText = stat;
+                        statsList.appendChild(li);
+                    });
+
+                    // Affichage des Buffs
+                    document.getElementById('character-buffs').innerText = personnage.buffs.join(', ') || 'Aucun Buff disponible';
+
+                    // Affichage des Debuffs
+                    document.getElementById('character-debuffs').innerText = personnage.debuffs.join(', ') || 'Aucun Debuff disponible';
+
+                    // Affichage des Tags
+                    const tagsList = document.getElementById('character-tags');
+                    personnage.tags.forEach(tag => {
+                        const li = document.createElement('li');
+                        li.innerText = tag;
+                        tagsList.appendChild(li);
+                    });
+                } else {
+                    document.getElementById('character-details').innerHTML = `<p>Personnage non trouvé.</p>`;
+                }
+            })
+            .catch(error => console.error('Erreur de chargement des détails du personnage:', error));
+    });
+</script>
+
 </body>
 </html>
