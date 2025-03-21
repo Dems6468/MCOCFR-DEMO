@@ -28,6 +28,12 @@
     .side-menu {
         display: none;
     }
+    
+    /* Ensure the main content (flexible) doesn't overlap footer */
+    main {
+        flex-grow: 1;
+        padding: 20px;
+    }
     /* Style pour le lien enveloppant le logo et le texte */
 .welcome-link {
     text-decoration: none; /* Pour enlever la ligne sous le texte du lien */
