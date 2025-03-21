@@ -18,7 +18,8 @@
         "buff": {"Petrify": ["SP1", "Acid Burn Activation"], "Poison": [], "Unblockable": ["While Acid Burn Active"], "Weakness": ["On Blocked Hits"], "Enervate": ["Synergy [Abomination]"], "Armor Break": ["Synergy [Venom the Duck, Man-Thing] & Heavy Attack"], "Vicious": ["Synergy [Baron Zemo] & Special Attacks"]}, 
         "immunite": {"Poison": ["100% Resistance"]}, 
         "photo": "faces/portrait_abomination_immortal33a7.png", 
-        "description": "JOSIANE JOESTAR"
+        "description": "JOSIANE JOESTAR",
+        "photos": ["champions/imoabo1.webp", "champions/imoabo2.webp"]
     }, 
     {
         "nom": "Absorbing Man", 
@@ -28,7 +29,8 @@
         "buff": {"Unblockable": ["Refined → Special Attacks"], "Vulnerability": ["Passive, MLM Combo"], "Energy Damage": ["Magma Form"], "Incinerate": ["Refined Magma Form"], "Cruelty": ["Passive, SP3"], "Armor Break": ["Synergy [Thor, Thor Jane Foster] & Second Medium"]}, 
         "immunite": {"Brise-Armure": [], "Armure Pulverisée": [], "Saignement": ["Black Uru Form, SP1"], "Décharges": ["Black Uru Form, SP1"], "Incinération": ["Magma Form, SP2"], "Vague de Froid": ["Magma Form, SP2"], "Engelure": ["Magma Form, SP2"], "Poison": ["Synergie [Abomination Immortal, Hulk Immortal]"]}, 
         "photo": "faces/portrait_absorbingman3399.png", 
-        "description": "JOSIANE JOESTAR"
+        "description": "JOSIANE JOESTAR",
+        "photos": ["champions/abs1.webp", "champions/abs2.webp"]
     }, 
     {
         "nom": "Adam Warlock", 
