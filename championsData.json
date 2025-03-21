@@ -1,13 +1,14 @@
 ﻿[
     {
-        "nom": "Abomination", 
-        "Short Name": "Abomination", 
-        "classe": "Science", 
-        "classe2": "faces/class_chemicalf5fb.png", 
-        "buff": {"Poison": ["Dupe", "Synergy [Red Guardian] & All Attacks → 50% Chance"], "Fury": [], "Enervate": ["Synergy [Immortal Abomination]"]}, 
-        "immunite": {"Poison": []}, 
-        "photo": "faces/portrait_abominationed8d.png", 
-        "description": "JOSIANE JOESTAR"
+    "nom": "Abomination",
+    "Short Name": "Abomination",
+    "classe": "Science",
+    "classe2": "faces/class_chemicalf5fb.png",
+    "buff": {"Poison": ["Dupe", "Synergy [Red Guardian] & All Attacks → 50% Chance"], "Fury": [], "Enervate": ["Synergy [Immortal Abomination]"]},
+    "immunite": {"Poison": []},
+    "photo": "faces/portrait_abominationed8d.png",
+    "description": "JOSIANE JOESTAR",
+    "photos": ["champions/ImmoAbo1.webp", "champions/ImmoAbo2.webp","champions/ImmoAbo3.webp"]
     }, 
     {
         "nom": "Abomination (Immortal)", 
