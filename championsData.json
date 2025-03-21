@@ -110,6 +110,17 @@
         "photos": {}
     }, 
     {
+        "nom": "Anti-Venom", 
+        "Short Name": "Anti-Venom", 
+        "classe": "Science", 
+        "classe2": "faces/class_chemicalf5fb.png", 
+        "buff": {"Spectre": ["Every 10 Hits"], "Disorient": ["Every 10 Hits"], "Decelerate": ["Every 10 Hits"], "Stagger": ["Heavy Attacks"], "Petrify": ["SP1"], "Fury": ["Passive, SP2"], "Rupture": ["SP3"], "Regeneration": ["Passive, Synergy [Mister Negative] & Generic Memory Debuff → 20% Chance"]}, 
+        "immunite": {"Incinération": [], "Poison": [], "Buffs": ["Synergie [Spiderman 2099, Doctor Octopus] & only for 10s"]}, 
+        "photo": "faces/portrait_antivenomce92.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": {}
+    }, 
+    {
         "nom": "Ant-Man", 
         "Short Name": "Ant-Man", 
         "classe": "Science", 
@@ -128,17 +139,6 @@
         "buff": {"Glance": ["Chance based on Armor Ups unless Opponent has Pierce"], "Regeneration": ["Dupe → Bleed or Incinerate Expires", "Dupe → Lose more than 10% of Max Health"], "Power Drain": ["Encroaching Power Detonation → 40% of Current Power", "SP1"], "Disintegration": ["Power Detonation Expires", "SP1 into Block", "SP3"], "Armor Up": ["Start Fight", "Intercept", "Hit during Opponent's Heavy Attack", "Glance", "SP3", "Synergy [Cable, Bishop] & Opponent gains Prowess"], "Stun": ["5+ Armor Ups → Surging Swarm & Opponents Combo Ender Glances"], "Cannot Miss": ["Synergy [Ant-Man, Wasp, Yellowjacket] & Personal Power Detonation Effects"]}, 
         "immunite": {"Saignement": ["Dupe → 10-90% Duration Reduction", "Synergie [Purgatory] & Synergie [Mephisto, The Hood, Magik, Dormammu]"], "Incinération": ["Dupe → 10-90% Duration Reduction"], "Décharges": ["Synergie [Odin, Ultron] & 60% Duration Reduction"]}, 
         "photo": "faces/portrait_antman_future568b.png", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": {}
-    }, 
-    {
-        "nom": "Anti-Venom", 
-        "Short Name": "Anti-Venom", 
-        "classe": "Science", 
-        "classe2": "faces/class_chemicalf5fb.png", 
-        "buff": {"Spectre": ["Every 10 Hits"], "Disorient": ["Every 10 Hits"], "Decelerate": ["Every 10 Hits"], "Stagger": ["Heavy Attacks"], "Petrify": ["SP1"], "Fury": ["Passive, SP2"], "Rupture": ["SP3"], "Regeneration": ["Passive, Synergy [Mister Negative] & Generic Memory Debuff → 20% Chance"]}, 
-        "immunite": {"Incinération": [], "Poison": [], "Buffs": ["Synergie [Spiderman 2099, Doctor Octopus] & only for 10s"]}, 
-        "photo": "faces/portrait_antivenomce92.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     }, 
@@ -207,6 +207,17 @@
         "photo": "faces/portrait_baronzemo9010.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
+    }, 
+    {
+        "nom": "Bastion", 
+        "Short Name": "Bastion", 
+        "classe": "Tech", 
+        "classe2": "faces/class_techbdb1.png", 
+        "buff": {}, 
+        "immunite": {"Saignement": [], "Poison": []}, 
+        "photo": "champions/bastion1.webp", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": ["champions/bastion1.webp", "champions/bastion2.webpchampions/bastion3.webp"]
     }, 
     {
         "nom": "Beast", 
@@ -1309,6 +1320,17 @@
         "photos": {}
     }, 
     {
+        "nom": "Jean Grey", 
+        "Short Name": "Jean Grey", 
+        "classe": "Mutant", 
+        "classe2": "faces/class_mutant7e84.png", 
+        "buff": {}, 
+        "immunite": {"Contrôles Inversés": []}, 
+        "photo": "champions/jeang1.webp", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": ["champions/jeang1.webp", "champions/jeang2.webpchampions/jeang3.webp"]
+    }, 
+    {
         "nom": "Jessica Jones", 
         "Short Name": "Jessica Jones", 
         "classe": "Science", 
@@ -1595,17 +1617,6 @@
         "photos": {}
     }, 
     {
-        "nom": "Man-Thing", 
-        "Short Name": "Man-Thing", 
-        "classe": "Mystique", 
-        "classe2": "faces/class_mystic0b9f.png", 
-        "buff": {"Regeneration": ["Dupe → Below 50% Health"], "Fury": ["Dupe → Above 50% Health", "SP3", "Synergy [Thing] & Well-Timed Blocks"], "Nullify": ["All contact attacks → Up to 15% chance based on Agitation", "SP2"], "Unstoppable": ["Charging Heavy Attack"], "Poison": ["Toxic Pustule Nullified", "SP3 → Based on Agitation", "Synergy [King Groot] & Well-Timed Block"], "Armor Break": ["Toxic Pustule Nullified", "Heavy Attack & Toxic Pustule"], "Vicious": ["Synergy [Baron Zemo] & Special Attacks", "Passive, Synergy [Werewolf By Night] → Start Fight"], "Indestructible": ["Synergy [Howard the Duck, She-Hulk] & Struck while Unstoppable"], "Prowess": ["Synergy [Toad] → Start Fight"], "Guaranteed Critical Hits": ["Synergy [Mole Man] → Heavy Attacks while Unstoppable"], "Torment": ["Passive, Synergy [Morbius] → Start Fight"]}, 
-        "immunite": {"Saignement": [], "Brise-Armure": [], "Armure Pulverisée": []}, 
-        "photo": "faces/portrait_manthinge328.png", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": {}
-    }, 
-    {
         "nom": "Mangog", 
         "Short Name": "Mangog", 
         "classe": "Mystique", 
@@ -1613,6 +1624,17 @@
         "buff": {"Gain Power": ["Below 2 Bars → 5% of Power Bar/s", "Synergy [Loki] & Start Fight → 1 Bar of Power"], "Regeneration": ["Passive, Dupe & Unstoppable → 10-20% of incoming damage", "SP3 → Per Nullified Buff"], "Fury": ["Struck while Unstoppable"], "Unstoppable": ["Enraged"], "Unblockable": ["SP1/SP2 while Enraged"], "Stagger": ["SP1", "Enraged → Basic Attacks, 70% Chance"], "Armor Break": ["Heavy Attack → Consume 2 Hatred"], "Burst Damage": ["Energy, Heavy Attack → Based on Charge Time", "Energy, Synergy [Hulk, Black Widow, Captain America, Hawkeye, Iron Man] & Enraged → All Attacks"], "Power Steal": ["SP2 → Steals Power above nearest Full Bar"], "Stun": ["SP2 & Enraged → 3s", "SP3 & Enraged → 2s"], "Nullify": ["SP3 → Up to 10 Buffs"], "Precision": ["Synergy [Odin] & Trigger Nullify Immunity"], "Suppression": ["Synergy [Kingpin, Hulk Immortal, Wolverine Weapon X] & Enraged"]}, 
         "immunite": {"Saignement": [], "Brise-Armure": [], "Décharges": ["SP1 & Enraged"], "Incinération": ["SP1 & Enraged"], "Vague de Froid": ["SP1 & Enraged"], "Engelure": ["SP1 & Enraged"], "Purge": ["Synergie [Odin]"]}, 
         "photo": "faces/portrait_mangog61a6.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": {}
+    }, 
+    {
+        "nom": "Man-Thing", 
+        "Short Name": "Man-Thing", 
+        "classe": "Mystique", 
+        "classe2": "faces/class_mystic0b9f.png", 
+        "buff": {"Regeneration": ["Dupe → Below 50% Health"], "Fury": ["Dupe → Above 50% Health", "SP3", "Synergy [Thing] & Well-Timed Blocks"], "Nullify": ["All contact attacks → Up to 15% chance based on Agitation", "SP2"], "Unstoppable": ["Charging Heavy Attack"], "Poison": ["Toxic Pustule Nullified", "SP3 → Based on Agitation", "Synergy [King Groot] & Well-Timed Block"], "Armor Break": ["Toxic Pustule Nullified", "Heavy Attack & Toxic Pustule"], "Vicious": ["Synergy [Baron Zemo] & Special Attacks", "Passive, Synergy [Werewolf By Night] → Start Fight"], "Indestructible": ["Synergy [Howard the Duck, She-Hulk] & Struck while Unstoppable"], "Prowess": ["Synergy [Toad] → Start Fight"], "Guaranteed Critical Hits": ["Synergy [Mole Man] → Heavy Attacks while Unstoppable"], "Torment": ["Passive, Synergy [Morbius] → Start Fight"]}, 
+        "immunite": {"Saignement": [], "Brise-Armure": [], "Armure Pulverisée": []}, 
+        "photo": "faces/portrait_manthinge328.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     }, 
@@ -2706,17 +2728,6 @@
         "photos": {}
     }, 
     {
-        "nom": "Super-Skrull", 
-        "Short Name": "Super-Skrull", 
-        "classe": "Cosmique", 
-        "classe2": "faces/class_cosmic2e67.png", 
-        "buff": {"Power Gain": ["Dupe & Cosmic Energy Overload → 1.5-7% Bar/s"], "Falter": ["Every 25s"], "Energy Vulnerability": ["Falter expires → 5s"], "Fury": ["Striking Opponent/Block", "SP2 → Convert Armor Up Buffs"], "Armor Up": ["Struck or Blocking Attacks", "SP1 → Convert Fury Buffs"], "Vigilance": ["Cosmic Energy Overload & 4+ Armor Up Buffs → 15s", "Synergy [Doctor Doom] & Start Fight → 15s"], "Unblockable": ["Cosmic Energy Overload & 8+ Armor Up Buffs → 15s"], "Undermine": ["Cosmic Energy Overload & 4+ Fury Buffs → 15s"], "Incinerate": ["Cosmic Energy Overload & 8+ Fury Buffs → All Attacks for 15s", "SP2 → 15s"], "Cannot Miss": ["SP1 & Only Second Hit"], "Cannot be Auto-Blocked": ["SP1 & Only Second Hit"], "Aptitude": ["SP3"], "Stun": ["SP3 → 3s"], "Armor Break": ["Synergy [Iron Fist] & Activate Fury → 4s"]}, 
-        "immunite": {"Incinération": [], "Décharges": []}, 
-        "photo": "faces/portrait_skrull_superf1f6.png", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": {}
-    }, 
-    {
         "nom": "Superior Iron Man", 
         "Short Name": "Super. Iron Man", 
         "classe": "Cosmique", 
@@ -2724,6 +2735,17 @@
         "buff": {"Auto-Block": ["3+ unique Superior Buffs → 25% Chance for Basic Attacks", "5+ unique Superior Buffs → 125% Chance for Basic Attacks"], "Armor Break": ["SP1 → per unique Superior Buff, 10s", "SP2 → 15s"], "Power Gain": ["SP1 & 2+ unique Superior Buffs → 40% of Bar over 10s"], "Fury": ["SP3 → 10s"], "Armor Up": ["Core Superior Buff"], "Energy Resistance": ["Core Superior Buff"], "Crit Resistance": ["Core Superior Buff"], "Regeneration": ["Core Superior Buff", "Synergy [Cassie Lang, Ant-Man, Wasp, Ant-Man Future] & Second Medium Attack or Medium Intercept"], "Amplify": ["Core Superior Buff"]}, 
         "immunite": {"Saignement": ["50% Reistance, +15% per unique Superior Buff"], "Incinération": ["50% Reistance, +15% per unique Superior Buff"], "Décharges": ["50% Reistance, +15% per unique Superior Buff"]}, 
         "photo": "faces/portrait_ironman_superiordcb5.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": {}
+    }, 
+    {
+        "nom": "Super-Skrull", 
+        "Short Name": "Super-Skrull", 
+        "classe": "Cosmique", 
+        "classe2": "faces/class_cosmic2e67.png", 
+        "buff": {"Power Gain": ["Dupe & Cosmic Energy Overload → 1.5-7% Bar/s"], "Falter": ["Every 25s"], "Energy Vulnerability": ["Falter expires → 5s"], "Fury": ["Striking Opponent/Block", "SP2 → Convert Armor Up Buffs"], "Armor Up": ["Struck or Blocking Attacks", "SP1 → Convert Fury Buffs"], "Vigilance": ["Cosmic Energy Overload & 4+ Armor Up Buffs → 15s", "Synergy [Doctor Doom] & Start Fight → 15s"], "Unblockable": ["Cosmic Energy Overload & 8+ Armor Up Buffs → 15s"], "Undermine": ["Cosmic Energy Overload & 4+ Fury Buffs → 15s"], "Incinerate": ["Cosmic Energy Overload & 8+ Fury Buffs → All Attacks for 15s", "SP2 → 15s"], "Cannot Miss": ["SP1 & Only Second Hit"], "Cannot be Auto-Blocked": ["SP1 & Only Second Hit"], "Aptitude": ["SP3"], "Stun": ["SP3 → 3s"], "Armor Break": ["Synergy [Iron Fist] & Activate Fury → 4s"]}, 
+        "immunite": {"Incinération": [], "Décharges": []}, 
+        "photo": "faces/portrait_skrull_superf1f6.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     }, 
@@ -3232,27 +3254,5 @@
         "photo": "faces/portrait_yondu735f.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
-    }, 
-    {
-        "nom": "Jean Grey", 
-        "Short Name": "Jean Grey", 
-        "classe": "Mutant", 
-        "classe2": "faces/class_mutant7e84.png", 
-        "buff": {}, 
-        "immunite": {"Contrôles Inversés": []}, 
-        "photo": "champions/jeang1.webp", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": ["champions/jeang1.webp", "champions/jeang2.webpchampions/jeang3.webp"]
-    }, 
-    {
-        "nom": "Bastion", 
-        "Short Name": "Bastion", 
-        "classe": "Tech", 
-        "classe2": "faces/class_techbdb1.png", 
-        "buff": {}, 
-        "immunite": {"Saignement": [], "Poison": []}, 
-        "photo": "champions/bastion1.webp", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": ["champions/bastion1.webp", "champions/bastion2.webpchampions/bastion3.webp"]
     }
 ]
