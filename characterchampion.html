@@ -85,94 +85,99 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const nom = urlParams.get('nom');
+    const urlParams = new URLSearchParams(window.location.search);
+    const nom = urlParams.get('nom');
 
-        fetch('championsData.json')
-            .then(response => response.json())
-            .then(data => {
-                const personnage = data.find(perso => perso["nom"] === nom);
+    fetch('championsData.json')
+        .then(response => response.json())
+        .then(data => {
+            const personnage = data.find(perso => perso["nom"] === nom);
 
-                if (personnage) {
-                    // Affichage du nom et du sous-titre du personnage
-                    document.getElementById('character-name').innerText = personnage["nom"];
-                    document.getElementById('character-subtitle').innerText = personnage["Short Name"];
+            if (personnage) {
+                // Affichage du nom et du sous-titre du personnage
+                document.getElementById('character-name').innerText = personnage["nom"];
+                document.getElementById('character-subtitle').innerText = personnage["Short Name"];
 
-                    // Affichage des images dans le carousel
-                    const carousel = document.getElementById('character-carousel');
-                    const photo = personnage["photos"];
+                // Affichage des images dans le carousel
+                const carousel = document.getElementById('character-carousel');
+                const photos = personnage["photos"];
+                
+                // On boucle à travers chaque photo et on les ajoute au carousel
+                photos.forEach(photoSrc => {
                     const img = document.createElement('img');
-                    img.src = photo;
+                    img.src = photoSrc; // Utilisation de la photo
                     img.alt = personnage["nom"];
                     img.classList.add('carousel-image');
                     carousel.appendChild(img);
+                });
 
-                    // Affichage de la description du personnage
-                    document.getElementById('character-description').innerText = personnage["description"];
+                // Affichage de la description du personnage
+                document.getElementById('character-description').innerText = personnage["description"];
 
-                    // Affichage des statistiques (classe, rareté, catégorie, etc.)
-                    const statsList = document.getElementById('character-stats');
-                    const stats = [
-                        `Classe: ${personnage["classe"]}`,
-                        `Classe 2: <img src="${personnage["classe2"]}" alt="Classe image">`,
-                        `Buffs: ${Object.keys(personnage["buff"]).join(', ')}`,
-                        `Immunités: ${Object.keys(personnage["immunite"]).join(', ')}`
-                    ];
-                    stats.forEach(stat => {
+                // Affichage des statistiques (classe, rareté, catégorie, etc.)
+                const statsList = document.getElementById('character-stats');
+                const stats = [
+                    `Classe: ${personnage["classe"]}`,
+                    `Classe 2: <img src="${personnage["classe2"]}" alt="Classe image">`,
+                    `Buffs: ${Object.keys(personnage["buff"]).join(', ')}`,
+                    `Immunités: ${Object.keys(personnage["immunite"]).join(', ')}`
+                ];
+                stats.forEach(stat => {
+                    const li = document.createElement('li');
+                    li.innerHTML = stat;  // On utilise innerHTML pour ajouter les images
+                    statsList.appendChild(li);
+                });
+
+                // Affichage des Buffs sous forme de liste à puces
+                const buffsList = document.getElementById('character-buffs');
+                buffsList.innerHTML = ''; // Vider le contenu existant
+                const buffs = personnage["buff"];
+                if (Object.keys(buffs).length > 0) {
+                    const ul = document.createElement('ul');
+                    Object.entries(buffs).forEach(([key, value]) => {
                         const li = document.createElement('li');
-                        li.innerHTML = stat;  // On utilise innerHTML pour ajouter les images
-                        statsList.appendChild(li);
+                        li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Aucun détail'}`;
+                        ul.appendChild(li);
                     });
-
-                    // Affichage des Buffs sous forme de liste à puces
-                    const buffsList = document.getElementById('character-buffs');
-                    buffsList.innerHTML = ''; // Vider le contenu existant
-                    const buffs = personnage["buff"];
-                    if (Object.keys(buffs).length > 0) {
-                        const ul = document.createElement('ul');
-                        Object.entries(buffs).forEach(([key, value]) => {
-                            const li = document.createElement('li');
-                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Aucun détail'}`;
-                            ul.appendChild(li);
-                        });
-                        buffsList.appendChild(ul);
-                    } else {
-                        buffsList.innerHTML = '<p>Aucun Buff disponible</p>';
-                    }
-
-                    // Affichage des Debuffs sous forme de liste à puces
-                    const debuffsList = document.getElementById('character-debuffs');
-                    debuffsList.innerHTML = ''; // Vider le contenu existant
-                    const debuffs = personnage["immunite"];
-                    if (Object.keys(debuffs).length > 0) {
-                        const ul = document.createElement('ul');
-                        Object.entries(debuffs).forEach(([key, value]) => {
-                            const li = document.createElement('li');
-                            li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Natif'}`;
-                            ul.appendChild(li);
-                        });
-                        debuffsList.appendChild(ul);
-                    } else {
-                        debuffsList.innerHTML = '<p>Aucun Debuff disponible</p>';
-                    }
-
-                    // Affichage des Tags
-                    const tagsList = document.getElementById('character-tags');
-                    if (personnage["tags"] && personnage["tags"].length > 0) {
-                        personnage["tags"].forEach(tag => {
-                            const li = document.createElement('li');
-                            li.innerText = tag;
-                            tagsList.appendChild(li);
-                        });
-                    } else {
-                        tagsList.innerHTML = "<li>Aucun tag disponible</li>";
-                    }
+                    buffsList.appendChild(ul);
                 } else {
-                    document.getElementById('character-details').innerHTML = `<p>Personnage non trouvé.</p>`;
+                    buffsList.innerHTML = '<p>Aucun Buff disponible</p>';
                 }
-            })
-            .catch(error => console.error('Erreur de chargement des détails du personnage:', error));
-    });
+
+                // Affichage des Debuffs sous forme de liste à puces
+                const debuffsList = document.getElementById('character-debuffs');
+                debuffsList.innerHTML = ''; // Vider le contenu existant
+                const debuffs = personnage["immunite"];
+                if (Object.keys(debuffs).length > 0) {
+                    const ul = document.createElement('ul');
+                    Object.entries(debuffs).forEach(([key, value]) => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `<strong>${key}:</strong> ${value.join(', ') || 'Natif'}`;
+                        ul.appendChild(li);
+                    });
+                    debuffsList.appendChild(ul);
+                } else {
+                    debuffsList.innerHTML = '<p>Aucun Debuff disponible</p>';
+                }
+
+                // Affichage des Tags
+                const tagsList = document.getElementById('character-tags');
+                if (personnage["tags"] && personnage["tags"].length > 0) {
+                    personnage["tags"].forEach(tag => {
+                        const li = document.createElement('li');
+                        li.innerText = tag;
+                        tagsList.appendChild(li);
+                    });
+                } else {
+                    tagsList.innerHTML = "<li>Aucun tag disponible</li>";
+                }
+            } else {
+                document.getElementById('character-details').innerHTML = `<p>Personnage non trouvé.</p>`;
+            }
+        })
+        .catch(error => console.error('Erreur de chargement des détails du personnage:', error));
+});
+
 </script>
 
 
