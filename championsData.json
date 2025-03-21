@@ -217,7 +217,7 @@
         "immunite": {"Saignement": [], "Poison": []}, 
         "photo": "champions/bastion1.webp", 
         "description": "JOSIANE JOESTAR", 
-        "photos": ["champions/bastion1.webp", "champions/bastion2.webpchampions/bastion3.webp"]
+        "photos": ["champions/bastion1.webp", "champions/bastion2.webp","champions/bastion3.webp"]
     }, 
     {
         "nom": "Beast", 
@@ -1328,7 +1328,7 @@
         "immunite": {"Contrôles Inversés": []}, 
         "photo": "champions/jeang1.webp", 
         "description": "JOSIANE JOESTAR", 
-        "photos": ["champions/jeang1.webp", "champions/jeang2.webpchampions/jeang3.webp"]
+        "photos": ["champions/jeang1.webp", "champions/jeang2.webp","champions/jeang3.webp"]
     }, 
     {
         "nom": "Jessica Jones", 
