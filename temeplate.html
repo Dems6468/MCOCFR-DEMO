@@ -17,7 +17,7 @@
     <meta name="twitter:description" content="Bienvenue sur le site français de MCOC.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="stylesheet" href="temeplate.css"> <!-- Nouveau fichier CSS -->
+    <link rel="stylesheet" href="style-accueil.css"> <!-- Nouveau fichier CSS -->
 </head>
 <!-- Header Mobile -->
 <header id="header-mobile">
@@ -33,6 +33,17 @@
 
 </head>
 <body>
+    <div id="welcome-screen">
+        <div class="overlay"></div>
+        <!-- Lien enveloppant l'image et le texte -->
+        <a href="index.html" class="welcome-link">
+            <img src="indexban.jpg" alt="Bienvenue sur MCOCFR">
+            <div class="welcome-text">
+                <h1>Bienvenue sur Marvel Contest of Champions FR</h1>
+                <p>Site encore en construction</p>
+            </div>
+        </a>
+    </div>
 <!-- Menu Latéral -->
 <div id="side-menu" class="side-menu">
     <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
@@ -61,9 +72,80 @@
     </header>
 
     <main>
+        <section class="welcome">
+            <div class="overlay"></div>
+                   <h1>Bienvenue sur Marvel Contest of Champions FR</h1>
+                   <p>Site encore en construction</p>
+               </section>
+        <section class="features">
+            <h2>Fonctionnalités</h2>
+            <div class="feature-card champions">
+                <h3>Champions</h3>
+                <p>Explorez les héros de MCOC et leurs capacités uniques.</p>
+                <a href="##aaaaa" class="btn-secondary">Découvrir</a>
+            </div>
+            
+            <div class="feature-card debuffs">
+                <h3>Débuffs et Immunités</h3>
+                <p>Trouvez vos champions immunisés.</p>
+                <a href="debuff.html" class="btn-secondary">Explorer</a>
+            </div>
+            <!-- Nouvelles cartes ajoutées -->
+            <div class="feature-card">
+                <h3>Buffs et Capacités</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>Comment Contrer</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>Reliques</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>Liste des Prestiges 7* </h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>Quêtes Histoire</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>Les Créateurs FR</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>La Boîte à Idées</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+            <div class="feature-card">
+                <h3>A venir...</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+             <div class="feature-card">
+                <h3>Contact</h3>
+                <p>Cette fonctionnalité est en préparation.</p>
+                <a href="#" class="btn-secondary">En savoir plus</a>
+            </div>
+        </section>
     </main>
     
 <!-- Section Google Form -->
+    <section class="google-form">
+        <div class="form-container">
+            <!-- Bouton redirigeant vers le Google Form -->
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeGYFCZFzKiiCS4UpifWD-SsOktDurG9RqDhwZgw6yy0m3gkA/viewform" target="_blank" class="btn-primary">Donner ton avis</a>
+        </div>
+    </section>
 <script>
     // Initialiser le menu à l'état fermé
     window.onload = function() {
