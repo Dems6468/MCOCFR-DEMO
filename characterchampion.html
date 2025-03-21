@@ -84,7 +84,7 @@
 
 <script src="scriptchampion.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+   document.addEventListener("DOMContentLoaded", function() {
     const urlParams = new URLSearchParams(window.location.search);
     const nom = urlParams.get('nom');
 
@@ -109,6 +109,35 @@
                     img.alt = personnage["nom"];
                     img.classList.add('carousel-image');
                     carousel.appendChild(img);
+                });
+
+                // Fonction pour afficher l'image courante
+                let currentIndex = 0;
+
+                function showImage(index) {
+                    const images = document.querySelectorAll('.carousel-image');
+                    images.forEach((img, i) => {
+                        if (i === index) {
+                            img.style.display = 'block';  // Afficher l'image courante
+                        } else {
+                            img.style.display = 'none';  // Cacher les autres images
+                        }
+                    });
+                }
+
+                // Initialiser l'affichage de la première image
+                showImage(currentIndex);
+
+                // Bouton "Suivant"
+                document.getElementById('nextBtn').addEventListener('click', function() {
+                    currentIndex = (currentIndex + 1) % photos.length;  // Passer à l'image suivante
+                    showImage(currentIndex);
+                });
+
+                // Bouton "Précédent"
+                document.getElementById('prevBtn').addEventListener('click', function() {
+                    currentIndex = (currentIndex - 1 + photos.length) % photos.length;  // Passer à l'image précédente
+                    showImage(currentIndex);
                 });
 
                 // Affichage de la description du personnage
