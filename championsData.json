@@ -2514,7 +2514,7 @@
         "classe2": "faces/class_mystic0b9f.png", 
         "buff": {"Energy Damage": ["All Attacks"], "Slow": ["Runes of Ikonn & Special Attack"], "Regeneration": ["Runes of Raggadorr & Special Attack"], "Armor Break": ["Runes of Cyttorak & Special Attack"], "Power Steal": ["Ikonn's Ingenuity"], "Nullify": ["SP1"], "Gain Power": ["Synergy [Jabari Panther, Storm Pyramid X, Silver Centurion] &Start Fight"], "Prowess": ["Passive, Synergy [Doctor Strange, Symbiote Supreme] &Blessing activates"], "Energy Vulnerability": ["Synergy [Spiderman Supreme] &Special Attacks"], "Amplify": ["Passive, Synergy [Kushala] & SP3"], "Unblockable": ["Passive, Synergy [Gladiator] & Gladiator Alive → Heavy Attacks"]}, 
         "immunite": {}, 
-        "photo": "faces/portrait_silversurfer6b1f.png", 
+        "photo": "faces/portrait_drstrange_realm48f4.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     }, 
