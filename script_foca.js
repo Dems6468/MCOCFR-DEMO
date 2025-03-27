@@ -1,9 +1,12 @@
+let focaData = [];  // Déclaration d'une variable globale pour stocker les données
+
 // Fonction pour récupérer le fichier JSON et afficher les données
 function fetchData() {
     fetch('foca.json')  // Charger le fichier foca.json
         .then(response => response.json())  // Convertir la réponse en JSON
         .then(data => {
-            displayTable(data);  // Afficher les données dans le tableau
+            focaData = data;  // Stocker les données dans focaData
+            displayTable(focaData);  // Afficher les données dans le tableau
         })
         .catch(error => {
             console.error("Erreur lors du chargement des données:", error);
@@ -50,7 +53,7 @@ function displayTable(data) {
 // Fonction de filtrage
 function filterTable() {
     const searchValue = document.getElementById("searchInput").value.toLowerCase();
-    const filteredData = jsonData.filter(item => {
+    const filteredData = focaData.filter(item => {
         // Filtrage basé sur plusieurs champs (nom, description, etc.)
         return item.nom.toLowerCase().includes(searchValue) || 
                item.prestige.toLowerCase().includes(searchValue) ||
@@ -60,7 +63,7 @@ function filterTable() {
                item.vie.toString().includes(searchValue) ||
                item.attaque.toString().includes(searchValue);
     });
-    displayTable(filteredData);
+    displayTable(filteredData);  // Afficher les résultats filtrés dans le tableau
 }
 
 // Initialiser le tableau avec les données
