@@ -1,4 +1,3 @@
-
 // Fonction pour récupérer le fichier JSON et afficher les données
 function fetchData() {
     fetch('foca.json')  // Charger le fichier foca.json
@@ -10,6 +9,7 @@ function fetchData() {
             console.error("Erreur lors du chargement des données:", error);
         });
 }
+
 // Fonction pour afficher les données dans le tableau
 function displayTable(data) {
     const tableBody = document.getElementById("dataTable").getElementsByTagName('tbody')[0];
@@ -42,7 +42,7 @@ function displayTable(data) {
 			   <div class="tooltip">${item.focalisation_defense}</div>`;
         cell8.textContent = item.vie;
         cell9.textContent = item.attaque;
-// Appliquer la classe dynamique selon la classe du personnage
+        // Appliquer la classe dynamique selon la classe du personnage
         row.classList.add(item.classe);  // Ajoute la classe correspondante
     });
 }
@@ -64,4 +64,4 @@ function filterTable() {
 }
 
 // Initialiser le tableau avec les données
-displayTable(jsonData);
+fetchData();
