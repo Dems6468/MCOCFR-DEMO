@@ -67,32 +67,8 @@
         displayTable(filteredData);  // Afficher les résultats filtrés dans le tableau
     }
 
-  const sortOrder = {
-    rang: true,  // true pour croissant, false pour décroissant
-    nom: true,
-    prestige: true
-    // Ajouter d'autres colonnes si nécessaire
-};
-
-// Fonction de récupération de l'index de la colonne
-function getColumnIndex(column) {
-    const columns = ['rang', 'nom', 'prestige', 'relique_nom', 'focalisation_attaque', 'focalisation_defense', 'vie', 'attaque'];
-    return columns.indexOf(column);
-}
-
-// Fonction de tri
-function sortTable(column) {
-    const isAscending = sortOrder[column];  // Vérifie si l'ordre est croissant ou décroissant
-
-    // Effacer les classes de tri précédentes
-    const headers = document.querySelectorAll('th');
-    headers.forEach(header => {
-        header.classList.remove('sorted-asc', 'sorted-desc');
-    });
-
-    // Ajouter la classe correspondante à l'en-tête de la colonne triée
-    const columnHeader = document.querySelector(`th:nth-child(${getColumnIndex(column) + 1})`);
-    columnHeader.classList.add(isAscending ? 'sorted-asc' : 'sorted-desc');
+   function sortTable(column) {
+    const isAscending = sortOrder[column];  // Obtenir l'état actuel du tri (croissant ou décroissant)
 
     // Tri des données
     const sortedData = [...focaData].sort((a, b) => {
@@ -105,11 +81,12 @@ function sortTable(column) {
             valB = parseInt(valB, 10);  // Convertir en entier
         }
 
-        // Tri numérique ou par chaîne de caractères
+        // Si les valeurs sont des nombres (par exemple rang, attaque, etc.)
         if (typeof valA === 'number' && typeof valB === 'number') {
             return isAscending ? valA - valB : valB - valA;
         }
 
+        // Si les valeurs sont des chaînes de caractères (par exemple nom, prestige)
         if (typeof valA === 'string' && typeof valB === 'string') {
             return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
         }
