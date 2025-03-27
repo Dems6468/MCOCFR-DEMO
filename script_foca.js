@@ -67,34 +67,39 @@
         displayTable(filteredData);  // Afficher les résultats filtrés dans le tableau
     }
 
-    // Fonction pour trier les données par une colonne spécifique
-    function sortTable(column) {
-        const isAscending = sortOrder[column];  // Obtenir l'état actuel du tri (croissant ou décroissant)
+   function sortTable(column) {
+    const isAscending = sortOrder[column];  // Obtenir l'état actuel du tri (croissant ou décroissant)
 
-        // Tri des données
-        const sortedData = [...focaData].sort((a, b) => {
-            let valA = a[column];
-            let valB = b[column];
+    // Tri des données
+    const sortedData = [...focaData].sort((a, b) => {
+        let valA = a[column];
+        let valB = b[column];
 
-            // Si les valeurs sont des nombres (par exemple rang, attaque, etc.)
-            if (typeof valA === 'number' && typeof valB === 'number') {
-                return isAscending ? valA - valB : valB - valA;
-            }
+        // Si c'est la colonne 'rang', on effectue un tri numérique
+        if (column === 'rang') {
+            valA = parseInt(valA, 10);  // Convertir en entier
+            valB = parseInt(valB, 10);  // Convertir en entier
+        }
 
-            // Si les valeurs sont des chaînes de caractères (par exemple nom, prestige)
-            if (typeof valA === 'string' && typeof valB === 'string') {
-                return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
-            }
+        // Si les valeurs sont des nombres (par exemple rang, attaque, etc.)
+        if (typeof valA === 'number' && typeof valB === 'number') {
+            return isAscending ? valA - valB : valB - valA;
+        }
 
-            return 0;
-        });
+        // Si les valeurs sont des chaînes de caractères (par exemple nom, prestige)
+        if (typeof valA === 'string' && typeof valB === 'string') {
+            return isAscending ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        }
 
-        // Mettre à jour l'ordre de tri pour la prochaine fois
-        sortOrder[column] = !isAscending;
+        return 0;
+    });
 
-        // Afficher les données triées
-        displayTable(sortedData);
-    }
+    // Mettre à jour l'ordre de tri pour la prochaine fois
+    sortOrder[column] = !isAscending;
+
+    // Afficher les données triées
+    displayTable(sortedData);
+}
 
     // Initialiser le tableau avec les données
     fetchData();
