@@ -626,6 +626,36 @@ tr:hover {
     .dropdown-content a:hover {
         background-color: #FF5722;
     }
+	.mtcguia-link {
+    margin-left: 1em; /* Remplacer px par em pour une meilleure adaptabilité */
+    padding: 0.5em 0.75em; /* Valeurs en em */
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 0.25em; /* Valeur en em pour border-radius */
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+}
+
+.mtcguia-link:hover {
+    background-color: #FF5722;
+    text-decoration: none;
+}
+
+.mtcguia-link i {
+    margin-right: 0.5em; /* Valeur en em */
+}
+
+/* Style pour le texte d'attribution */
+.attribution-text {
+    font-size: 0.875em; /* Remplacer px par em pour le texte */
+    color: white;
+    margin-top: 0.25em; /* Valeur en em */
+    font-style: italic;
+}
+
 
     .container {
         margin: 20%;
