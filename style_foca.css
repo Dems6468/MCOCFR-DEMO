@@ -793,11 +793,12 @@ td img {
 }
 
 /* Images de la colonne Photo */
+/* Images de la colonne Photo */
 #dataTable td:nth-child(2) img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 0.5em;
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: auto;
 }
 
 /* Effet lors du survol sur l'image */
