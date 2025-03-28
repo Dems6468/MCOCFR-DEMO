@@ -776,22 +776,29 @@ td img {
 #dataTable th:nth-child(2) {
     text-align: center;
     position: sticky;
+    background-color: #333; /* Fond pour la colonne "gelée" */
     left: 0;
     padding: 0;
     width: 20%;
+    z-index: 4; /* S'assure que la colonne reste au-dessus des autres */
     height: 20%;
     max-width: 15em;
     max-height: 15em;
 }
+	/* Ajouter un fond blanc pour la cellule de la deuxième colonne afin d'éviter la transparence */
+#dataTable td:nth-child(2) {
+    background-color: #333; 
+    color: white;
+    padding: 0;
+}
 
 /* Images de la colonne Photo */
 #dataTable td:nth-child(2) img {
-    max-width: 80px;
-    max-height: 80px;
-    width: 100%;
-    height: auto;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 0.5em;
 }
-
 
 /* Effet lors du survol sur l'image */
 #dataTable td:nth-child(2):hover img {
