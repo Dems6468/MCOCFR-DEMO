@@ -808,16 +808,8 @@ td img {
     box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.3);
 }
 
-	/* Style spécifique pour la colonne Photo */
 #dataTable td:nth-child(6),
-#dataTable th:nth-child(6) {
-    text-align: center;
-    width: 20%;
-    height: 20%;
-    max-width: 15em;
-    max-height: 15em;
-}
-	/* Style spécifique pour la colonne Photo */
+#dataTable th:nth-child(6),
 #dataTable td:nth-child(7),
 #dataTable th:nth-child(7) {
     text-align: center;
@@ -827,28 +819,35 @@ td img {
     max-height: 15em;
 }
 
-/* Tooltips */
 .tooltip {
     position: absolute;
     visibility: hidden;
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.8); /* Couleur plus subtile */
     color: white;
-    font-size: 0.875em;
+    font-size: 0.75em; /* Réduction de la taille du texte */
     text-align: center;
     padding: 0.6em 1em;
     border-radius: 0.5em;
     z-index: 10;
-    bottom: 50%;
+    bottom: 120%; /* Décalage vers le haut */
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    max-width: 200px; /* Limiter la largeur du tooltip */
+    white-space: nowrap;
+    overflow: hidden; /* Cacher le texte qui déborde */
+    margin: 5px; /* Ajouter un peu d'espace autour du tooltip */
 }
 
 td:hover .tooltip {
     visibility: visible;
     opacity: 1;
+    bottom: 120%; /* Positionner le tooltip au-dessus de la cellule */
+    left: 50%;
+    transform: translateX(-50%);
 }
+
 
 /* Styles spécifiques pour chaque classe */
 .mutante {
