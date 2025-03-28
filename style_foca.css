@@ -812,7 +812,7 @@ td img {
 #dataTable td:nth-child(6),
 #dataTable th:nth-child(6) {
     text-align: center;
-    padding: 0;
+    padding: 2%;
     width: 20%;
     height: 20%;
     max-width: 15em;
