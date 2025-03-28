@@ -699,6 +699,7 @@ table, th, td {
 th, td {
     padding: 0.8em;
     font-size: 0.9em;
+    text-align: center;
     word-wrap: break-word;
     max-width: 200px;
     overflow: hidden;
@@ -714,7 +715,6 @@ th {
     font-size: 1.2em;
     cursor: pointer;
     position: relative;
-    padding-right: 3em;
 }
 
 /* Effet de survol pour les en-têtes de colonnes */
