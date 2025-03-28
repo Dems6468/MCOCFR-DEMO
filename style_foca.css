@@ -187,6 +187,37 @@
         z-index: 1000;
         box-sizing: border-box;
     }
+
+	     /* Styles pour le bouton/link MTCGuia */
+        .mtcguia-link {
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .mtcguia-link:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .mtcguia-link i {
+            margin-right: 5px;
+        }
+
+        /* Style pour le texte d'attribution */
+        .attribution-text {
+            font-size: 14px;
+            color: #555;
+            margin-top: 5px;
+            font-style: italic;
+        }
 .container {
     margin-top: 10%;
     margin-left: 20px;
