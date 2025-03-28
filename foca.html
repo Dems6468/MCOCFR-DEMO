@@ -17,6 +17,30 @@
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="style_foca.css"> <!-- Nouveau fichier CSS -->
+    <style>
+        /* Styles pour le bouton/link MTCGuia */
+        .mtcguia-link {
+            margin-left: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .mtcguia-link:hover {
+            background-color: #0056b3;
+            text-decoration: none;
+        }
+
+        .mtcguia-link i {
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
 
@@ -59,36 +83,43 @@
     </nav>
 </header>
 
-    <div class="container">
-        <!-- Champ de recherche -->
+<div class="container">
+    <!-- Champ de recherche -->
+    <div style="display: flex; align-items: center;">
         <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Rechercher...">
-
-        <!-- Tableau pour afficher les données -->
-        <table id="dataTable">
-            <thead>
-                <tr>
-                	<th onclick="sortTable('rang')">Rang</th>
-                    <th>Photo</th>
-                    <th onclick="sortTable('nom')">Nom</th>
-                    <th onclick="sortTable('prestige')">Prestige</th>
-                	<th>Relique</th>
-                	<th>Attaque</th>
-                	<th>Défense</th>
-                	<th>Vie</th>
-                	<th>Attaque</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Les données du tableau seront injectées ici -->
-            </tbody>
-        </table>
+        <!-- Lien vers MTCGuia à côté de la barre de recherche -->
+        <a href="https://www.mtcguia.com" target="_blank" class="mtcguia-link">
+            <i class="fas fa-link"></i> MTCGuia
+        </a>
     </div>
 
-    <!-- Footer -->
+    <!-- Tableau pour afficher les données -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable('rang')">Rang</th>
+                <th>Photo</th>
+                <th onclick="sortTable('nom')">Nom</th>
+                <th onclick="sortTable('prestige')">Prestige</th>
+                <th>Relique</th>
+                <th>Attaque</th>
+                <th>Défense</th>
+                <th>Vie</th>
+                <th>Attaque</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Les données du tableau seront injectées ici -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Footer -->
 <footer>
     <p>Version 0.0 • DERNIERE MISE A JOUR LE 19 MARS 2025 • Made in FRANCE FR</p>
     <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
 </footer>
+
 
 <script>
     // Initialiser le menu à l'état fermé
