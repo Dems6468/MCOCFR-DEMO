@@ -812,7 +812,6 @@ td img {
 #dataTable td:nth-child(6),
 #dataTable th:nth-child(6) {
     text-align: center;
-    padding: 2%;
     width: 20%;
     height: 20%;
     max-width: 15em;
@@ -820,7 +819,7 @@ td img {
 }
 /* Images de la colonne Photo */
 /* Images de la colonne Photo */
-#dataTable td:nth-child(2) img {
+#dataTable td:nth-child(6) img {
     max-width: 80px;
     max-height: 80px;
     width: 100%;
@@ -828,7 +827,31 @@ td img {
 }
 
 /* Effet lors du survol sur l'image */
-#dataTable td:nth-child(2):hover img {
+#dataTable td:nth-child(6):hover img {
+    transform: scale(1.1);
+    box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.3);
+}
+
+		/* Style spécifique pour la colonne Photo */
+#dataTable td:nth-child(7),
+#dataTable th:nth-child(7) {
+    text-align: center;
+    width: 20%;
+    height: 20%;
+    max-width: 15em;
+    max-height: 15em;
+}
+/* Images de la colonne Photo */
+/* Images de la colonne Photo */
+#dataTable td:nth-child(7) img {
+    max-width: 80px;
+    max-height: 80px;
+    width: 100%;
+    height: auto;
+}
+
+/* Effet lors du survol sur l'image */
+#dataTable td:nth-child(7):hover img {
     transform: scale(1.1);
     box-shadow: 0 0.4em 0.8em rgba(0, 0, 0, 0.3);
 }
