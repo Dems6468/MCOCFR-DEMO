@@ -64,6 +64,8 @@
     <!-- Champ de recherche -->
     <div style="display: flex; align-items: center;">
         <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Rechercher...">
+         <button id="export-excel">Exporter en Excel</button>
+         <button id="export-pdf">Exporter en PDF</button>
         <!-- Lien vers MTCGuia à côté de la barre de recherche -->
     </div>
 
@@ -133,7 +135,62 @@
         }
     }
 </script>
+  <script>
+        // Exporter en Excel
+        document.getElementById('export-excel').addEventListener('click', function () {
+            const table = document.getElementById('dataTable');
+            const wb = XLSX.utils.table_to_book(table, { sheet: "Sheet 1" });
+            XLSX.writeFile(wb, "tableau.xlsx");
+        });
 
+        // Exporter en PDF sans autoTable
+        document.getElementById('export-pdf').addEventListener('click', function () {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Définir les styles de base pour le tableau
+            const margin = 10;
+            let x = margin;
+            let y = margin + 10;
+
+            // Récupérer les en-têtes du tableau
+            const table = document.getElementById('dataTable');
+            const headers = [];
+            const rows = [];
+            
+            // Extraire les en-têtes (th)
+            const ths = table.querySelectorAll('thead tr th');
+            ths.forEach(th => headers.push(th.innerText));
+
+            // Extraire les lignes (td)
+            const trs = table.querySelectorAll('tbody tr');
+            trs.forEach(tr => {
+                const row = [];
+                tr.querySelectorAll('td').forEach(td => row.push(td.innerText));
+                rows.push(row);
+            });
+
+            // Ajouter les en-têtes au PDF
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "bold");
+            headers.forEach((header, index) => {
+                doc.text(header, x + (index * 50), y);
+            });
+
+            // Ajouter les données des lignes
+            y += 10; // espace entre les en-têtes et les données
+            doc.setFont("helvetica", "normal");
+            rows.forEach(row => {
+                row.forEach((data, index) => {
+                    doc.text(data, x + (index * 50), y);
+                });
+                y += 10; // Espacement entre les lignes
+            });
+
+            // Sauvegarder le fichier PDF
+            doc.save('tableau.pdf');
+        });
+    </script>
     <script src="script_foca.js"></script>
 </body>
 </html>
