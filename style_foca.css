@@ -776,6 +776,7 @@ td img {
 #dataTable th:nth-child(2) {
     text-align: center;
     position: sticky;
+    left: 0;
     padding: 0;
     width: 20%;
     height: 20%;
