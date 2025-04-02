@@ -316,6 +316,9 @@ body {
     .feature-card.champions {
         background-image: url('allheros.jpg');
     }
+     .feature-card.foca {
+        background-image: url('Focusindex.png');
+    }
 
     .feature-card.debuffs {
         background-image: url('debuffindex.png');
