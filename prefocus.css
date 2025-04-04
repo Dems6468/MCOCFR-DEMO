@@ -603,6 +603,178 @@ main {
 
 
 
+/* Section Focalisation Info */
+#focalisation-info {
+    max-width: 100%;
+    margin: 10vh auto 4vh auto;
+    padding: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 1rem;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.4);
+}
+
+#focalisation-info h2 {
+    font-size: 2rem;
+    color: #FF5722;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#focalisation-info p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #eee;
+    margin-bottom: 1rem;
+    text-align: justify;
+}
+
+/* Section Images + Descriptions */
+#images-section {
+    width: 100%;
+    padding: 4rem 3rem;
+    box-sizing: border-box;
+    background: radial-gradient(circle at top left, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6));
+    margin: 4vh auto;
+    animation: fadeIn 1s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Animation fade-in */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(3rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#images-section h2 {
+    font-size: 2.6rem;
+    color: #FF5722;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+/* Grille responsive avec animation */
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    gap: 2rem;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.image-item {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    text-align: center;
+    transform: translateY(2rem);
+    opacity: 0;
+    animation: fadeInItem 0.6s ease forwards;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.image-item:nth-child(1) { animation-delay: 0.1s; }
+.image-item:nth-child(2) { animation-delay: 0.2s; }
+.image-item:nth-child(3) { animation-delay: 0.3s; }
+.image-item:nth-child(4) { animation-delay: 0.4s; }
+.image-item:nth-child(5) { animation-delay: 0.5s; }
+.image-item:nth-child(6) { animation-delay: 0.6s; }
+.image-item:nth-child(7) { animation-delay: 0.7s; }
+.image-item:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInItem {
+    0% {
+        opacity: 0;
+        transform: translateY(2rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.image-item:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.25rem 0.75rem rgba(255, 87, 34, 0.4);
+}
+
+.image-item img {
+    max-width: 90%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    filter: drop-shadow(0 0 0.25rem rgba(255, 255, 255, 0.3));
+}
+
+.image-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #FF5722;
+    letter-spacing: 0.05rem;
+}
+
+.image-item p {
+    font-size: 1.4rem;
+    color: #ddd;
+    line-height: 1.4;
+}
+
+/* Fond étoilé subtil */
+#images-section::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.8;
+    animation: starFloat 5s linear infinite;
+    z-index: 0;
+}
+
+@keyframes starFloat {
+    from { transform: translate(0, 0); }
+    to { transform: translate(2rem, 4rem); }
+}
+
+/* Conteneur de l'image et du texte */
+.clickable-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    cursor: pointer;
+}
+
+/* Image cliquable */
+.clickable-image {
+    max-width: 5rem;
+    height: auto;
+    margin-right: 1.5rem;
+}
+
+.clickable-link {
+    text-decoration: none;
+}
+
+.clickable-text {
+    font-size: 1.8rem;
+    color: #FF5722;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.clickable-link:hover .clickable-text {
+    color: #FF9800;
+}
 
 
 
