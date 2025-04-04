@@ -656,7 +656,7 @@ main {
 /* Grille responsive avec animation */
 .image-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20%, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(100%, 1fr));
     gap: 2rem;
     width: 100%;
     position: relative;
