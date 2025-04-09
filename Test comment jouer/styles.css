@@ -1,0 +1,85 @@
+/* Général */
+body {
+  background-color: #f7fafc;
+  color: #2d3748;
+  font-family: 'Arial', sans-serif;
+  padding: 2rem;
+  margin: 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Container des personnages */
+.character-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Carte personnage */
+.character-card {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+/* Image du personnage */
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa;
+  padding: 0;
+  margin: 0;
+}
+
+.character-image {
+  object-fit: cover; /* Permet à l'image de couvrir l'espace */
+  width: 100%;
+  height: 100%;
+}
+
+/* Informations */
+.info-container {
+  flex: 2;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.character-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.info-list {
+  font-size: 0.875rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.info-list li {
+  margin-bottom: 0.5rem;
+}
+
+.gameplay,
+.weakness {
+  font-size: 0.875rem;
+}
+
+.weakness {
+  color: #e53e3e;
+}
