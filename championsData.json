@@ -3261,7 +3261,7 @@
         "classe": "Science", 
         "classe2": "faces/class_chemicalf5fb.png", 
         "buff": {}, 
-        "immunite": {{"Poison": [], {"Vol Pouvoir": [], {"Neutralisation": []}, 
+        "immunite": {"Poison": [], {"Vol Pouvoir": [], {"Neutralisation": []}, 
         "photo": "faces/portrait_spiderwoman.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
