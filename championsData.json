@@ -3255,4 +3255,26 @@
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     }
+     {
+        "nom": "Yondu", 
+        "Short Name": "Yondu", 
+        "classe": "Tech", 
+        "classe2": "faces/class_techbdb1.png", 
+        "buff": {"Weakness": ["Dupe & Opponent uses Special Attack"], "Bleed": ["First and Third Light Attack, Heavy and Special Attacks → 40% Chance"], "Armor Break": ["Against Bleed immune instead of Bleed"], "Combat Power Rate Reduction": ["10% per Debuff"], "Heal Block": ["SP1"], "Fury": ["SP2"], "Precision": ["SP3"], "Special Concussion": ["Passive, SP3"]}, 
+        "immunite": {}, 
+        "photo": "faces/portrait_yondu735f.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": {}
+    }
+     {
+        "nom": "Lumatrix", 
+        "Short Name": "Lumatrix", 
+        "classe": "Virtuose", 
+        "classe2": "faces/class_trainede488.png", 
+        "buff": {}, 
+        "immunite": {"Saignement": [], {"Rupture": [], {"Etourdissement": ["Pendant Invisible"], "Poison": ["Synergy [Symbiote Supreme] & Endurance by 30%"]}, 
+        "photo": "faces/portrait_lumatrix.webp", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": {}
+    }
 ]
