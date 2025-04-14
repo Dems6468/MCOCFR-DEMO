@@ -3256,13 +3256,13 @@
         "photos": {}
     },
      {
-        "nom": "Yondu", 
-        "Short Name": "Yondu", 
-        "classe": "Tech", 
-        "classe2": "faces/class_techbdb1.png", 
-        "buff": {"Weakness": ["Dupe & Opponent uses Special Attack"], "Bleed": ["First and Third Light Attack, Heavy and Special Attacks → 40% Chance"], "Armor Break": ["Against Bleed immune instead of Bleed"], "Combat Power Rate Reduction": ["10% per Debuff"], "Heal Block": ["SP1"], "Fury": ["SP2"], "Precision": ["SP3"], "Special Concussion": ["Passive, SP3"]}, 
-        "immunite": {}, 
-        "photo": "faces/portrait_yondu735f.png", 
+        "nom": "Spider-Woman (Jessica Drew)", 
+        "Short Name": "Spider-Woman", 
+        "classe": "Science", 
+        "classe2": "faces/class_chemicalf5fb.png", 
+        "buff": {}, 
+        "immunite": {{"Poison": [], {"Vol Pouvoir": [], {"Neutralisation": []}, 
+        "photo": "faces/portrait_spiderwoman.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": {}
     },
