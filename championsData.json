@@ -3256,25 +3256,25 @@
         "photos": {}
     },
      {
-        "nom": "Spider-Woman (Jessica Drew)", 
-        "Short Name": "Spider-Woman", 
-        "classe": "Science", 
-        "classe2": "faces/class_chemicalf5fb.png", 
-        "buff": {}, 
-        "immunite": {"Poison": [], {"Vol Pouvoir": [], {"Neutralisation": []}, 
-        "photo": "faces/portrait_spiderwoman.png", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": {}
-    },
-     {
-        "nom": "Lumatrix", 
-        "Short Name": "Lumatrix", 
-        "classe": "Virtuose", 
-        "classe2": "faces/class_trainede488.png", 
-        "buff": {}, 
-        "immunite": {"Saignement": [], {"Rupture": [], {"Etourdissement": ["Pendant Invisible"], "Poison": ["Synergy [Symbiote Supreme] & Endurance by 30%"]}, 
-        "photo": "faces/portrait_lumatrix.webp", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": {}
-    }
+    "nom": "Spider-Woman (Jessica Drew)",
+    "Short Name": "Spider-Woman",
+    "classe": "Science",
+    "classe2": "faces/class_chemicalf5fb.png",
+    "buff": {},
+    "immunite": { "Poison": [],"Vol Pouvoir": [],"Neutralisation": []},
+    "photo": "faces/portrait_spiderwoman.png",
+    "description": "JOSIANE JOESTAR",
+    "photos": {}
+  },
+  {
+    "nom": "Lumatrix",
+    "Short Name": "Lumatrix",
+    "classe": "Virtuose",
+    "classe2": "faces/class_trainede488.png",
+    "buff": {},
+    "immunite": {"Saignement": [],"Rupture": [],"Etourdissement": ["Pendant Invisible"],"Poison": ["Synergy [Symbiote Supreme] & Endurance by 30%"]},
+    "photo": "faces/portrait_lumatrix.webp",
+    "description": "JOSIANE JOESTAR",
+    "photos": {}
+  }
 ]
