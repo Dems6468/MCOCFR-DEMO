@@ -39,7 +39,7 @@
     padding: 8%;
     margin-top: 0; /* Retirer la marge du haut pour qu'il n'y ait pas d'espace supplémentaire */
     margin-bottom: 0; /* Pas de marge en bas */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('indexban.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('indexban2.jpg');
     background-size: cover; /* Couvre toute la section */
     background-position: center; /* Centre l'image dans la section */
     background-repeat: no-repeat; /* Empêche l'image de se répéter */
@@ -628,7 +628,7 @@ body {
     padding: 8%;
     margin-top: 0; /* Retirer la marge du haut pour qu'il n'y ait pas d'espace supplémentaire */
     margin-bottom: 0; /* Pas de marge en bas */
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('allheros.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('indexban2.jpg');
     background-size: cover; /* Couvre toute la section */
     background-position: center; /* Centre l'image dans la section */
     background-repeat: no-repeat; /* Empêche l'image de se répéter */
