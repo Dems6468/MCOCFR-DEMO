@@ -3262,7 +3262,7 @@
     "classe2": "faces/class_chemicalf5fb.png",
     "buff": {},
     "immunite": { "Poison": [],"Vol Pouvoir": [],"Neutralisation": []},
-    "photo": "faces/portrait_spiderwoman.png",
+    "photo": "faces/portrait_spiderwoman.webp",
     "description": "JOSIANE JOESTAR",
     "photos": {}
   },
