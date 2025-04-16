@@ -1,251 +1,181 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Antman — Marvel MCOC Relic</title>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | MCOCFR BETA</title>
+    <meta property="og:title" content=" Accueil | MCOCFR BETA">
+    <meta property="og:description" content="Bienvenue sur le site français de MCOC.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta property="og:url" content="https://www.mcocfr.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title"  content=" Accueil | MCOCFR BETA">
+    <meta name="twitter:description" content="Bienvenue sur le site français de MCOC.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta name="twitter:card" content="summary_large_image">
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+  <link rel="stylesheet" href="reliquescience.css"> <!-- Nouveau fichier CSS -->
+ 
+  
+</head>
+<header id="header-mobile">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="" />
+           MCOCFR BETA </a>
+    </div>
+    <!-- Icône pour ouvrir et fermer le menu -->
+<span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
 
-   body {
-  font-family: 'Rajdhani', sans-serif;
-  background-color: #121212;
-  background: url('../BackgroundImage/green.webp') no-repeat center center fixed;
-  background-size: cover;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden;
-  color: #e0e0e0;
-  padding: 20px;
-}
+</header>
 
-
-    h1, h2, h3 {
-      color: #00e676;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-      text-align : center;
-    }
-	
-    .section {
-      background-color: #1e1e1e;
-      border: 1px solid #333;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 30px;
-      box-shadow: 0 0 10px rgba(0, 255, 180, 0.2);
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      justify-content: space-between;
-    }
-
-  .left-column.section {
-  text-align: center;
-  display: flex; /* Ajouté pour utiliser Flexbox */
-  flex-direction: column; /* Pour aligner les éléments verticalement */
-  justify-content: center; /* Centrer l'image verticalement */
-  align-items: center; /* Centrer l'image horizontalement */
-}
-
-
-    .relic-img {
-      width: 55%;
-      display: inline-block;
-      margin: 0;
-      filter:
-        drop-shadow(0 0 5px rgba(0, 255, 100, 0.5))
-        drop-shadow(0 0 15px rgba(0, 255, 100, 0.3));
-    }
-
-    .class-img, .champ-img, .small-img {
-      width: 10%;
-      vertical-align: middle;
-      margin-right: 10px;
-      border-radius: 6px;
-    }
-
-    .ability-block {
-      background-color: #222;
-      border: 1px solid #2e7d32;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 15px;
-      transition: transform 0.2s ease;
-    }
-
-    .ability-block:hover {
-      transform: scale(1.02);
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul li {
-      margin-bottom: 10px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    th, td {
-      padding: 10px;
-      border: 1px solid #00bcd4;
-      text-align: left;
-    }
-
-    th {
-      background-color: #263238;
-      color: #00bcd4;
-    }
-
-    em {
-      color: #ff9800;
-    }
-
-    .flex-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      align-items: stretch;  /* Aligne les colonnes pour avoir la même hauteur */
-    }
-
-    .left-column, .middle-column, .right-column {
-      flex: 1;
-      min-width: 300px;  /* Assure que chaque colonne ait une largeur minimale */
-    }
-
-    .capacities-runes-container {
-      display: flex;
-      gap: 30px;
-      justify-content: space-between;
-    }
-
-    .capacities-column, .runes-column {
-      flex: 1;
-      min-width: 10px;
-    }
-
-    /* Réglages pour les tablettes et mobiles */
-    @media screen and (max-width: 1024px) {
-      .flex-container {
-        flex-direction: column; /* Met les sections les unes en dessous des autres */
-      }
-
-      .left-column, .middle-column, .right-column {
-        min-width: 100%; /* Les colonnes prennent toute la largeur */
-      }
-
-      .relic-img {
-        width: 80%; /* L'image devient plus petite sur les écrans plus petits */
-      }
-    }
-
-    @media screen and (max-width: 600px) {
-      .relic-img {
-        width: 100%; /* L'image prend toute la largeur sur les petits écrans */
-      }
-
-      .capacities-runes-container {
-        flex-direction: column; /* Les capacités et runes passent en colonne */
-      }
-
-      .left-column, .middle-column, .right-column {
-        min-width: 100%; /* Les colonnes prennent toute la largeur */
-      }
-
-      .champ-img {
-        width: 12%; /* Les images des champions deviennent plus petites */
-      }
-    }
-  </style>
 </head>
 <body>
 
-<h1 class="title-flex"> Antman <span style="font-weight: normal;">— Relique de Classe Science</span></h1>
-<div class="flex-container">
-  <div class="left-column section">
-    <img src="relic_portrait_antman_movie.png" alt="Antman Relic" class="relic-img"  />
-    <h2 style="text-align: center;">⚛️ Classe : Science</h2>
-    <p style="text-align:center;"><strong>Rareté :</strong>  3⭐ 4⭐, 5⭐ et 6⭐</p>
-  </div>
-      
-  <div class="middle-column section">
-    <h2> Recommandé avec</h2>
-    <ul>
-      <li><img src="Yondu_portrait.webp" class="champ-img" /> Yellowjacket</li>
-      <li><img src="Yondu_portrait.webp" class="champ-img" /> Antman</li>
-      <li><img src="Yondu_portrait.webp" class="champ-img" /> Wasp</li>
-      <li><img src="Yondu_portrait.webp" class="champ-img" /> Spider-Ham</li>
-    </ul>
+<!-- Menu Latéral -->
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="#aaaa">Champions</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="foca.html">Liste 7*</a>
+    <a href="#contact">Contact</a>
+</div>
+<header id="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" class="logo-pc" />
+            MCOC FR BETA
+        </a>
+    </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#aaaa">Champions</a></li>
+                <li><a href="debuff.html">Debuffs</a></li>
+                <li><a href="foca.html">Liste 7*</a></li>
+                <li><a href="#contact">Contact</a></li>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+<body>
+
+  <div class="title-card">
+    <h1 class="title-flex">Antman <span>— Science</span></h1>
   </div>
 
-  <div class="right-column section">
-    <h2> Striker Release — Capacité Innée</h2>
-    <div class="ability-block">
-      <h3>Ant-Man</h3>
-      <p><strong>[Combo: MLL]</strong> Le dernier coup inflige un <strong>Power Sting Debuff</strong> pendant 16s. L’adversaire subit <strong>40-80% de dégâts directs</strong> s’il utilise une attaque spéciale sous cet effet.</p>
+  <div class="flex-container">
+    <div class="left-column section">
+      <div class="relic-container">
+        <img src="science.webp" alt="Science Background" class="watermark-img" />
+        <img src="relic_portrait_antman_movie.png" alt="Antman Relic" class="relic-img" />
+      </div>
+      <h2>⚛️ Classe : Science</h2>
+      <p><strong>Rareté :</strong>  3⭐ 4⭐, 5⭐ et 6⭐</p>
     </div>
-    <div class="ability-block">
-      <h3>Nanotech Upgrade</h3>
-      <p><strong>INNÉE</strong> Lorsque Power Sting inflige des dégâts :</p>
+
+    <div class="middle-column section">
+      <h2> Recommandé avec</h2>
       <ul>
-        <li>+0.8-1.6% d’<strong>Attack Rating</strong> tant que l'adversaire est sous Power Sting.</li>
-        <li>+4-8% de <strong>dégâts directs bonus</strong> sur Power Sting.</li>
+        <li><img src="Yondu_portrait.webp" class="champ-img" /> Yellowjacket</li>
+        <li><img src="Yondu_portrait.webp" class="champ-img" /> Antman</li>
+        <li><img src="Yondu_portrait.webp" class="champ-img" /> Wasp</li>
+        <li><img src="Yondu_portrait.webp" class="champ-img" /> Spider-Ham</li>
       </ul>
-      <p><em>Cooldown : 10s</em></p>
+    </div>
+
+    <div class="right-column section">
+      <h2> Striker Release — Capacité Innée</h2>
+      <div class="ability-block">
+        <h3>Ant-Man</h3>
+        <p><strong>[Combo: MLL]</strong> Le dernier coup inflige un <strong>Power Sting Debuff</strong> pendant 16s. L’adversaire subit <strong>40-80% de dégâts directs</strong> s’il utilise une attaque spéciale sous cet effet.</p>
+      </div>
+      <div class="ability-block">
+        <h3>Nanotech Upgrade</h3>
+        <p><strong>INNÉE</strong> Lorsque Power Sting inflige des dégâts :</p>
+        <ul>
+          <li>+0.8-1.6% d’<strong>Attack Rating</strong> tant que l'adversaire est sous Power Sting.</li>
+          <li>+4-8% de <strong>dégâts directs bonus</strong> sur Power Sting.</li>
+        </ul>
+        <p><em>Cooldown : 10s</em></p>
+      </div>
     </div>
   </div>
-</div>
 
-<div class="flex-container">
-  <!-- SECTION CAPACITÉS -->
-  <div class="section capacities-section">
-    <h2>  Capacités</h2>
-    <div class="ability-block">
-      <h3> Twin Stinger</h3>
-      <p>Applique un Power Sting supplémentaire pendant 16s. L’adversaire subit <strong>16-32% de dégâts directs</strong> s’il lance une attaque spéciale.</p>
-      <p><em>Cooldown : 16s</em></p>
+  <!-- Capacités et Runes côte à côte -->
+  <div class="capacities-runes-container">
+    <div class="capacities-column section">
+      <h2>Capacités</h2>
+      <div class="ability-block">
+        <h3>Twin Stinger</h3>
+        <p>Applique un Power Sting supplémentaire pendant 16s. L’adversaire subit <strong>16-32% de dégâts directs</strong> s’il lance une attaque spéciale.</p>
+        <p><em>Cooldown : 16s</em></p>
+      </div>
+      <div class="ability-block">
+        <h3>Spite Stinger</h3>
+        <p>Applique un debuff passif : -8-16% d’<strong>Attack Rating</strong> pendant 16s.</p>
+        <p><em>Cooldown : 16s</em></p>
+      </div>
     </div>
-    <div class="ability-block">
-      <h3> Spite Stinger</h3>
-      <p>Applique un debuff passif : -8-16% d’<strong>Attack Rating</strong> pendant 16s.</p>
-      <p><em>Cooldown : 16s</em></p>
+
+    <div class="runes-column section">
+      <h2>Runes d'Attributs</h2>
+      <div class="ability-block">
+        <h3>Power Sting Potency Up</h3>
+        <p>+8-16% de puissance du Power Sting.</p>
+      </div>
+      <div class="ability-block">
+        <h3>Power Sting Duration Up</h3>
+        <p>+8-16% de durée du Power Sting.</p>
+      </div>
+      <div class="ability-block">
+        <h3>Special Attack Damage Down</h3>
+        <p>-4-8% aux dégâts des attaques spéciales ennemies sous Power Sting.</p>
+      </div>
     </div>
   </div>
+<script>
+    // Initialiser le menu à l'état fermé
+    window.onload = function() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = "-250px";  // Assure que le menu est caché dès le départ
+    };
 
-  <!-- SECTION RUNES -->
-  <div class="section runes-section">
-    <h2> Runes d'Attributs</h2>
-    <div class="ability-block">
-      <h3> Power Sting Potency Up</h3>
-      <p>+8-16% de puissance du Power Sting.</p>
-    </div>
-    <div class="ability-block">
-      <h3>Power Sting Duration Up</h3>
-      <p>+8-16% de durée du Power Sting.</p>
-    </div>
-    <div class="ability-block">
-      <h3> Special Attack Damage Down</h3>
-      <p>-4-8% aux dégâts des attaques spéciales ennemies sous Power Sting.</p>
-    </div>
-  </div>
-</div>
+    // Fonction pour ouvrir ou fermer le menu latéral
+    function toggleMenu() {
+        const menu = document.getElementById("side-menu");
 
+        // Vérifie si le menu est caché à gauche ou ouvert
+        if (menu.style.left === "-250px") {
+            menu.style.left = "0";  // Ouvre le menu (glissement vers la droite)
+        } else {
+            menu.style.left = "-250px";  // Ferme le menu (glissement vers la gauche)
+        }
+    }
+
+    // Fonction pour fermer le menu en cliquant sur la croix
+    function closeMenu() {
+        document.getElementById("side-menu").style.left = "-250px";
+    }
+
+    // Ferme le menu en cliquant en dehors de celui-ci
+    window.onclick = function(event) {
+        const menu = document.getElementById("side-menu");
+        const menuIcon = document.querySelector(".menu-icon");
+
+        // Si l'utilisateur clique en dehors du menu et de l'icône du menu
+        if (!menu.contains(event.target) && event.target !== menuIcon) {
+            menu.style.left = "-250px"; // Ferme le menu
+        }
+    }
+</script>
+ <footer>
+        <p>Version 0.0 • DERNIERE MISE A JOUR LE 19 MARS 2025 • Made in FRANCE FR • .</p>
+        <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
+    </footer>
 </body>
 </html>
