@@ -557,7 +557,7 @@
         "classe2": "faces/class_mutant7e84.png", 
         "buff": {"Armor Break": ["Special Attacks", "Synergy [Professor X] & On Beam Hits"], "Unblockable": ["Passive, Dupe & 20+ Combo → Beam Hits"], "Disorient": ["Synergy [Night Thrasher] & Well-Timed Blocks"], "True Strike": ["Synergy [Mister Sinister] & On Special Attacks"], "Fury": ["Synergy [Bullseye] & Intercepting with a Beam Attack"]}, 
         "immunite": {"Réduction Précision Compétence": []},
-        "photo": "faces/portrait_cyclops687c.png", 
+        "photo": "faces/portrait_cyclops_90s1355.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
@@ -568,7 +568,7 @@
         "classe2": "faces/class_mutant7e84.png", 
         "buff": {"Armor Break": ["Special Attacks", "Synergy [Professor X] & On Beam Hits"], "Disorient": ["Synergy [Night Thrasher] & Well-Timed Blocks"], "True Strike": ["Synergy [Mister Sinister] & On Special Attacks"], "Fury": ["Synergy [Ikaris] & Inflict Armor Break", "Synergy [Bullseye] & Intercepting with a Beam Attack"]}, 
         "immunite": {}, 
-        "photo": "faces/portrait_cyclops_90s1355.png", 
+        "photo": "faces/portrait_cyclops687c.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
