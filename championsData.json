@@ -2030,7 +2030,7 @@
         "classe": "Cosmique", 
         "classe2": "faces/class_cosmic2e67.png", 
         "buff": {"Regeneration": ["Would be knocked out → Health based on Pheonix Force charges"], "Fury": ["Periodically based on Phoenix Force charges", "Passive, Synergy [Professor X] & Overload"], "Incinerate": ["5+ Fury Buffs → All Attacks"], "Armor Break": ["5+ Fury Buffs → Heavy Attacks"], "Stun": ["Overloaded & Incinerated Opponent → 25% Chance"], "Power Gain": ["SP1 → 10% Power per Phoenix Force chage"], "True Strike": ["Synergy [Mister Sinister] & On Special Attacks"], "Energy Resistance": ["Passive, Synergy [Dani Moonstar] & Well-Timed Blocks"]}, 
-        "immunite": {"Immunité Mort": [],"Incinération": [],"Bloque Super-Pouvoir": [],"Brule Pouvoir": [],"Bloque Pouvoir": [],"Drain Pouvoir": [],"Bloque Soin": []}, 
+        "immunite": {"Immunité Mort": [],"Incinération": [],"Bloque Super-Pouvoir": [],"Brûle Pouvoir": [],"Bloque Pouvoir": [],"Drain Pouvoir": [],"Bloque Soin": []}, 
         "photo": "faces/Phoenix_portrait.webp", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
