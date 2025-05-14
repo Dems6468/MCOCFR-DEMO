@@ -3283,7 +3283,7 @@
     "classe": "Cosmique",
     "classe2": "faces/class_cosmic2e67.png",
     "buff": {},
-    "immunite": {"Immunité Mort": [],"Incinération": [],"Flammes Nova": ["Pendant Invisible"],"Drain Pouvoir": [],"Dards Puissants": ["A  5+  Charges :  75%"],"Débuffs": ["A  5+  Charges :  75% sur les degats"]},
+    "immunite": {"Immunité Mort": [],"Incinération": [],"Flammes Nova": [],"Drain Pouvoir": [],"Dards Puissants": ["A  5+  Charges :  75%"],"Débuffs": ["A  5+  Charges :  75% sur les degats"]},
     "photo": "faces/portrait_bphoenix.webp",
     "description": "JOSIANE JOESTAR",
     "photos": []
