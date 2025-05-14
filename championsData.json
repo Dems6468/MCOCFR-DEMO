@@ -3287,6 +3287,17 @@
     "photo": "faces/portrait_bphoenix.webp",
     "description": "JOSIANE JOESTAR",
     "photos": []
+  },
+{
+    "nom": "Yelena Belova",
+    "Short Name": "Yelena Belova",
+    "classe": "Virtuose",
+    "classe2": "faces/class_trainede488.png",
+    "buff": {},
+    "immunite": {"Poison": []},
+    "photo": "faces/portrait_yelena.webp",
+    "description": "JOSIANE JOESTAR",
+    "photos": []
   }
 
     
