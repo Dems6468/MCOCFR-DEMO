@@ -2365,17 +2365,50 @@
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
-    {
-        "nom": "Sentinel", 
-        "Short Name": "Sentinel", 
-        "classe": "Tech", 
-        "classe2": "faces/class_techbdb1.png", 
-        "buff": {"Heal Block": ["SP1"], "Armor Break": ["SP1 → 50% chance per hit"], "Shock": ["Heavy Attack"], "Incinerate": ["SP2"], "Unstoppable": ["Analysis Complete & No Shock → Charging Heavy Attack"], "Armor Up": ["Passive, SP3"], "Regeneration": ["SP3 & Armor Up Passive"], "Gain Power": ["Synergy [Guillotine 2099] & Immune to Bleed or Poison"], "Cowardice": ["Synergy [Lady Deathstrike] & Heal Block"]}, 
-        "immunite": {"Saignement": [], "Poison": [],"Brise-Armure": [], "Engelure": [], "Vague de Froid": [], "Débuffs": ["Réduction de 5%"], "Brûle Pouvoir": ["Synergie [Ultron, Youndu,Gobelin Vert, Future Ant-Man] octroie 30% de réduction"], "Drain Pouvoir": ["Synergie [Ultron, Youndu,Gobelin Vert, Future Ant-Man] en combattant des Tech  30% de réduction"], "Vol Pouvoir": ["Synergie [Ultron, Youndu,Gobelin Vert, Future Ant-Man] octroie 30% de réduction"], "Débuffs": ["Synergie [Void, Antman,Electro,  Photon] en combattant des Science - 50% de réduction"], "Bloque Pouvoir": ["Synergie [The Hood, Mordo,Purgatoire,  Kindred] en combattant des Mystiques - 50% de réduction" ]}, 
-        "photo": "faces/portrait_sentinel119f.png", 
-        "description": "JOSIANE JOESTAR", 
-        "photos": []
-    }, 
+  {
+    "nom": "Sentinel",
+    "Short Name": "Sentinel",
+    "classe": "Tech",
+    "classe2": "faces/class_techbdb1.png",
+    "buff": {
+        "Heal Block": ["SP1"],
+        "Armor Break": ["SP1 → 50% chance per hit"],
+        "Shock": ["Heavy Attack"],
+        "Incinerate": ["SP2"],
+        "Unstoppable": ["Analysis Complete & No Shock → Charging Heavy Attack"],
+        "Armor Up": ["Passive, SP3"],
+        "Regeneration": ["SP3 & Armor Up Passive"],
+        "Gain Power": ["Synergy [Guillotine 2099] & Immune to Bleed or Poison"],
+        "Cowardice": ["Synergy [Lady Deathstrike] & Heal Block"]
+    },
+    "immunite": {
+        "Saignement": [],
+        "Poison": [],
+        "Brise-Armure": [],
+        "Engelure": [],
+        "Vague de Froid": [],
+        "Débuffs": [
+            "Réduction de 5%",
+            "Synergie [Void, Antman, Electro, Photon] en combattant des Science - 50% de réduction"
+        ],
+        "Brûle Pouvoir": [
+            "Synergie [Ultron, Youndu, Gobelin Vert, Future Ant-Man] octroie 30% de réduction"
+        ],
+        "Drain Pouvoir": [
+            "Synergie [Ultron, Youndu, Gobelin Vert, Future Ant-Man] en combattant des Tech 30% de réduction"
+        ],
+        "Vol Pouvoir": [
+            "Synergie [Ultron, Youndu, Gobelin Vert, Future Ant-Man] octroie 30% de réduction"
+        ],
+        "Bloque Pouvoir": [
+            "Synergie [The Hood, Mordo, Purgatoire, Kindred] en combattant des Mystiques - 50% de réduction"
+        ]
+    },
+    "photo": "faces/portrait_sentinel119f.png",
+    "description": "JOSIANE JOESTAR",
+    "photos": []
+},
+
     {
         "nom": "Sentry", 
         "Short Name": "Sentry", 
