@@ -2025,8 +2025,8 @@
         "photos": []
     }, 
     {
-        "nom": "Phoenix", 
-        "Short Name": "Phoenix", 
+        "nom": "Phénix", 
+        "Short Name": "Phénix", 
         "classe": "Cosmique", 
         "classe2": "faces/class_cosmic2e67.png", 
         "buff": {"Regeneration": ["Would be knocked out → Health based on Pheonix Force charges"], "Fury": ["Periodically based on Phoenix Force charges", "Passive, Synergy [Professor X] & Overload"], "Incinerate": ["5+ Fury Buffs → All Attacks"], "Armor Break": ["5+ Fury Buffs → Heavy Attacks"], "Stun": ["Overloaded & Incinerated Opponent → 25% Chance"], "Power Gain": ["SP1 → 10% Power per Phoenix Force chage"], "True Strike": ["Synergy [Mister Sinister] & On Special Attacks"], "Energy Resistance": ["Passive, Synergy [Dani Moonstar] & Well-Timed Blocks"]}, 
@@ -3280,7 +3280,7 @@
   },
 {
     "nom": "Phénix Noir",
-    "Short Name": "Phoenix Noir",
+    "Short Name": "Phénix Noir",
     "classe": "Cosmique",
     "classe2": "faces/class_cosmic2e67.png",
     "buff": {},
