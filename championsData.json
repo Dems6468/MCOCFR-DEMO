@@ -1403,8 +1403,8 @@
        "classe": "Cosmique", 
         "classe2": "faces/class_cosmic2e67.png", 
         "buff": {}, 
-        "immunite": {"Poison": ["65% Resistance"]}, 
-        "photo": "faces/portrait_karnak5c60.png", 
+        "immunite": {"Vague de Froid": [], "Engelure": [], "Bloque Pouvoir": [], "Bloque Super-Pouvoir": [],"Incinération": ["100% Resistance"]}, 
+        "photo": "faces/karolina.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
