@@ -43,8 +43,6 @@
                     <div class="tooltip">${item.focalisation_attaque}</div>`;
             cell7.innerHTML = `<img src="${item.focalisation_defense_img}" alt="${item.focalisation_defense}" width="50">
                     <div class="tooltip">${item.focalisation_defense}</div>`;
-            cell8.textContent = item.vie;
-            cell9.textContent = item.attaque;
             // Appliquer la classe dynamique selon la classe du personnage
             row.classList.add(item.classe);  // Ajoute la classe correspondante
         });
