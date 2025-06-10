@@ -1882,6 +1882,15 @@
         "photos": []
     }, 
     {
+        "nom": "Nico Minoru", 
+        "Short Name": "Nico Minoru", 
+        "classe": "Mystique", 
+        "classe2": "faces/class_mystic0b9f.png", 
+        "buff": [], 
+        "immunite": {"Réduction Précision Compétence": ["Passive"], "Purge": ["Synergie [Sorcerer Supreme] & Against Mystique"], "Destin Scellé": ["Synergie [Sorcerer Supreme] & Against Mystique"]}, 
+        "photo": "faces/nicominoru.png", 
+    }, 
+    {
         "nom": "Night Thrasher", 
         "Short Name": "Night Thrasher", 
         "classe": "Virtuose", 
