@@ -413,7 +413,7 @@
         "classe": "Mutant", 
         "classe2": "faces/class_mutant7e84.png", 
         "buff": {"Energy Damage": ["All Attacks"], "Bulwark": ["Passive, Dupe & Purify Debuff"], "Exhaustion": ["When Hit", "First Light Attack", "SP3"], "Slow": ["Second Medium Attack", "SP3"], "Weakness": ["Heavy Attack", "SP3"], "Prowess": ["Passive, Purify Debuff"], "Cruelty": ["Purify Exhaustion"], "Unstoppable": ["Purify Slow"], "Fury": ["Purify Weakness"], "Purify": ["Only Exhaustion, Slow or Weakness & Mode Change"], "Degeneration": ["Synergy [Psylocke] & Critical Hit"]}, 
-        "immunite": {"Contrôles Inversés": ["#Psychic Shielding"]}, 
+        "immunite": {"Contrôles Inversés": ["#Psychic Shielding"], "Etourdissement": ["Mode Psionic", "Dash et Attaques Moyennes"]}, 
         "photo": "faces/portrait_captainbritaind281.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
