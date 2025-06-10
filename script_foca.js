@@ -30,8 +30,7 @@
             let cell5 = row.insertCell(4);
             let cell6 = row.insertCell(5);
             let cell7 = row.insertCell(6);
-            let cell8 = row.insertCell(7);
-            let cell9 = row.insertCell(8);
+          
           
             // Remplissage des cellules avec les données
             cell1.textContent = item.rang;
@@ -60,9 +59,7 @@
                    item.prestige.toLowerCase().includes(searchValue) ||
                    item.relique_nom.toLowerCase().includes(searchValue) ||
                    item.focalisation_attaque.toLowerCase().includes(searchValue) ||
-                   item.focalisation_defense.toLowerCase().includes(searchValue) ||
-                   item.vie.toString().includes(searchValue) ||
-                   item.attaque.toString().includes(searchValue);
+                   item.focalisation_defense.toLowerCase().includes(searchValue);
         });
         displayTable(filteredData);  // Afficher les résultats filtrés dans le tableau
     }
