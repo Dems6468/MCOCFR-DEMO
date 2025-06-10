@@ -1889,6 +1889,8 @@
         "buff": [], 
         "immunite": {"Poison": [],"Rupture": []},
         "photo": "faces/nicominoru.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
     }, 
     {
         "nom": "Night Thrasher", 
