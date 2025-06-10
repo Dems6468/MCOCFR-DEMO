@@ -1404,7 +1404,7 @@
         "classe2": "faces/class_cosmic2e67.png", 
         "buff": {}, 
         "immunite": {"Vague de Froid": [], "Engelure": [], "Bloque Pouvoir": [], "Bloque Super-Pouvoir": [],"Incinération": ["100% Resistance"]}, 
-        "photo": "faces/karolina.png", 
+        "photo": "faces/karolina.webp", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
