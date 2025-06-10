@@ -1398,6 +1398,17 @@
         "photos": []
     }, 
     {
+        "nom": "Karolina Dean", 
+        "Short Name": "Karolina Dean", 
+       "classe": "Cosmique", 
+        "classe2": "faces/class_cosmic2e67.png", 
+        "buff": {}, 
+        "immunite": {"Poison": ["65% Resistance"]}, 
+        "photo": "faces/portrait_karnak5c60.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }, 
+    {
         "nom": "Kate Bishop", 
         "Short Name": "Kate Bishop", 
         "classe": "Virtuose", 
@@ -1886,7 +1897,7 @@
         "Short Name": "Nico Minoru", 
         "classe": "Mystique", 
         "classe2": "faces/class_mystic0b9f.png", 
-        "buff": [], 
+        "buff": {}, 
         "immunite": {"Poison": [],"Rupture": []},
         "photo": "faces/nicominoru.png", 
         "description": "JOSIANE JOESTAR", 
