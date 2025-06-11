@@ -898,6 +898,7 @@ main {
 }
 
 footer {
+    box-sizing: border-box; /* important pour que le padding n'empiète pas sur la largeur */
     background-color: #111;
     padding: 2vw;
     text-align: center;
@@ -905,6 +906,7 @@ footer {
     width: 100%;
     margin-top: auto;
 }
+
 /* Contour coloré en fonction de la classe */
 .science .photo-container img {
     border: 4px solid #00FF00; /* Vert */
