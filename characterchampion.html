@@ -77,10 +77,19 @@
 </main>
 
 <!-- Footer -->
-<footer>
-    <p>Version 0.0 • Dernière mise à jour le 08 mars 2025 • Made in France</p>
-    <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
-</footer>
+<div id="footer-container"></div>
+
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Erreur de chargement du footer :', error);
+    });
+</script>
+
 
 <script src="scriptchampion.js"></script>
 <script>
