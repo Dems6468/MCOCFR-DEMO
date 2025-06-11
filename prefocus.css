@@ -776,35 +776,13 @@ main {
     color: #FF9800;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 footer {
+    width: 100vw; /* 100% de la largeur de l'écran */
+    box-sizing: border-box; /* important pour que le padding n'empiète pas sur la largeur */
     background-color: #111;
     padding: 2vw;
     text-align: center;
     color: #fff;
-    width: 100%;
     margin-top: auto;
 }
 #header {
