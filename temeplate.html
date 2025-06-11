@@ -60,10 +60,19 @@
 </header>
 
 <!-- Footer -->
-<footer>
-    <p>Version 0.0 • DERNIERE MISE A JOUR LE 19 MARS 2025 • Made in FRANCE FR</p>
-    <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
-</footer>
+<div id="footer-container"></div>
+
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Erreur de chargement du footer :', error);
+    });
+</script>
+
 
 <script>
     // Initialiser le menu à l'état fermé
