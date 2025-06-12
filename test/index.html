@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Filtre Champions par Tag (JSON externe)</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  .tags-container { margin-bottom: 20px; }
+  .tag {
+    display: inline-block;
+    background: #eee;
+    border-radius: 4px;
+    padding: 6px 12px;
+    margin: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .tag:hover { background-color: #ddd; }
+  .tag.active { background-color: #007bff; color: white; }
+  .champions-list { list-style-type: none; padding: 0; }
+  .champions-list li { padding: 6px 0; border-bottom: 1px solid #ccc; }
+</style>
+</head>
+<body>
+
+<h1>Filtrer les champions par Tag</h1>
+
+<div class="tags-container" id="tagsContainer"></div>
+
+<ul class="champions-list" id="championsList">
+  <li>Chargement des données...</li>
+</ul>
+
+<script>
+let data = null;
+let activeTag = null;
+
+const tagsContainer = document.getElementById('tagsContainer');
+const championsList = document.getElementById('championsList');
+
+// Charge le JSON externe
+fetch('champions.json')
+  .then(response => {
+    if (!response.ok) throw new Error("Erreur de chargement JSON");
+    return response.json();
+  })
+  .then(json => {
+    data = json;
+    renderTags();
+    updateUI();
+  })
+  .catch(err => {
+    championsList.innerHTML = "<li>Erreur lors du chargement des données.</li>";
+    console.error(err);
+  });
+
+// Affiche les tags uniques
+function renderTags() {
+  const tagsSet = new Set();
+  data.champions.forEach(champ => {
+    champ.tags.forEach(tag => tagsSet.add(tag));
+  });
+  const allTags = Array.from(tagsSet).sort();
+
+  tagsContainer.innerHTML = '';
+  allTags.forEach(tag => {
+    const tagEl = document.createElement('span');
+    tagEl.classList.add('tag');
+    tagEl.textContent = tag;
+    tagEl.addEventListener('click', () => {
+      if (activeTag === tag) {
+        activeTag = null;
+      } else {
+        activeTag = tag;
+      }
+      updateUI();
+    });
+    tagsContainer.appendChild(tagEl);
+  });
+}
+
+// Met à jour l’affichage des champions filtrés
+function updateUI() {
+  Array.from(tagsContainer.children).forEach(tagEl => {
+    tagEl.classList.toggle('active', tagEl.textContent === activeTag);
+  });
+
+  if (!activeTag) {
+    championsList.innerHTML = '<li>Sélectionnez un tag pour afficher les champions.</li>';
+    return;
+  }
+
+  const filtered = data.champions.filter(champ => champ.tags.includes(activeTag));
+  if (filtered.length === 0) {
+    championsList.innerHTML = '<li>Aucun champion pour ce tag.</li>';
+    return;
+  }
+
+  championsList.innerHTML = '';
+  filtered.forEach(champ => {
+    const li = document.createElement('li');
+    li.textContent = champ.name;
+    championsList.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
