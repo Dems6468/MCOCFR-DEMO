@@ -64,13 +64,23 @@
 /* Tags container */
 .tags-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 6px;
+  padding: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #FF5722 transparent;
 }
+
+.tags-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tags-container::-webkit-scrollbar-thumb {
+  background-color: #FF5722;
+  border-radius: 10px;
+}
+
 
 .tags-container.collapsed {
   max-height: 0;
