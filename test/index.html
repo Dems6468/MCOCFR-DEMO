@@ -33,21 +33,6 @@
   text-align: center;
   margin-top : 2%;
 }
-.tag-group {
-  margin: 8px 0;
-  padding: 6px 8px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 6px;
-}
-
-.tag-group-title {
-  font-size: 0.85rem;
-  font-weight: bold;
-  color: #FF5722;
-  margin-bottom: 4px;
-}
-
-
 
 .champion-section h1 {
   font-size: 1.8rem;
@@ -325,61 +310,69 @@ const TAG_CATEGORIES = {
 
 // Ensuite, dans renderTags()
 function renderTags() {
-  const categoryMap = {
-    'Rareté': tag => /^#\d-STAR$/.test(tag),
-    'AW/RAIDS': tag => /^#(RAIDS|AW):/.test(tag),
-    'Spécial': tag => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Elder|God|blessed|shrednation|winning|mcm|goals|nofilter|noexcuses)/.test(tag),
-    'Traits': tag => /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|getswole)/.test(tag),
-    'Alignement': tag => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(tag),
-    'Taille': tag => /^#Size:/.test(tag),
-    'Rôle': tag => /^#(Offensive|Defensive|Control):/.test(tag),
-    'Équipe': tag => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(tag),
-    'Année': tag => /^#20\d{2}$/.test(tag),
-    'Divers': tag => tag.startsWith("#") && !tag.match(/Class:/),
-    'Classe': tag => /^(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(tag)
+  const orderedCategories = [
+    'Rareté',
+    'Classe',
+    'RAIDS',
+    'AW',
+    'Spécial',
+    'Traits',
+    'Alignement',
+    'Taille',
+    'Rôle',
+    'Équipe',
+    'Année',
+    'Divers'
+  ];
+
+  const tagFilters = {
+    'Rareté': t => /^#\d-STAR$/.test(t),
+    'Classe': t => /^(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
+    'RAIDS': t => t.startsWith('#RAIDS:'),
+    'AW': t => t.startsWith('#AW:'),
+    'Spécial': t => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Saga Champions)/.test(t),
+    'Traits': t => /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|getswole)/.test(t),
+    'Alignement': t => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(t),
+    'Taille': t => /^#Size:/.test(t),
+    'Rôle': t => /^#(Offensive|Defensive|Control):/.test(t),
+    'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
+    'Année': t => /^#20\d{2}$/.test(t),
+    'Divers': t => true // fallback
   };
 
-  const categorizedTags = {};
-
-  // Collecte et trie tous les tags
+  // Rassembler tous les tags uniques
+  const tagsSet = new Set();
   data.champions.forEach(champ => {
-    champ.tags.forEach(tag => {
-      for (const category in categoryMap) {
-        if (categoryMap[category](tag)) {
-          if (!categorizedTags[category]) categorizedTags[category] = new Set();
-          categorizedTags[category].add(tag);
-          break;
-        }
-      }
-    });
+    champ.tags.forEach(tag => tagsSet.add(tag));
+    // Inclure la classe en tag si présente
+    if (champ.class) tagsSet.add(champ.class);
   });
 
-  // Nettoyage & affichage
+  const allTags = Array.from(tagsSet);
   tagsContainer.innerHTML = '';
-  Object.keys(categorizedTags).forEach(category => {
-    const groupDiv = document.createElement('div');
-    groupDiv.className = 'tag-group';
 
-    const title = document.createElement('div');
-    title.className = 'tag-group-title';
-    title.textContent = category;
-    groupDiv.appendChild(title);
+  orderedCategories.forEach(category => {
+    const filter = tagFilters[category];
+    const sortedTags = allTags.filter(filter).sort();
 
-    Array.from(categorizedTags[category]).sort().forEach(tag => {
+    sortedTags.forEach(tag => {
       const tagEl = document.createElement('span');
-      tagEl.className = 'tag';
+      tagEl.classList.add('tag');
       tagEl.textContent = tag;
       if (activeTags.has(tag)) tagEl.classList.add('active');
-      tagEl.onclick = () => {
-        activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
+      tagEl.addEventListener('click', () => {
+        if (activeTags.has(tag)) {
+          activeTags.delete(tag);
+        } else {
+          activeTags.add(tag);
+        }
         updateUI();
-      };
-      groupDiv.appendChild(tagEl);
+      });
+      tagsContainer.appendChild(tagEl);
     });
-
-    tagsContainer.appendChild(groupDiv);
   });
 }
+
 
 
 
