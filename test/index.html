@@ -289,27 +289,57 @@ fetch('champions.json')
   });
 
 
-function renderTags() {
-  const tagsSet = new Set();
-  data.champions.forEach(champ => champ.tags.forEach(tag => tagsSet.add(tag)));
-  const allTags = Array.from(tagsSet).sort();
+const TAG_CATEGORIES = {
+  "Rareté": ["#1-STAR", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#7-STAR", "#LEGACY", "#PLAYABLE", "#UNPLAYABLE"],
+  "RAIDS / Guerre": ["#RAIDS: Assault", "#RAIDS: Tactician", "#RAIDS: Vanguard", "#AW: Subdue", "#AW: Crush 2.0", "#AW: Armor Burn"],
+  "Traits d'alignement": ["#Hero", "#Villain", "#Villain of the Contest", "#Saga Champions", "#Carina's Challengers"],
+  "Types d'attaque": [
+    "#Offensive: Burst", "#Offensive: Damage Over Time", "#Offensive: Raw Damage",
+    "#Defensive: Guard", "#Defensive: Tank", "#Defensive: Utility",
+    "#Control: Counter", "#Control: Denial"
+  ],
+  "Tailles": ["#Size: S", "#Size: M", "#Size: L", "#Size: XL"],
+  "Années": ["#2014", "#2015", "#2016", "#2017", "#2018", "#2019", "#2020", "#2021", "#2022", "#2023", "#2024", "#2025"],
+  "Groupes / Équipes": [
+    "#Avengers", "#X-Men", "#Guardians of the Galaxy", "#Brotherhood of Mutants", "#Thunderbolts", "#S.H.I.E.L.D", "#Fantastic Four", "#Inhuman",
+    "#Young Avengers", "#Sinister Six", "#Hydra", "#Kree", "#Alpha Flight", "#Symbiote", "#X-Force", "#Illuminati", "#New Avengers", "#Defenders", "#Champions"
+  ],
+  "Autres": ["#Robot", "#Flying", "#Gamma", "#Metal", "#Elder", "#God", "#Dimensional Being", "#Wakandan", "#Psychic Shielding", "#Magic Thief"],
+  "Hashtags divers": ["#mcm", "#noexcuses", "#nofilter", "#shrednation", "#Devilishly Handsome", "#goals", "#winning", "#getswole", "#1000% Awesome", "#Frightful", "#Decay"],
+  "Classes": ["Science", "Mystic", "Cosmic", "Skill", "Tech", "Mutant", "Combined"]
+};
 
+// Ensuite, dans renderTags()
+function renderTags() {
   tagsContainer.innerHTML = '';
-  allTags.forEach(tag => {
-    const tagEl = document.createElement('span');
-    tagEl.classList.add('tag');
-    tagEl.textContent = tag;
-    tagEl.addEventListener('click', () => {
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
-      } else {
-        activeTags.add(tag);
-      }
-      updateUI();
+
+  for (const [category, tags] of Object.entries(TAG_CATEGORIES)) {
+    const groupDiv = document.createElement('div');
+    groupDiv.classList.add('tag-group');
+
+    const title = document.createElement('h3');
+    title.textContent = category;
+    groupDiv.appendChild(title);
+
+    tags.forEach(tag => {
+      const tagEl = document.createElement('span');
+      tagEl.classList.add('tag');
+      tagEl.textContent = tag;
+      tagEl.addEventListener('click', () => {
+        if (activeTags.has(tag)) {
+          activeTags.delete(tag);
+        } else {
+          activeTags.add(tag);
+        }
+        updateUI();
+      });
+      groupDiv.appendChild(tagEl);
     });
-    tagsContainer.appendChild(tagEl);
-  });
+
+    tagsContainer.appendChild(groupDiv);
+  }
 }
+
 
 function updateUI() {
   Array.from(tagsContainer.children).forEach(tagEl => {
