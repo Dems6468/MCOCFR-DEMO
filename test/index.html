@@ -391,6 +391,8 @@ function renderTags() {
     // Conteneur des tags
     const tagsWrapper = document.createElement('div');
     tagsWrapper.classList.add('tag-list');
+    tagsWrapper.style.display = 'none'; // cacher au début
+
 
     // Ajout des tags
     sortedTags.forEach(tag => {
