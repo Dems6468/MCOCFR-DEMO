@@ -271,7 +271,15 @@ const toggleFiltersBtn = document.getElementById('toggleFilters');
 fetch('champions.json')
   .then(res => res.json())
   .then(json => {
+    // Injecter la classe comme tag une seule fois pour chaque champion
     data = json;
+    data.champions.forEach(champ => {
+      if (champ.class) {
+        champ.tags.push(`#` + champ.class); // Exemple : "#Science"
+      }
+    });
+
+    // Appeler le rendu des tags et la mise à jour UI UNE SEULE FOIS
     renderTags();
     updateUI();
   })
@@ -279,6 +287,7 @@ fetch('champions.json')
     championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
     console.error(err);
   });
+
 
 function renderTags() {
   const tagsSet = new Set();
