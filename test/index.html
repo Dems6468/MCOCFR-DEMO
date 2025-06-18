@@ -34,18 +34,19 @@
   margin-top : 2%;
 }
 .tag-group {
-  margin-bottom: 15px;
-  padding: 10px;
-  border: 1px solid #444;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.05);
+  margin: 8px 0;
+  padding: 6px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
 }
 
-.tag-group h3 {
-  font-size: 1rem;
-  margin-bottom: 6px;
+.tag-group-title {
+  font-size: 0.85rem;
+  font-weight: bold;
   color: #FF5722;
+  margin-bottom: 4px;
 }
+
 
 
 .champion-section h1 {
@@ -324,34 +325,62 @@ const TAG_CATEGORIES = {
 
 // Ensuite, dans renderTags()
 function renderTags() {
+  const categoryMap = {
+    'Rareté': tag => /^#\d-STAR$/.test(tag),
+    'AW/RAIDS': tag => /^#(RAIDS|AW):/.test(tag),
+    'Spécial': tag => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Elder|God|blessed|shrednation|winning|mcm|goals|nofilter|noexcuses)/.test(tag),
+    'Traits': tag => /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|getswole)/.test(tag),
+    'Alignement': tag => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(tag),
+    'Taille': tag => /^#Size:/.test(tag),
+    'Rôle': tag => /^#(Offensive|Defensive|Control):/.test(tag),
+    'Équipe': tag => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(tag),
+    'Année': tag => /^#20\d{2}$/.test(tag),
+    'Divers': tag => tag.startsWith("#") && !tag.match(/Class:/),
+    'Classe': tag => /^(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(tag)
+  };
+
+  const categorizedTags = {};
+
+  // Collecte et trie tous les tags
+  data.champions.forEach(champ => {
+    champ.tags.forEach(tag => {
+      for (const category in categoryMap) {
+        if (categoryMap[category](tag)) {
+          if (!categorizedTags[category]) categorizedTags[category] = new Set();
+          categorizedTags[category].add(tag);
+          break;
+        }
+      }
+    });
+  });
+
+  // Nettoyage & affichage
   tagsContainer.innerHTML = '';
-
-  for (const [category, tags] of Object.entries(TAG_CATEGORIES)) {
+  Object.keys(categorizedTags).forEach(category => {
     const groupDiv = document.createElement('div');
-    groupDiv.classList.add('tag-group');
+    groupDiv.className = 'tag-group';
 
-    const title = document.createElement('h3');
+    const title = document.createElement('div');
+    title.className = 'tag-group-title';
     title.textContent = category;
     groupDiv.appendChild(title);
 
-    tags.forEach(tag => {
+    Array.from(categorizedTags[category]).sort().forEach(tag => {
       const tagEl = document.createElement('span');
-      tagEl.classList.add('tag');
+      tagEl.className = 'tag';
       tagEl.textContent = tag;
-      tagEl.addEventListener('click', () => {
-        if (activeTags.has(tag)) {
-          activeTags.delete(tag);
-        } else {
-          activeTags.add(tag);
-        }
+      if (activeTags.has(tag)) tagEl.classList.add('active');
+      tagEl.onclick = () => {
+        activeTags.has(tag) ? activeTags.delete(tag) : activeTags.add(tag);
         updateUI();
-      });
+      };
       groupDiv.appendChild(tagEl);
     });
 
     tagsContainer.appendChild(groupDiv);
-  }
+  });
 }
+
 
 
 function updateUI() {
