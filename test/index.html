@@ -299,9 +299,6 @@
             menu.style.left = "-250px";
         }
     };
-</script>
-
-<!-- Champions JS -->
 <script>
 let data = null;
 let activeTags = new Set();
@@ -314,25 +311,25 @@ const toggleFiltersBtn = document.getElementById('toggleFilters');
 fetch('champions.json')
   .then(res => res.json())
   .then(json => {
-    // Injecter la classe comme tag une seule fois pour chaque champion
     data = json;
+
+    // Assurer que champ.tags existe et injecter la classe sous forme de tag formaté #ClassName
     data.champions.forEach(champ => {
+      if (!champ.tags) champ.tags = [];
       if (champ.class) {
-        champ.tags.push(`#` + champ.class); // Exemple : "#Science"
+        // On force un format #ClassName sans espaces
+        champ.tags.push(`#${champ.class.trim()}`);
       }
     });
 
-    // Appeler le rendu des tags et la mise à jour UI UNE SEULE FOIS
     renderTags();
     updateUI();
   })
   .catch(err => {
     championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
-    console.error(err);
+    console.error("Erreur fetch champions.json :", err);
   });
 
-
-// Ensuite, dans renderTags()
 function renderTags() {
   const orderedCategories = [
     'Rareté',
@@ -351,7 +348,8 @@ function renderTags() {
 
   const tagFilters = {
     'Rareté': t => /^#\d-STAR$/.test(t),
-    'Classe': t => /^(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
+    // Adapté pour matcher le format #Science, #Mystic etc. (avec le #)
+    'Classe': t => /^#(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
     'RAIDS': t => t.startsWith('#RAIDS:'),
     'AW': t => t.startsWith('#AW:'),
     'Spécial': t => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Saga Champions)/.test(t),
@@ -359,15 +357,19 @@ function renderTags() {
     'Alignement': t => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(t),
     'Taille': t => /^#Size:/.test(t),
     'Rôle': t => /^#(Offensive|Defensive|Control):/.test(t),
-    'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
+    'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S\.H\.I\.E\.L\.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
     'Année': t => /^#20\d{2}$/.test(t),
     'Divers': t => true
   };
 
+  // Collecter tous les tags uniques dans un Set
   const tagsSet = new Set();
   data.champions.forEach(champ => {
-    champ.tags.forEach(tag => tagsSet.add(tag));
-    if (champ.class) tagsSet.add(champ.class);
+    if (Array.isArray(champ.tags)) {
+      champ.tags.forEach(tag => {
+        if (typeof tag === 'string') tagsSet.add(tag.trim());
+      });
+    }
   });
 
   const allTags = Array.from(tagsSet);
@@ -375,31 +377,28 @@ function renderTags() {
 
   orderedCategories.forEach(category => {
     const filter = tagFilters[category];
-    const sortedTags = allTags.filter(filter).sort();
-    if (sortedTags.length === 0) return;
+    const filteredTags = allTags.filter(filter).sort((a,b) => a.localeCompare(b));
 
-    // Section container
+    if (filteredTags.length === 0) return;
+
     const section = document.createElement('div');
     section.classList.add('tag-category');
 
-    // Titre cliquable
     const header = document.createElement('div');
     header.classList.add('tag-category-title');
     header.textContent = `▶ ${category}`;
     header.style.cursor = 'pointer';
 
-    // Conteneur des tags
     const tagsWrapper = document.createElement('div');
     tagsWrapper.classList.add('tag-list');
-    tagsWrapper.style.display = 'none'; // cacher au début
+    tagsWrapper.style.display = 'none';
 
-
-    // Ajout des tags
-    sortedTags.forEach(tag => {
+    filteredTags.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.classList.add('tag');
       tagEl.textContent = tag;
       if (activeTags.has(tag)) tagEl.classList.add('active');
+
       tagEl.addEventListener('click', () => {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
@@ -408,10 +407,10 @@ function renderTags() {
         }
         updateUI();
       });
+
       tagsWrapper.appendChild(tagEl);
     });
 
-    // Toggle réduction/extension
     header.addEventListener('click', () => {
       const isVisible = tagsWrapper.style.display !== 'none';
       tagsWrapper.style.display = isVisible ? 'none' : 'flex';
@@ -424,19 +423,17 @@ function renderTags() {
   });
 }
 
-
-
-
-
 function updateUI() {
- tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
-  tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
-});
+  // Met à jour la classe active sur chaque tag
+  tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
+    tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
+  });
 
   let champs = data.champions;
 
   if (activeTags.size > 0) {
     champs = champs.filter(champ => {
+      if (!Array.isArray(champ.tags)) return false;
       for (let tag of activeTags) {
         if (!champ.tags.includes(tag)) return false;
       }
@@ -469,13 +466,10 @@ resetBtn.addEventListener('click', () => {
 toggleFiltersBtn.addEventListener('click', () => {
   const isCollapsed = tagsContainer.classList.toggle('collapsed');
   toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
-  if (isCollapsed) {
-    toggleFiltersBtn.textContent = "Afficher les filtres ▼";
-  } else {
-    toggleFiltersBtn.textContent = "Masquer les filtres ▲";
-  }
+  toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
 });
 </script>
+
 
 </body>
 </html>
