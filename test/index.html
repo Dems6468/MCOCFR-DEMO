@@ -429,9 +429,9 @@ function renderTags() {
 
 
 function updateUI() {
-  Array.from(tagsContainer.children).forEach(tagEl => {
-    tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
-  });
+ tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
+  tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
+});
 
   let champs = data.champions;
 
