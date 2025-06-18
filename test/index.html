@@ -1,114 +1,265 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Champions Grid - MCOC Style</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | MCOCFR BETA</title>
+    <meta property="og:title" content="Accueil | MCOCFR BETA">
+    <meta property="og:description" content="Bienvenue sur le site français de MCOC.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta property="og:url" content="https://www.mcocfr.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:title" content="Accueil | MCOCFR BETA">
+    <meta name="twitter:description" content="Bienvenue sur le site français de MCOC.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style-accueil.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: #0c0c1c;
-      color: #c0e0ff;
-      margin: 20px;
-      text-align: center;
-    }
+/* Reset & base */
 
-    h1 {
-      text-shadow: 0 0 8px #00ffff;
-    }
 
-    .tags-container {
-      margin-bottom: 20px;
-    }
+/* Section principale */
+.champion-section {
+  background: rgba(0, 0, 0, 0.75);
+  box-shadow: 0 0 2em rgba(255, 87, 34, 0.3);
+  border-radius: 12px;
+  padding: 30px 5%; /* garde ce padding pour l’intérieur */
+  width: 100%;
+  /* max-width: 1200px;  <-- supprimé pour prendre toute la largeur */
+  box-sizing: border-box;
+  text-align: center;
+  margin-top : 2%;
+}
 
-    .tag {
-      display: inline-block;
-      background: #061a40;
-      border-radius: 20px;
-      padding: 8px 16px;
-      margin: 6px;
-      cursor: pointer;
-      color: #80dfff;
-      text-transform: uppercase;
-      font-weight: 600;
-      box-shadow: 0 0 6px #0055ff88;
-      transition: 0.3s;
-    }
 
-    .tag:hover {
-      background: #0a2a70;
-      box-shadow: 0 0 15px #00bfff, 0 0 30px #00ffffaa;
-      color: #00ffff;
-    }
+.champion-section h1 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #ff5722;
+}
 
-    .tag.active {
-      background: #00ffff;
-      color: #000c1f;
-      font-weight: 700;
-      box-shadow: 0 0 15px #00ffff, inset 0 0 8px #00e5ff;
-    }
+/* Boutons */
+#toggleFilters,
+#resetFilters {
+  background-color: #ff5722;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 8px 18px;
+  margin: 10px 5px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  display: inline-block;
+}
 
-    #resetFilters {
-      padding: 10px 30px;
-      margin-bottom: 30px;
-      background: linear-gradient(90deg, #00c8ff, #0041ff);
-      border: none;
-      border-radius: 30px;
-      color: #001a33;
-      font-weight: 700;
-      font-size: 1rem;
-      cursor: pointer;
-      box-shadow: 0 0 15px #0041ff;
-      transition: 0.3s;
-    }
+#toggleFilters:hover,
+#resetFilters:hover {
+  background-color: #ff784e;
+}
 
-    #resetFilters:hover {
-      background: linear-gradient(90deg, #00ffff, #0077ff);
-      box-shadow: 0 0 20px #00ffff, 0 0 30px #0077ff;
-    }
+/* Tags container */
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-height: 150px;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
 
-    .champions-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-      gap: 15px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
+.tags-container.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  margin-bottom: 0;
+}
 
-    .champion-img {
-      width: 80px;
-      height: 80px;
-      border-radius: 10px;
-      object-fit: cover;
-      box-shadow: 0 0 8px #0099ff;
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-    }
+/* Tags style */
+.tag {
+  background-color: #2e2e42;
+  padding: 6px 14px;
+  border-radius: 15px;
+  font-size: 13px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  user-select: none;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
 
-    .champion-img:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #00ffff;
-    }
+.tag:hover {
+  background-color: #ff5722;
+  color: #000;
+}
 
-    .no-selection {
-      color: #ccc;
-      font-style: italic;
-      margin-top: 20px;
-    }
-  </style>
+.tag.active {
+  background-color: #ff5722;
+  color: #000;
+  border-color: #ff784e;
+}
+
+/* Grille des champions */
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 12px;
+  justify-items: center;
+}
+
+/* Image des champions */
+.champion-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff5722;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  background: #222;
+}
+
+.champion-img:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 12px #ff5722;
+}
+
+/* Message si aucun résultat */
+.no-selection {
+  margin-top: 20px;
+  font-style: italic;
+  color: #bbb;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .champion-section {
+    padding: 20px 3%;
+    margin-top : 15%;
+
+  }
+
+  .champion-section h1 {
+    font-size: 1.4rem;
+  }
+
+  .tag {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .champion-img {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+    </style>
 </head>
 <body>
 
-<h1>Champions MCOC – Grille Interactive</h1>
+<!-- Header Mobile -->
+<header id="header-mobile">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" />
+            MCOCFR BETA
+        </a>
+    </div>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+</header>
 
-<div class="tags-container" id="tagsContainer"></div>
-<button id="resetFilters">Réinitialiser les filtres</button>
-
-<div class="champions-grid" id="championsGrid">
-  <p class="no-selection">Chargement des données...</p>
+<!-- Menu Latéral -->
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="#aaaa">Champions</a>
+    <a href="#contact">Contact</a>
 </div>
 
+<!-- Header Principal -->
+<header id="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" class="logo-pc" />
+            MCOC FR BETA
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="debuff.html">Debuffs</a></li>
+            <li><a href="#aaaa">Champions</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="champion-section">
+  <h1>Champions MCOC – Filtre Tags </h1>
+
+  <button id="toggleFilters" aria-expanded="true" aria-controls="tagsContainer">
+    Masquer les filtres ▲
+  </button>
+
+  <div class="tags-container" id="tagsContainer"></div>
+
+  <button id="resetFilters">Réinitialiser les filtres</button>
+
+  <div class="champions-grid" id="championsGrid">
+    <p class="no-selection">Chargement des données...</p>
+  </div>
+</main>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+<!-- Footer loader -->
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Erreur de chargement du footer :', error);
+    });
+</script>
+
+<!-- Menu JS -->
+<script>
+    window.onload = function() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = "-250px";
+        renderTags();
+        updateUI();
+    };
+
+    function toggleMenu() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
+    }
+
+    function closeMenu() {
+        document.getElementById("side-menu").style.left = "-250px";
+    }
+
+    window.onclick = function(event) {
+        const menu = document.getElementById("side-menu");
+        const menuIcon = document.querySelector(".menu-icon");
+        if (!menu.contains(event.target) && event.target !== menuIcon) {
+            menu.style.left = "-250px";
+        }
+    };
+</script>
+
+<!-- Champions JS -->
 <script>
 let data = null;
 let activeTags = new Set();
@@ -116,6 +267,7 @@ let activeTags = new Set();
 const tagsContainer = document.getElementById('tagsContainer');
 const championsGrid = document.getElementById('championsGrid');
 const resetBtn = document.getElementById('resetFilters');
+const toggleFiltersBtn = document.getElementById('toggleFilters');
 
 fetch('champions.json')
   .then(res => res.json())
@@ -152,7 +304,6 @@ function renderTags() {
 }
 
 function updateUI() {
-  // Marquer les tags actifs
   Array.from(tagsContainer.children).forEach(tagEl => {
     tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
   });
@@ -188,6 +339,16 @@ function updateUI() {
 resetBtn.addEventListener('click', () => {
   activeTags.clear();
   updateUI();
+});
+
+toggleFiltersBtn.addEventListener('click', () => {
+  const isCollapsed = tagsContainer.classList.toggle('collapsed');
+  toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
+  if (isCollapsed) {
+    toggleFiltersBtn.textContent = "Afficher les filtres ▼";
+  } else {
+    toggleFiltersBtn.textContent = "Masquer les filtres ▲";
+  }
 });
 </script>
 
