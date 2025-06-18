@@ -76,7 +76,7 @@
   {"name": "deadpooloid_tech", "tags": ["#2-STAR", "#Villain", "#Size: M", "#Defensive: Tank", "#2024"], "photo": "../", "class": ""},
   {"name": "deadpooloid_training", "tags": ["#2-STAR", "#Villain", "#Size: L", "#Offensive: Damage Over Time", "#2024"], "photo": "../", "class": ""},
   {"name": "Dents de Sabre", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#Provocateur", "#Canadian", "#Mercenary", "#Size: L", "#Offensive: Raw Damage", "#Brotherhood of Mutants", "#2018"], "photo": "../faces/portrait_sabretooth20bd.png", "class": "Mutant "},
-  {"name": "Diablo", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#7-STAR", "#AW: Crush 2.0", "#X-Magica", "#Hero", "#Size: M", "#Defensive: Utility", "#X-Men", "#2016"], "photo": "../faces/portrait_nightcrawler1e72.png", "class": "Mutant"},
+  {"name": "Diablo", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#7-STAR", "#AW: Crush 2.0", "#X-Magica", "#Hero", "#Size: M", "#Defensive: Utility", "#X-Men", "#2016"], "photo": "../faces/portrait_nightcrawler1e72.png", "class": "Mutant "},
   {"name": "Diablo ( De Ablo)", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#7-STAR", "#AW: Subdue", "#Coda", "#Provocateur", "#Villain", "#Size: M", "#Carina's Challengers", "#Control: Counter", "#2019", "#Saga Champions"], "photo": "../faces/portrait_diablo91af.png", "class": "Mystic "},
   {"name": "Docteur Doom", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#RAIDS: Tactician", "#Frightful", "#Metal", "#Villain", "#Size: M", "#Offensive: Damage Over Time", "#Defensive: Guard", "#2019", "#Saga Champions"], "photo": "../faces/portrait_doctordoom1d74.png", "class": "Mystic "},
   {"name": "Docteur Octopus", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#AW: Subdue", "#AW: Armor Burn", "#Secutor", "#Metal", "#Villain", "#Size: M", "#Control: Denial", "#Sinister Six", "#Thunderbolts", "#2017"], "photo": "../faces/portrait_doc_ock9f89.png", "class": "Tech "},
@@ -336,4 +336,4 @@
   {"name": "Yelena Belova", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#7-STAR", "#Mercenary", "#Size: M", "#Defensive: Utility", "#2025"], "photo": "../faces/portrait_yelena.webp", "class": "Skill "},
   {"name": "Yellowjacket", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#AW: Crush 2.0", "#Metal", "#Villain of the Contest", "#Size: M", "#Control: Denial", "#2015"], "photo": "../faces/portrait_yellowjacketfa9b.png", "class": "Science "},
   {"name": "Yondu", "tags": ["#PLAYABLE", "#2-STAR", "#3-STAR", "#4-STAR", "#5-STAR", "#6-STAR", "#Mercenary", "#Size: M", "#Defensive: Utility", "#2017"], "photo": "../faces/portrait_yondu735f.png", "class": "Tech "}
-]}
+]
