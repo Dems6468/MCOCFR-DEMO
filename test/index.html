@@ -134,6 +134,25 @@
   gap: 12px;
   justify-items: center;
 }
+.tag-category {
+  margin-bottom: 12px;
+}
+
+.tag-category-title {
+  font-weight: bold;
+  color: #ff9800;
+  margin-bottom: 4px;
+  font-size: 14px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2px;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-top: 6px;
+}
 
 /* Image des champions */
 .champion-img {
@@ -342,10 +361,9 @@ function renderTags() {
     'Rôle': t => /^#(Offensive|Defensive|Control):/.test(t),
     'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
     'Année': t => /^#20\d{2}$/.test(t),
-    'Divers': t => true // fallback
+    'Divers': t => true
   };
 
-  // Rassembler tous les tags uniques
   const tagsSet = new Set();
   data.champions.forEach(champ => {
     champ.tags.forEach(tag => tagsSet.add(tag));
@@ -358,16 +376,23 @@ function renderTags() {
   orderedCategories.forEach(category => {
     const filter = tagFilters[category];
     const sortedTags = allTags.filter(filter).sort();
+    if (sortedTags.length === 0) return;
 
-    if (sortedTags.length === 0) return; // Ne rien afficher si aucun tag pour cette catégorie
+    // Section container
+    const section = document.createElement('div');
+    section.classList.add('tag-category');
 
-    // Ajouter un titre de section
-    const categoryTitle = document.createElement('div');
-    categoryTitle.textContent = category;
-    categoryTitle.classList.add('tag-category-title');
-    tagsContainer.appendChild(categoryTitle);
+    // Titre cliquable
+    const header = document.createElement('div');
+    header.classList.add('tag-category-title');
+    header.textContent = `▼ ${category}`;
+    header.style.cursor = 'pointer';
 
-    // Ajouter chaque tag
+    // Conteneur des tags
+    const tagsWrapper = document.createElement('div');
+    tagsWrapper.classList.add('tag-list');
+
+    // Ajout des tags
     sortedTags.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.classList.add('tag');
@@ -381,8 +406,19 @@ function renderTags() {
         }
         updateUI();
       });
-      tagsContainer.appendChild(tagEl);
+      tagsWrapper.appendChild(tagEl);
     });
+
+    // Toggle réduction/extension
+    header.addEventListener('click', () => {
+      const isVisible = tagsWrapper.style.display !== 'none';
+      tagsWrapper.style.display = isVisible ? 'none' : 'flex';
+      header.textContent = `${isVisible ? '▶' : '▼'} ${category}`;
+    });
+
+    section.appendChild(header);
+    section.appendChild(tagsWrapper);
+    tagsContainer.appendChild(section);
   });
 }
 
