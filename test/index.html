@@ -86,6 +86,16 @@
     border-radius: 10px;
 }
 
+.tag-category-title {
+  width: 100%;
+  font-weight: bold;
+  color: #ff5722;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 2px;
+}
 
 .tags-container.collapsed {
   max-height: 0;
@@ -339,7 +349,6 @@ function renderTags() {
   const tagsSet = new Set();
   data.champions.forEach(champ => {
     champ.tags.forEach(tag => tagsSet.add(tag));
-    // Inclure la classe en tag si présente
     if (champ.class) tagsSet.add(champ.class);
   });
 
@@ -350,6 +359,15 @@ function renderTags() {
     const filter = tagFilters[category];
     const sortedTags = allTags.filter(filter).sort();
 
+    if (sortedTags.length === 0) return; // Ne rien afficher si aucun tag pour cette catégorie
+
+    // Ajouter un titre de section
+    const categoryTitle = document.createElement('div');
+    categoryTitle.textContent = category;
+    categoryTitle.classList.add('tag-category-title');
+    tagsContainer.appendChild(categoryTitle);
+
+    // Ajouter chaque tag
     sortedTags.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.classList.add('tag');
@@ -367,6 +385,7 @@ function renderTags() {
     });
   });
 }
+
 
 
 
