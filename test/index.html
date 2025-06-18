@@ -63,22 +63,27 @@
 
 /* Tags container */
 .tags-container {
-  display: flex;
-  overflow-x: auto;
-  white-space: nowrap;
-  gap: 6px;
-  padding: 10px;
-  scrollbar-width: thin;
-  scrollbar-color: #FF5722 transparent;
+    display: flex;
+    flex-wrap: wrap;         /* pour avoir plusieurs lignes */
+    gap: 6px;
+    max-height: 150px;       /* hauteur fixe (ajuste à ta convenance) */
+    max-width: 100%;         /* largeur max de ton parent */
+    overflow-x: auto;        /* scroll horizontal */
+    overflow-y: auto;        /* scroll vertical */
+    padding: 6px;
+    border: 1px solid #444;  /* optionnel, juste pour voir la boîte */
+    scrollbar-width: thin;   /* scrollbar fine Firefox */
+    scrollbar-color: #FF5722 transparent;
 }
 
 .tags-container::-webkit-scrollbar {
-  height: 6px;
+    width: 6px;
+    height: 6px;
 }
 
 .tags-container::-webkit-scrollbar-thumb {
-  background-color: #FF5722;
-  border-radius: 10px;
+    background-color: #FF5722;
+    border-radius: 10px;
 }
 
 
