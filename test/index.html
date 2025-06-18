@@ -276,33 +276,31 @@
 
 <!-- Menu JS -->
 <script>
-    window.onload = function() {
-        const menu = document.getElementById("side-menu");
-        menu.style.left = "-250px";
-        renderTags();
-        updateUI();
-    };
+window.onload = function() {
+  const menu = document.getElementById("side-menu");
+  menu.style.left = "-250px";
+  // Attention : renderTags et updateUI sont appelés après fetch, ici pas besoin
+};
 
-    function toggleMenu() {
-        const menu = document.getElementById("side-menu");
-        menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
-    }
+function toggleMenu() {
+  const menu = document.getElementById("side-menu");
+  menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
+}
 
-    function closeMenu() {
-        document.getElementById("side-menu").style.left = "-250px";
-    }
+function closeMenu() {
+  document.getElementById("side-menu").style.left = "-250px";
+}
 
-    window.onclick = function(event) {
-        const menu = document.getElementById("side-menu");
-        const menuIcon = document.querySelector(".menu-icon");
-        if (!menu.contains(event.target) && event.target !== menuIcon) {
-            menu.style.left = "-250px";
-        }
-    };
-</script>
+window.onclick = function(event) {
+  const menu = document.getElementById("side-menu");
+  const menuIcon = document.querySelector(".menu-icon");
+  if (!menu.contains(event.target) && event.target !== menuIcon) {
+    menu.style.left = "-250px";
+  }
+};
 
-<!-- Champions JS -->
-<script>
+
+// -- Champions JS --
 let data = null;
 let activeTags = new Set();
 
@@ -314,15 +312,17 @@ const toggleFiltersBtn = document.getElementById('toggleFilters');
 fetch('champions.json')
   .then(res => res.json())
   .then(json => {
-    // Injecter la classe comme tag une seule fois pour chaque champion
     data = json;
     data.champions.forEach(champ => {
       if (champ.class) {
-        champ.tags.push(`#` + champ.class); // Exemple : "#Science"
+        if (!Array.isArray(champ.tags)) champ.tags = [];
+        const classTag = `#${champ.class}`;
+        if (!champ.tags.includes(classTag)) {
+          champ.tags.push(classTag);
+        }
       }
     });
 
-    // Appeler le rendu des tags et la mise à jour UI UNE SEULE FOIS
     renderTags();
     updateUI();
   })
@@ -331,8 +331,6 @@ fetch('champions.json')
     console.error(err);
   });
 
-
-// Ensuite, dans renderTags()
 function renderTags() {
   const orderedCategories = [
     'Rareté',
@@ -351,7 +349,7 @@ function renderTags() {
 
   const tagFilters = {
     'Rareté': t => /^#\d-STAR$/.test(t),
-    'Classe': t => /^(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
+    'Classe': t => /^#(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
     'RAIDS': t => t.startsWith('#RAIDS:'),
     'AW': t => t.startsWith('#AW:'),
     'Spécial': t => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Saga Champions)/.test(t),
@@ -366,8 +364,10 @@ function renderTags() {
 
   const tagsSet = new Set();
   data.champions.forEach(champ => {
-    champ.tags.forEach(tag => tagsSet.add(tag));
-    if (champ.class) tagsSet.add(champ.class);
+    if (Array.isArray(champ.tags)) {
+      champ.tags.forEach(tag => tagsSet.add(tag));
+    }
+    // Ne pas ajouter champ.class sans #
   });
 
   const allTags = Array.from(tagsSet);
@@ -378,40 +378,31 @@ function renderTags() {
     const sortedTags = allTags.filter(filter).sort();
     if (sortedTags.length === 0) return;
 
-    // Section container
     const section = document.createElement('div');
     section.classList.add('tag-category');
 
-    // Titre cliquable
     const header = document.createElement('div');
     header.classList.add('tag-category-title');
     header.textContent = `▶ ${category}`;
     header.style.cursor = 'pointer';
 
-    // Conteneur des tags
     const tagsWrapper = document.createElement('div');
     tagsWrapper.classList.add('tag-list');
-    tagsWrapper.style.display = 'none'; // cacher au début
+    tagsWrapper.style.display = 'none';
 
-
-    // Ajout des tags
     sortedTags.forEach(tag => {
       const tagEl = document.createElement('span');
       tagEl.classList.add('tag');
       tagEl.textContent = tag;
       if (activeTags.has(tag)) tagEl.classList.add('active');
       tagEl.addEventListener('click', () => {
-        if (activeTags.has(tag)) {
-          activeTags.delete(tag);
-        } else {
-          activeTags.add(tag);
-        }
+        if (activeTags.has(tag)) activeTags.delete(tag);
+        else activeTags.add(tag);
         updateUI();
       });
       tagsWrapper.appendChild(tagEl);
     });
 
-    // Toggle réduction/extension
     header.addEventListener('click', () => {
       const isVisible = tagsWrapper.style.display !== 'none';
       tagsWrapper.style.display = isVisible ? 'none' : 'flex';
@@ -424,19 +415,16 @@ function renderTags() {
   });
 }
 
-
-
-
-
 function updateUI() {
- tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
-  tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
-});
+  tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
+    tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
+  });
 
   let champs = data.champions;
 
   if (activeTags.size > 0) {
     champs = champs.filter(champ => {
+      if (!Array.isArray(champ.tags)) return false;
       for (let tag of activeTags) {
         if (!champ.tags.includes(tag)) return false;
       }
@@ -469,13 +457,10 @@ resetBtn.addEventListener('click', () => {
 toggleFiltersBtn.addEventListener('click', () => {
   const isCollapsed = tagsContainer.classList.toggle('collapsed');
   toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
-  if (isCollapsed) {
-    toggleFiltersBtn.textContent = "Afficher les filtres ▼";
-  } else {
-    toggleFiltersBtn.textContent = "Masquer les filtres ▲";
-  }
+  toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
 });
 </script>
+
 
 </body>
 </html>
