@@ -209,7 +209,19 @@ main {
     padding: 5px 10px;
     font-size: 11px;
   }
+}
+.class-filter-img {
+  width: 8%;
+  height: 8%;
+  margin: 0 8px;
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
 
+.class-filter-img.selected {
+  filter: none;
+}
   .champion-img {
     width: 48px;
     height: 48px;
