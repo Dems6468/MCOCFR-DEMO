@@ -342,7 +342,7 @@ function initializeApp() {
   data.champions.forEach(champ => {
     if (champ.class) {
       if (!Array.isArray(champ.tags)) champ.tags = [];
-      const classTag = `#${champ.class}`;
+      const classTag = champ.class;
       if (!champ.tags.includes(classTag)) {
         champ.tags.push(classTag);
       }
@@ -381,7 +381,7 @@ function renderClassFilters() {
     img.style.cursor = 'pointer';
 
     img.addEventListener('click', () => {
-      const classTag = `#${cl.id}`;
+      const classTag = cl.id;
       if (activeClasses.has(cl.id)) {
         activeClasses.delete(cl.id);
         activeTags.delete(classTag);
@@ -467,14 +467,14 @@ function renderTags() {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
           // If it's a class tag, also remove from activeClasses
-          const classMatch = tag.match(/^#(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
+          const classMatch = tag.match(/^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
           if (classMatch) {
             activeClasses.delete(classMatch[1]);
           }
         } else {
           activeTags.add(tag);
           // If it's a class tag, also add to activeClasses
-          const classMatch = tag.match(/^#(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
+          const classMatch = tag.match(/^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
           if (classMatch) {
             activeClasses.add(classMatch[1]);
           }
