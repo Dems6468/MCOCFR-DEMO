@@ -295,22 +295,29 @@ main {
 // Menu functions
 window.onload = function() {
   const menu = document.getElementById("side-menu");
-  menu.style.left = "-250px";
+  if (menu) {
+    menu.style.left = "-250px";
+  }
 };
 
 function toggleMenu() {
   const menu = document.getElementById("side-menu");
-  menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
+  if (menu) {
+    menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
+  }
 }
 
 function closeMenu() {
-  document.getElementById("side-menu").style.left = "-250px";
+  const menu = document.getElementById("side-menu");
+  if (menu) {
+    menu.style.left = "-250px";
+  }
 }
 
 window.onclick = function(event) {
   const menu = document.getElementById("side-menu");
   const menuIcon = document.querySelector(".menu-icon");
-  if (!menu.contains(event.target) && event.target !== menuIcon) {
+  if (menu && !menu.contains(event.target) && event.target !== menuIcon) {
     menu.style.left = "-250px";
   }
 };
@@ -409,6 +416,7 @@ function renderTags() {
   if (!tagsContainer) return;
 
   const orderedCategories = [
+    'CLASSE',
     'SAGA',
     'RARETE ET JOUABLE',
     'QUÊTES D\'ALLIANCE',
@@ -421,6 +429,7 @@ function renderTags() {
   ];
 
   const tagFilters = {
+    'CLASSE': t => /^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/.test(t),
     'SAGA': t => /^#Saga Champions$/.test(t),
     'RARETE ET JOUABLE': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
     'QUÊTES D\'ALLIANCE': t => /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
@@ -469,16 +478,14 @@ function renderTags() {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
           // If it's a class tag, also remove from activeClasses
-          const classMatch = tag.match(/^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
-          if (classMatch) {
-            activeClasses.delete(classMatch[1]);
+          if (['Tech', 'Science', 'Skill', 'Cosmic', 'Mutant', 'Mystic', 'Combined'].includes(tag)) {
+            activeClasses.delete(tag);
           }
         } else {
           activeTags.add(tag);
           // If it's a class tag, also add to activeClasses
-          const classMatch = tag.match(/^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
-          if (classMatch) {
-            activeClasses.add(classMatch[1]);
+          if (['Tech', 'Science', 'Skill', 'Cosmic', 'Mutant', 'Mystic', 'Combined'].includes(tag)) {
+            activeClasses.add(tag);
           }
         }
         updateUI();
