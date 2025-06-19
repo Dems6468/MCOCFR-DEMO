@@ -322,9 +322,42 @@ fetch('champions.json')
         }
       }
     });
+let activeClasses = new Set();
 
-    renderTags();
-    updateUI();
+const classFiltersContainer = document.getElementById('classFiltersContainer');
+
+function renderClassFilters() {
+  // Extraire toutes les classes uniques
+  const classesSet = new Set(data.champions.map(c => c.class).filter(Boolean));
+  classFiltersContainer.innerHTML = '';
+
+  classesSet.forEach(cl => {
+    const img = document.createElement('img');
+    img.src = `images/classes/${cl}.png`; // adapte selon ton chemin d'image
+    img.alt = cl;
+    img.title = cl;
+    img.classList.add('class-filter-img');
+    img.style.filter = 'grayscale(100%)'; // grisé par défaut
+
+    img.addEventListener('click', () => {
+      if (activeClasses.has(cl)) {
+        activeClasses.delete(cl);
+        img.style.filter = 'grayscale(100%)';
+      } else {
+        activeClasses.add(cl);
+        img.style.filter = 'none';
+      }
+      updateUI();
+    });
+
+    classFiltersContainer.appendChild(img);
+  });
+}
+
+   renderTags();
+renderClassFilters();
+updateUI();
+
   })
   .catch(err => {
     championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
@@ -430,10 +463,12 @@ const tagFilters = {
 }
 
 function updateUI() {
+  // Met à jour les tags actifs (comme avant)
   tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
     tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
   });
 
+  // Filtrage des champions
   let champs = data.champions;
 
   if (activeTags.size > 0) {
@@ -444,6 +479,10 @@ function updateUI() {
       }
       return true;
     });
+  }
+
+  if (activeClasses.size > 0) {
+    champs = champs.filter(champ => activeClasses.has(champ.class));
   }
 
   championsGrid.innerHTML = '';
@@ -462,6 +501,7 @@ function updateUI() {
     championsGrid.appendChild(img);
   });
 }
+
 
 resetBtn.addEventListener('click', () => {
   activeTags.clear();
