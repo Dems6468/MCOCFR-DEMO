@@ -336,35 +336,40 @@ fetch('champions.json')
         }
       }
     });
-let activeClasses = new Set();
+const classes = [
+  { id: 'tech', label: 'Tech', imgSrc: 'classes/tech.png' },
+  { id: 'science', label: 'Science', imgSrc: 'science.png' },
+  { id: 'skill', label: 'Skill', imgSrc: 'skill.png' },
+  { id: 'cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
+  { id: 'mutant', label: 'Mutant', imgSrc: 'mutant.png' },
+  { id: 'mystic', label: 'Mystic', imgSrc: 'mystic.png' },
+];
 
 const classFiltersContainer = document.getElementById('classFiltersContainer');
 
-function renderClassFilters() {
-  // Extraire toutes les classes uniques
-  const classesSet = new Set(data.champions.map(c => c.class).filter(Boolean));
-  classFiltersContainer.innerHTML = '';
+classes.forEach(cl => {
+  const img = document.createElement('img');
+  img.src = cl.imgSrc;
+  img.alt = cl.label;
+  img.title = cl.label;
+  img.classList.add('class-filter-img');
+  img.style.filter = 'grayscale(100%)';  // grisée par défaut
 
-  classesSet.forEach(cl => {
-    const img = document.createElement('img');
-    img.src = `images/classes/${cl}.png`; // adapte selon ton chemin d'image
-    img.alt = cl;
-    img.title = cl;
-    img.classList.add('class-filter-img');
-    img.style.filter = 'grayscale(100%)'; // grisé par défaut
+  img.addEventListener('click', () => {
+    const tag = `#${cl.id}`;
+    if (activeTags.has(tag)) {
+      activeTags.delete(tag);
+      img.style.filter = 'grayscale(100%)';  // repasse en gris
+    } else {
+      activeTags.add(tag);
+      img.style.filter = 'none';  // couleur normale
+    }
+    updateUI();
+  });
 
-    img.addEventListener('click', () => {
-      if (activeClasses.has(cl)) {
-        activeClasses.delete(cl);
-        img.style.filter = 'grayscale(100%)';
-      } else {
-        activeClasses.add(cl);
-        img.style.filter = 'none';
-      }
-      updateUI();
-    });
+  classFiltersContainer.appendChild(img);
+});
 
-    classFiltersContainer.appendChild(img);
   });
 }
 
