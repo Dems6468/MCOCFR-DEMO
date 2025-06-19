@@ -333,50 +333,48 @@ fetch('champions.json')
 
 function renderTags() {
   const orderedCategories = [
-    'Rareté',
-    'Classe',
-    'RAIDS',
-    'AW',
-    'Spécial',
-    'Traits',
-    'Alignement',
-    'Taille',
-    'Rôle',
-    'Équipe',
-    'Année',
+    'SAGA',
+    'RARETE ET JOUABLE',
+    'QUÊTES D’ALLIANCE',
+    'SAISON DE GUERRE D’ALLIANCE',
+    'ATTRIBUTS',
+    'CHALLENGERS DE CARINAS',
+    'STYLE DE COMBAT',
+    'ORGANISATION',
+    'DATE DE SORTIE',
     'Divers'
   ];
 
 const tagFilters = {
-  'SAGA': t => /^#Saga:/.test(t),
+  'SAGA': t => /^#Saga Champions$/.test(t),
 
   'RARETE ET JOUABLE': t =>
-    /^#(1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR|Jouable)/.test(t),
+    /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
 
-  'QUÊTES D’ALLIANCE': t =>
-    /^#(AQ:|Map\d|Alliance Quest)/.test(t),
+  'QUETES DALLIANCE': t =>
+    /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
 
-  'SAISON DE GUERRE D’ALLIANCE': t =>
-    /^#AW:/.test(t),
+  "SAISON DE GUERRE D'ALLIANCE": t =>
+    /^#(AW: Subdue|AW: Crush 2\.0|Clarity|Coda|AW: Armor Burn|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis)$/.test(t),
 
   'ATTRIBUTS': t =>
-    /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|Mystical Being|Tech-Enhanced|Mutant Gene)/.test(t),
+    /^#(Metal|Psychic Shielding|Flying|Elder|Canadian|1000% Awesome|getswole|EQ: It's Complicated|EQ: Romance|Robot|Gamma|Dimensional Being|God|Wakandan|blessed|shrednation|Hero|Villain of the Contest|Spider-Verse Heroes|Rising Power|Eidol|winning|mcm|Villain|Mercenary|Silver|Devilishly Handsome|goals|nofilter|noexcuses|Size: S|Size: M|Size: L|Size: XL)$/.test(t),
 
   'CHALLENGERS DE CARINAS': t =>
-    /^#Carina:/.test(t),
+    /^#(10 Year Challenge|Carina's Challengers)$/.test(t),
 
   'STYLE DE COMBAT': t =>
-    /^#(Offensif|Défensif|Polyvalent|Contrôle|Burst|DoT|Tank|Counter)/.test(t),
+    /^#(Offensive: Burst|Offensive: Damage Over Time|Offensive: Raw Damage|Defensive: Guard|Defensive: Tank|Defensive: Utility|Control: Counter|Control: Denial)$/.test(t),
 
   'ORGANISATION': t =>
-    /^#(X-Men|Avengers|Brotherhood|Fantastic Four|Shield|Hydra|Thunderbolts|Inhumans|Kree|Guardians|Symbiote|Deathless|Cul's Worthy|Legion)/.test(t),
+    /^#(Guardians of the Galaxy|Inhuman|Mighty Avengers|Sinister Six|Legion of Monsters|Chronos Corps|Alpha Flight|Symbiote|Inhuman Royal Family|Cul's Worthy|Brotherhood of Mutants|X-Force|Stark Tech|Young Avengers|X-Men|Avengers|S\.H\.I\.E\.L\.D|Thunderbolts|Kree|Thanos's Army|Deathless|A-Force|Illuminati|New Avengers|Defenders|Champions|Fantastic Four|Hydra)$/.test(t),
 
   'DATE DE SORTIE': t =>
-    /^#20\d{2}$/.test(t),
+    /^#(2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024|2025)$/.test(t),
 
-  // Si un tag ne correspond à rien, il tombe ici
   'Divers': t => true
 };
+
 
 
   const tagsSet = new Set();
