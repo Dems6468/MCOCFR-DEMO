@@ -316,14 +316,14 @@ window.onclick = function(event) {
 // Champions filtering system
 let data = null;
 let activeTags = new Set();
-let activeClasses = new Set(); // Added missing variable
+let activeClasses = new Set();
 
 const tagsContainer = document.getElementById('tagsContainer');
 const championsGrid = document.getElementById('championsGrid');
 const resetBtn = document.getElementById('resetFilters');
 const toggleFiltersBtn = document.getElementById('toggleFilters');
 
-// Uncomment this to use actual JSON file
+// Load data
 fetch('champions.json')
   .then(res => res.json())
   .then(json => {
@@ -331,7 +331,9 @@ fetch('champions.json')
     initializeApp();
   })
   .catch(err => {
-    championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
+    if (championsGrid) {
+      championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
+    }
     console.error(err);
   });
 
@@ -340,15 +342,14 @@ function initializeApp() {
   data.champions.forEach(champ => {
     if (champ.class) {
       if (!Array.isArray(champ.tags)) champ.tags = [];
-      const classTag = champ.class;
+      const classTag = `#${champ.class}`;
       if (!champ.tags.includes(classTag)) {
         champ.tags.push(classTag);
       }
     }
   });
-}
 
-
+  // Initialize UI components
   renderClassFilters();
   renderTags();
   updateUI();
@@ -366,6 +367,8 @@ function renderClassFilters() {
   ];
 
   const classFiltersContainer = document.getElementById('classFiltersContainer');
+  if (!classFiltersContainer) return;
+  
   classFiltersContainer.innerHTML = '';
 
   classes.forEach(cl => {
@@ -375,14 +378,17 @@ function renderClassFilters() {
     img.title = cl.label;
     img.classList.add('class-filter-img');
     img.style.filter = 'grayscale(100%)';
+    img.style.cursor = 'pointer';
 
     img.addEventListener('click', () => {
-      const tag = `#${cl.id}`;
-      if (activeTags.has(tag)) {
-        activeTags.delete(tag);
+      const classTag = `#${cl.id}`;
+      if (activeClasses.has(cl.id)) {
+        activeClasses.delete(cl.id);
+        activeTags.delete(classTag);
         img.style.filter = 'grayscale(100%)';
       } else {
-        activeTags.add(tag);
+        activeClasses.add(cl.id);
+        activeTags.add(classTag);
         img.style.filter = 'none';
       }
       updateUI();
@@ -398,6 +404,8 @@ function renderClassFilters() {
 }
 
 function renderTags() {
+  if (!tagsContainer) return;
+
   const orderedCategories = [
     'SAGA',
     'RARETE ET JOUABLE',
@@ -443,6 +451,7 @@ function renderTags() {
     const header = document.createElement('div');
     header.classList.add('tag-category-title');
     header.textContent = `▶ ${category}`;
+    header.style.cursor = 'pointer';
 
     const tagsWrapper = document.createElement('div');
     tagsWrapper.classList.add('tag-list');
@@ -452,12 +461,23 @@ function renderTags() {
       const tagEl = document.createElement('span');
       tagEl.classList.add('tag');
       tagEl.textContent = tag;
+      tagEl.style.cursor = 'pointer';
       if (activeTags.has(tag)) tagEl.classList.add('active');
       tagEl.addEventListener('click', () => {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
+          // If it's a class tag, also remove from activeClasses
+          const classMatch = tag.match(/^#(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
+          if (classMatch) {
+            activeClasses.delete(classMatch[1]);
+          }
         } else {
           activeTags.add(tag);
+          // If it's a class tag, also add to activeClasses
+          const classMatch = tag.match(/^#(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/);
+          if (classMatch) {
+            activeClasses.add(classMatch[1]);
+          }
         }
         updateUI();
       });
@@ -478,8 +498,20 @@ function renderTags() {
 
 function updateUI() {
   // Update active tags display
-  tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
-    tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
+  if (tagsContainer) {
+    tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
+      tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
+    });
+  }
+
+  // Update class filter images
+  document.querySelectorAll('.class-filter-img').forEach(img => {
+    const className = img.alt; // Using alt as class identifier
+    if (activeClasses.has(className)) {
+      img.style.filter = 'none';
+    } else {
+      img.style.filter = 'grayscale(100%)';
+    }
   });
 
   // Filter champions
@@ -496,6 +528,7 @@ function updateUI() {
   }
 
   // Display champions
+  if (!championsGrid) return;
   championsGrid.innerHTML = '';
 
   if (champs.length === 0) {
@@ -519,23 +552,27 @@ function updateUI() {
 }
 
 // Event listeners
-resetBtn.addEventListener('click', () => {
-  activeTags.clear();
-  activeClasses.clear();
-  
-  // Reset class filter images
-  document.querySelectorAll('.class-filter-img').forEach(img => {
-    img.style.filter = 'grayscale(100%)';
+if (resetBtn) {
+  resetBtn.addEventListener('click', () => {
+    activeTags.clear();
+    activeClasses.clear();
+    
+    // Reset class filter images
+    document.querySelectorAll('.class-filter-img').forEach(img => {
+      img.style.filter = 'grayscale(100%)';
+    });
+    
+    updateUI();
   });
-  
-  updateUI();
-});
+}
 
-toggleFiltersBtn.addEventListener('click', () => {
-  const isCollapsed = tagsContainer.classList.toggle('collapsed');
-  toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
-  toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
-});
+if (toggleFiltersBtn && tagsContainer) {
+  toggleFiltersBtn.addEventListener('click', () => {
+    const isCollapsed = tagsContainer.classList.toggle('collapsed');
+    toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
+    toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
+  });
+}
 </script>
 </body>
 </html>
