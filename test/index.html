@@ -340,7 +340,7 @@ function initializeApp() {
   data.champions.forEach(champ => {
     if (champ.class) {
       if (!Array.isArray(champ.tags)) champ.tags = [];
-      const classTag = `#${champ.class}`;
+      const classTag = {champ.class};
       if (!champ.tags.includes(classTag)) {
         champ.tags.push(classTag);
       }
