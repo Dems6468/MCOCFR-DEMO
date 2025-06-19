@@ -63,10 +63,16 @@
 .class-filter-img {
   width: 80px;
   height: 80px;
-  cursor: pointer;
   margin: 0 8px;
+  cursor: pointer;
+  filter: grayscale(100%);
   transition: filter 0.3s ease;
 }
+
+.class-filter-img.selected {
+  filter: none;
+}
+
 
 /* Tags container */
 .tags-container {
