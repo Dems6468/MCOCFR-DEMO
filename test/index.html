@@ -351,7 +351,8 @@ function initializeApp() {
   data.champions.forEach(champ => {
     if (champ.class) {
       if (!Array.isArray(champ.tags)) champ.tags = [];
-      const classTag = champ.class;
+      // Trim whitespace from class name
+      const classTag = champ.class.trim();
       if (!champ.tags.includes(classTag)) {
         champ.tags.push(classTag);
       }
@@ -366,13 +367,13 @@ function initializeApp() {
 
 function renderClassFilters() {
   const classes = [
-    { id: 'Tech ', label: 'Tech', imgSrc: 'tech.png' },
-    { id: 'Science ', label: 'Science', imgSrc: 'science.png' },
-    { id: 'Skill ', label: 'Skill', imgSrc: 'skill.png' },
-    { id: 'Cosmic ', label: 'Cosmic', imgSrc: 'cosmic.png' },
-    { id: 'Mutant ', label: 'Mutant', imgSrc: 'mutant.png' },
-    { id: 'Mystic ', label: 'Mystic', imgSrc: 'mystic.png' },
-    { id: 'Combined ', label: 'Combined', imgSrc: 'superior.png' },
+    { id: 'Tech', label: 'Tech', imgSrc: 'tech.png' },
+    { id: 'Science', label: 'Science', imgSrc: 'science.png' },
+    { id: 'Skill', label: 'Skill', imgSrc: 'skill.png' },
+    { id: 'Cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
+    { id: 'Mutant', label: 'Mutant', imgSrc: 'mutant.png' },
+    { id: 'Mystic', label: 'Mystic', imgSrc: 'mystic.png' },
+    { id: 'Combined', label: 'Combined', imgSrc: 'superior.png' },
   ];
 
   const classFiltersContainer = document.getElementById('classFiltersContainer');
@@ -416,7 +417,6 @@ function renderTags() {
   if (!tagsContainer) return;
 
   const orderedCategories = [
-    'CLASSE',
     'SAGA',
     'RARETE ET JOUABLE',
     'QUÊTES D\'ALLIANCE',
@@ -429,7 +429,6 @@ function renderTags() {
   ];
 
   const tagFilters = {
-    'CLASSE': t => /^(Tech|Science|Skill|Cosmic|Mutant|Mystic|Combined)$/.test(t),
     'SAGA': t => /^#Saga Champions$/.test(t),
     'RARETE ET JOUABLE': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
     'QUÊTES D\'ALLIANCE': t => /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
@@ -478,7 +477,7 @@ function renderTags() {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
           // If it's a class tag, also remove from activeClasses
-          if (['Tech', 'Science ', 'Skill ', 'Cosmic ', 'Mutant ', 'Mystic ', 'Combined '].includes(tag)) {
+          if (['Tech', 'Science', 'Skill', 'Cosmic', 'Mutant', 'Mystic', 'Combined'].includes(tag)) {
             activeClasses.delete(tag);
           }
         } else {
@@ -529,8 +528,17 @@ function updateUI() {
   if (activeTags.size > 0) {
     champs = champs.filter(champ => {
       if (!Array.isArray(champ.tags)) return false;
+      // Create a normalized tags array that includes trimmed class
+      const normalizedTags = [...champ.tags];
+      if (champ.class) {
+        const trimmedClass = champ.class.trim();
+        if (!normalizedTags.includes(trimmedClass)) {
+          normalizedTags.push(trimmedClass);
+        }
+      }
+      
       for (let tag of activeTags) {
-        if (!champ.tags.includes(tag)) return false;
+        if (!normalizedTags.includes(tag)) return false;
       }
       return true;
     });
