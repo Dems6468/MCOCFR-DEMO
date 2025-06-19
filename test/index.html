@@ -40,9 +40,7 @@
   color: #ff5722;
 }
 
-/* Boutons */
-#toggleFilters,
-#resetFilters {
+#matchModeBtn {
   background-color: #ff5722;
   border: none;
   border-radius: 20px;
@@ -57,8 +55,17 @@
 }
 
 #toggleFilters:hover,
-#resetFilters:hover {
+#resetFilters:hover,
+#matchModeBtn:hover {
   background-color: #ff784e;
+}
+
+#matchModeBtn.match-any {
+  background-color: #4CAF50;
+}
+
+#matchModeBtn.match-any:hover {
+  background-color: #66BB6A;
 }
 .class-filter-img {
   width: 80px;
@@ -264,6 +271,11 @@ main {
   <button id="toggleFilters" aria-expanded="true" aria-controls="tagsContainer">
     Masquer les filtres ▲
   </button>
+
+     <button id="matchModeBtn" class="match-all">
+    Mode: Correspondance complète (ET)
+  </button>
+    
 <div id="classFiltersContainer" class="class-filters"></div>
 
   <div class="tags-container" id="tagsContainer"></div>
@@ -331,7 +343,7 @@ const tagsContainer = document.getElementById('tagsContainer');
 const championsGrid = document.getElementById('championsGrid');
 const resetBtn = document.getElementById('resetFilters');
 const toggleFiltersBtn = document.getElementById('toggleFilters');
-
+const matchModeBtn = document.getElementById('matchModeBtn');
 // Load data
 fetch('champions.json')
   .then(res => res.json())
@@ -537,10 +549,19 @@ function updateUI() {
         }
       }
       
-      for (let tag of activeTags) {
-        if (!normalizedTags.includes(tag)) return false;
+      if (matchMode === 'all') {
+        // Mode ET : tous les tags sélectionnés doivent être présents
+        for (let tag of activeTags) {
+          if (!normalizedTags.includes(tag)) return false;
+        }
+        return true;
+      } else {
+        // Mode OU : au moins un tag sélectionné doit être présent
+        for (let tag of activeTags) {
+          if (normalizedTags.includes(tag)) return true;
+        }
+        return false;
       }
-      return true;
     });
   }
 
@@ -588,6 +609,21 @@ if (toggleFiltersBtn && tagsContainer) {
     const isCollapsed = tagsContainer.classList.toggle('collapsed');
     toggleFiltersBtn.setAttribute('aria-expanded', !isCollapsed);
     toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
+  });
+}
+    if (matchModeBtn) {
+  matchModeBtn.addEventListener('click', () => {
+    matchMode = matchMode === 'all' ? 'any' : 'all';
+    
+    if (matchMode === 'all') {
+      matchModeBtn.textContent = 'Mode: Correspondance complète (ET)';
+      matchModeBtn.className = 'match-all';
+    } else {
+      matchModeBtn.textContent = 'Mode: N\'importe lequel (OU)';
+      matchModeBtn.className = 'match-any';
+    }
+    
+    updateUI();
   });
 }
 </script>
