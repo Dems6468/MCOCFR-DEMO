@@ -290,10 +290,10 @@
 
 <!-- Menu JS -->
 <script>
+// Menu functions
 window.onload = function() {
   const menu = document.getElementById("side-menu");
   menu.style.left = "-250px";
-  // Attention : renderTags et updateUI sont appelés après fetch, ici pas besoin
 };
 
 function toggleMenu() {
@@ -313,83 +313,94 @@ window.onclick = function(event) {
   }
 };
 
-
-// -- Champions JS --
+// Champions filtering system
 let data = null;
 let activeTags = new Set();
+let activeClasses = new Set(); // Added missing variable
 
 const tagsContainer = document.getElementById('tagsContainer');
 const championsGrid = document.getElementById('championsGrid');
 const resetBtn = document.getElementById('resetFilters');
 const toggleFiltersBtn = document.getElementById('toggleFilters');
 
+// Uncomment this to use actual JSON file
 fetch('champions.json')
   .then(res => res.json())
   .then(json => {
     data = json;
-    data.champions.forEach(champ => {
-      if (champ.class) {
-        if (!Array.isArray(champ.tags)) champ.tags = [];
-        const classTag = `#${champ.class}`;
-        if (!champ.tags.includes(classTag)) {
-          champ.tags.push(classTag);
-        }
-      }
-    });
-const classes = [
-  { id: 'Tech', label: 'Tech', imgSrc: 'tech.png' },
-  { id: 'Science', label: 'Science', imgSrc: 'science.png' },
-  { id: 'Skill', label: 'Skill', imgSrc: 'skill.png' },
-  { id: 'Cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
-  { id: 'Mutant', label: 'Mutant', imgSrc: 'mutant.png' },
-  { id: 'Mystic', label: 'Mystic', imgSrc: 'mystic.png' },
-  { id: 'Combined', label: 'Combined', imgSrc: 'superior.png' },
-];
-
-const classFiltersContainer = document.getElementById('classFiltersContainer');
-
-classes.forEach(cl => {
-  const img = document.createElement('img');
-  img.src = cl.imgSrc;
-  img.alt = cl.label;
-  img.title = cl.label;
-  img.classList.add('class-filter-img');
-  img.style.filter = 'grayscale(100%)';  // grisée par défaut
-
-  img.addEventListener('click', () => {
-    const tag = `#${cl.id}`;
-    if (activeTags.has(tag)) {
-      activeTags.delete(tag);
-      img.style.filter = 'grayscale(100%)';  // repasse en gris
-    } else {
-      activeTags.add(tag);
-      img.style.filter = 'none';  // couleur normale
-    }
-    updateUI();
-  });
-
-  classFiltersContainer.appendChild(img);
-});
-
-  });
-}
-
-   renderTags();
-renderClassFilters();
-updateUI();
-
+    initializeApp();
   })
   .catch(err => {
     championsGrid.innerHTML = "<p class='no-selection'>Erreur lors du chargement des données.</p>";
     console.error(err);
   });
 
+function initializeApp() {
+  // Add class tags to champions
+  data.champions.forEach(champ => {
+    if (champ.class) {
+      if (!Array.isArray(champ.tags)) champ.tags = [];
+      const classTag = `#${champ.class}`;
+      if (!champ.tags.includes(classTag)) {
+        champ.tags.push(classTag);
+      }
+    }
+  });
+
+  renderClassFilters();
+  renderTags();
+  updateUI();
+}
+
+function renderClassFilters() {
+  const classes = [
+    { id: 'Tech', label: 'Tech', imgSrc: 'tech.png' },
+    { id: 'Science', label: 'Science', imgSrc: 'science.png' },
+    { id: 'Skill', label: 'Skill', imgSrc: 'skill.png' },
+    { id: 'Cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
+    { id: 'Mutant', label: 'Mutant', imgSrc: 'mutant.png' },
+    { id: 'Mystic', label: 'Mystic', imgSrc: 'mystic.png' },
+    { id: 'Combined', label: 'Combined', imgSrc: 'superior.png' },
+  ];
+
+  const classFiltersContainer = document.getElementById('classFiltersContainer');
+  classFiltersContainer.innerHTML = '';
+
+  classes.forEach(cl => {
+    const img = document.createElement('img');
+    img.src = cl.imgSrc;
+    img.alt = cl.label;
+    img.title = cl.label;
+    img.classList.add('class-filter-img');
+    img.style.filter = 'grayscale(100%)';
+
+    img.addEventListener('click', () => {
+      const tag = `#${cl.id}`;
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+        img.style.filter = 'grayscale(100%)';
+      } else {
+        activeTags.add(tag);
+        img.style.filter = 'none';
+      }
+      updateUI();
+    });
+
+    // Fallback for missing images
+    img.onerror = function() {
+      this.src = `https://via.placeholder.com/80x80/ff5722/ffffff?text=${cl.label.charAt(0)}`;
+    };
+
+    classFiltersContainer.appendChild(img);
+  });
+}
+
 function renderTags() {
   const orderedCategories = [
     'SAGA',
     'RARETE ET JOUABLE',
-    'QUÊTES D’ALLIANCE',
-    'SAISON DE GUERRE D’ALLIANCE',
+    'QUÊTES D\'ALLIANCE',
+    'SAISON DE GUERRE D\'ALLIANCE',
     'ATTRIBUTS',
     'CHALLENGERS DE CARINAS',
     'STYLE DE COMBAT',
@@ -397,44 +408,23 @@ function renderTags() {
     'DATE DE SORTIE',
   ];
 
-const tagFilters = {
-  'SAGA': t => /^#Saga Champions$/.test(t),
-
-  'RARETE ET JOUABLE': t =>
-    /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
-
-  'QUÊTES D’ALLIANCE': t =>
-    /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
-
-  "SAISON DE GUERRE D’ALLIANCE": t =>
-    /^#(AW: Subdue|AW: Crush 2\.0|Clarity|Coda|AW: Armor Burn|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis)$/.test(t),
-
-  'ATTRIBUTS': t =>
-    /^#(Metal|Psychic Shielding|Flying|Elder|Canadian|1000% Awesome|getswole|EQ: It's Complicated|EQ: Romance|Robot|Gamma|Dimensional Being|God|Wakandan|blessed|shrednation|Hero|Villain of the Contest|Spider-Verse Heroes|Rising Power|Eidol|winning|mcm|Villain|Mercenary|Silver|Devilishly Handsome|goals|nofilter|noexcuses|Size: S|Size: M|Size: L|Size: XL)$/.test(t),
-
-  'CHALLENGERS DE CARINAS': t =>
-    /^#(10 Year Challenge|Carina's Challengers)$/.test(t),
-
-  'STYLE DE COMBAT': t =>
-    /^#(Offensive: Burst|Offensive: Damage Over Time|Offensive: Raw Damage|Defensive: Guard|Defensive: Tank|Defensive: Utility|Control: Counter|Control: Denial)$/.test(t),
-
-  'ORGANISATION': t =>
-    /^#(Guardians of the Galaxy|Inhuman|Mighty Avengers|Sinister Six|Legion of Monsters|Chronos Corps|Alpha Flight|Symbiote|Inhuman Royal Family|Cul's Worthy|Brotherhood of Mutants|X-Force|Stark Tech|Young Avengers|X-Men|Avengers|S\.H\.I\.E\.L\.D|Thunderbolts|Kree|Thanos's Army|Deathless|A-Force|Illuminati|New Avengers|Defenders|Champions|Fantastic Four|Hydra)$/.test(t),
-
-  'DATE DE SORTIE': t =>
-    /^#(2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024|2025)$/.test(t)
-
-
-};
-
-
+  const tagFilters = {
+    'SAGA': t => /^#Saga Champions$/.test(t),
+    'RARETE ET JOUABLE': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
+    'QUÊTES D\'ALLIANCE': t => /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
+    'SAISON DE GUERRE D\'ALLIANCE': t => /^#(AW: Subdue|AW: Crush 2\.0|Clarity|Coda|AW: Armor Burn|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis)$/.test(t),
+    'ATTRIBUTS': t => /^#(Metal|Psychic Shielding|Flying|Elder|Canadian|1000% Awesome|getswole|EQ: It's Complicated|EQ: Romance|Robot|Gamma|Dimensional Being|God|Wakandan|blessed|shrednation|Hero|Villain of the Contest|Spider-Verse Heroes|Rising Power|Eidol|winning|mcm|Villain|Mercenary|Silver|Devilishly Handsome|goals|nofilter|noexcuses|Size: S|Size: M|Size: L|Size: XL)$/.test(t),
+    'CHALLENGERS DE CARINAS': t => /^#(10 Year Challenge|Carina's Challengers)$/.test(t),
+    'STYLE DE COMBAT': t => /^#(Offensive: Burst|Offensive: Damage Over Time|Offensive: Raw Damage|Defensive: Guard|Defensive: Tank|Defensive: Utility|Control: Counter|Control: Denial)$/.test(t),
+    'ORGANISATION': t => /^#(Guardians of the Galaxy|Inhuman|Mighty Avengers|Sinister Six|Legion of Monsters|Chronos Corps|Alpha Flight|Symbiote|Inhuman Royal Family|Cul's Worthy|Brotherhood of Mutants|X-Force|Stark Tech|Young Avengers|X-Men|Avengers|S\.H\.I\.E\.L\.D|Thunderbolts|Kree|Thanos's Army|Deathless|A-Force|Illuminati|New Avengers|Defenders|Champions|Fantastic Four|Hydra)$/.test(t),
+    'DATE DE SORTIE': t => /^#(2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024|2025)$/.test(t)
+  };
 
   const tagsSet = new Set();
   data.champions.forEach(champ => {
     if (Array.isArray(champ.tags)) {
       champ.tags.forEach(tag => tagsSet.add(tag));
     }
-    // Ne pas ajouter champ.class sans #
   });
 
   const allTags = Array.from(tagsSet);
@@ -451,7 +441,6 @@ const tagFilters = {
     const header = document.createElement('div');
     header.classList.add('tag-category-title');
     header.textContent = `▶ ${category}`;
-    header.style.cursor = 'pointer';
 
     const tagsWrapper = document.createElement('div');
     tagsWrapper.classList.add('tag-list');
@@ -463,8 +452,11 @@ const tagFilters = {
       tagEl.textContent = tag;
       if (activeTags.has(tag)) tagEl.classList.add('active');
       tagEl.addEventListener('click', () => {
-        if (activeTags.has(tag)) activeTags.delete(tag);
-        else activeTags.add(tag);
+        if (activeTags.has(tag)) {
+          activeTags.delete(tag);
+        } else {
+          activeTags.add(tag);
+        }
         updateUI();
       });
       tagsWrapper.appendChild(tagEl);
@@ -483,12 +475,12 @@ const tagFilters = {
 }
 
 function updateUI() {
-  // Met à jour les tags actifs (comme avant)
+  // Update active tags display
   tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
     tagEl.classList.toggle('active', activeTags.has(tagEl.textContent));
   });
 
-  // Filtrage des champions
+  // Filter champions
   let champs = data.champions;
 
   if (activeTags.size > 0) {
@@ -501,10 +493,7 @@ function updateUI() {
     });
   }
 
-  if (activeClasses.size > 0) {
-    champs = champs.filter(champ => activeClasses.has(champ.class));
-  }
-
+  // Display champions
   championsGrid.innerHTML = '';
 
   if (champs.length === 0) {
@@ -515,16 +504,28 @@ function updateUI() {
   champs.forEach(champ => {
     const img = document.createElement('img');
     img.className = 'champion-img';
-    img.src = champ.photo ? champ.photo : `https://placekitten.com/80/80?rand=${Math.random()}`;
+    img.src = champ.photo || `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     img.alt = champ.name;
     img.title = champ.name;
+    
+    img.onerror = function() {
+      this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
+    };
+    
     championsGrid.appendChild(img);
   });
 }
 
-
+// Event listeners
 resetBtn.addEventListener('click', () => {
   activeTags.clear();
+  activeClasses.clear();
+  
+  // Reset class filter images
+  document.querySelectorAll('.class-filter-img').forEach(img => {
+    img.style.filter = 'grayscale(100%)';
+  });
+  
   updateUI();
 });
 
@@ -534,7 +535,5 @@ toggleFiltersBtn.addEventListener('click', () => {
   toggleFiltersBtn.textContent = isCollapsed ? "Afficher les filtres ▼" : "Masquer les filtres ▲";
 });
 </script>
-
-
 </body>
 </html>
