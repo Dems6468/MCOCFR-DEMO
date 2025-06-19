@@ -366,13 +366,13 @@ function initializeApp() {
 
 function renderClassFilters() {
   const classes = [
-    { id: 'Tech', label: 'Tech', imgSrc: 'tech.png' },
-    { id: 'Science', label: 'Science', imgSrc: 'science.png' },
-    { id: 'Skill', label: 'Skill', imgSrc: 'skill.png' },
-    { id: 'Cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
-    { id: 'Mutant', label: 'Mutant', imgSrc: 'mutant.png' },
-    { id: 'Mystic', label: 'Mystic', imgSrc: 'mystic.png' },
-    { id: 'Combined', label: 'Combined', imgSrc: 'superior.png' },
+    { id: 'Tech ', label: 'Tech', imgSrc: 'tech.png' },
+    { id: 'Science ', label: 'Science', imgSrc: 'science.png' },
+    { id: 'Skill ', label: 'Skill', imgSrc: 'skill.png' },
+    { id: 'Cosmic ', label: 'Cosmic', imgSrc: 'cosmic.png' },
+    { id: 'Mutant ', label: 'Mutant', imgSrc: 'mutant.png' },
+    { id: 'Mystic ', label: 'Mystic', imgSrc: 'mystic.png' },
+    { id: 'Combined ', label: 'Combined', imgSrc: 'superior.png' },
   ];
 
   const classFiltersContainer = document.getElementById('classFiltersContainer');
@@ -478,7 +478,7 @@ function renderTags() {
         if (activeTags.has(tag)) {
           activeTags.delete(tag);
           // If it's a class tag, also remove from activeClasses
-          if (['Tech', 'Science', 'Skill', 'Cosmic', 'Mutant', 'Mystic', 'Combined'].includes(tag)) {
+          if (['Tech', 'Science ', 'Skill ', 'Cosmic ', 'Mutant ', 'Mystic ', 'Combined '].includes(tag)) {
             activeClasses.delete(tag);
           }
         } else {
