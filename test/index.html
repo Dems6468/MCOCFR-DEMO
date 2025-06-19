@@ -332,153 +332,52 @@ fetch('champions.json')
   });
 
 function renderTags() {
-  const tagsContainer = document.getElementById('tags-container');
-  tagsContainer.innerHTML = '';
-
-  // 🎯 TABLE DE CORRESPONDANCE PERSONNALISÉE
-  const tagToCategory = {
-    "#Saga Champions": "SAGA",
-    "#PLAYABLE": "RARETE ET JOUABLE",
-    "#UNPLAYABLE": "RARETE ET JOUABLE",
-    "#LEGACY": "RARETE ET JOUABLE",
-    "#1-STAR": "RARETE ET JOUABLE",
-    "#2-STAR": "RARETE ET JOUABLE",
-    "#3-STAR": "RARETE ET JOUABLE",
-    "#4-STAR": "RARETE ET JOUABLE",
-    "#5-STAR": "RARETE ET JOUABLE",
-    "#6-STAR": "RARETE ET JOUABLE",
-    "#7-STAR": "RARETE ET JOUABLE",
-    "#RAIDS: Assault": "QUETES DALLIANCE",
-    "#RAIDS: Tactician": "QUETES DALLIANCE",
-    "#RAIDS: Vanguard": "QUETES DALLIANCE",
-    "#AW: Subdue": "SAISON DE GUERRE D'ALLIANCE",
-    "#AW: Crush 2.0": "SAISON DE GUERRE D'ALLIANCE",
-    "#Clarity": "SAISON DE GUERRE D'ALLIANCE",
-    "#Coda": "SAISON DE GUERRE D'ALLIANCE",
-    "#AW: Armor Burn": "SAISON DE GUERRE D'ALLIANCE",
-    "#X-Magica": "SAISON DE GUERRE D'ALLIANCE",
-    "#Provocateur": "SAISON DE GUERRE D'ALLIANCE",
-    "#Frightful": "SAISON DE GUERRE D'ALLIANCE",
-    "#Decay": "SAISON DE GUERRE D'ALLIANCE",
-    "#Magic Thief": "SAISON DE GUERRE D'ALLIANCE",
-    "#Secutor": "SAISON DE GUERRE D'ALLIANCE",
-    "#Fantastic": "SAISON DE GUERRE D'ALLIANCE",
-    "#Sugar Pill": "SAISON DE GUERRE D'ALLIANCE",
-    "#House of Mirrors": "SAISON DE GUERRE D'ALLIANCE",
-    "#Genesis": "SAISON DE GUERRE D'ALLIANCE",
-    "#Metal": "ATTRIBUTS",
-    "#Psychic Shielding": "ATTRIBUTS",
-    "#Flying": "ATTRIBUTS",
-    "#Elder": "ATTRIBUTS",
-    "#Canadian": "ATTRIBUTS",
-    "#1000% Awesome": "ATTRIBUTS",
-    "#getswole": "ATTRIBUTS",
-    "#EQ: It's Complicated": "ATTRIBUTS",
-    "#EQ: Romance": "ATTRIBUTS",
-    "#Robot": "ATTRIBUTS",
-    "#Gamma": "ATTRIBUTS",
-    "#Dimensional Being": "ATTRIBUTS",
-    "#God": "ATTRIBUTS",
-    "#Wakandan": "ATTRIBUTS",
-    "#blessed": "ATTRIBUTS",
-    "#shrednation": "ATTRIBUTS",
-    "#Hero": "ATTRIBUTS",
-    "#Villain of the Contest": "ATTRIBUTS",
-    "#Spider-Verse Heroes": "ATTRIBUTS",
-    "#Rising Power": "ATTRIBUTS",
-    "#Eidol": "ATTRIBUTS",
-    "#winning": "ATTRIBUTS",
-    "#mcm": "ATTRIBUTS",
-    "#Villain": "ATTRIBUTS",
-    "#Mercenary": "ATTRIBUTS",
-    "#Silver": "ATTRIBUTS",
-    "#Devilishly Handsome": "ATTRIBUTS",
-    "#goals": "ATTRIBUTS",
-    "#nofilter": "ATTRIBUTS",
-    "#noexcuses": "ATTRIBUTS",
-    "#Size: S": "ATTRIBUTS",
-    "#Size: M": "ATTRIBUTS",
-    "#Size: L": "ATTRIBUTS",
-    "#Size: XL": "ATTRIBUTS",
-    "#10 Year Challenge": "CHALLENGERS DE CARINAS",
-    "#Carina's Challengers": "CHALLENGERS DE CARINAS",
-    "#Offensive: Burst": "STYLE DE COMBAT",
-    "#Offensive: Damage Over Time": "STYLE DE COMBAT",
-    "#Offensive: Raw Damage": "STYLE DE COMBAT",
-    "#Defensive: Guard": "STYLE DE COMBAT",
-    "#Defensive: Tank": "STYLE DE COMBAT",
-    "#Defensive: Utility": "STYLE DE COMBAT",
-    "#Control: Counter": "STYLE DE COMBAT",
-    "#Control: Denial": "STYLE DE COMBAT",
-    "#Guardians of the Galaxy": "ORGANISATION",
-    "#Inhuman": "ORGANISATION",
-    "#Mighty Avengers": "ORGANISATION",
-    "#Sinister Six": "ORGANISATION",
-    "#Legion of Monsters": "ORGANISATION",
-    "#Chronos Corps": "ORGANISATION",
-    "#Alpha Flight": "ORGANISATION",
-    "#Symbiote": "ORGANISATION",
-    "#Inhuman Royal Family": "ORGANISATION",
-    "#Cul's Worthy": "ORGANISATION",
-    "#Brotherhood of Mutants": "ORGANISATION",
-    "#X-Force": "ORGANISATION",
-    "#Stark Tech": "ORGANISATION",
-    "#Young Avengers": "ORGANISATION",
-    "#X-Men": "ORGANISATION",
-    "#Avengers": "ORGANISATION",
-    "#S.H.I.E.L.D": "ORGANISATION",
-    "#Thunderbolts": "ORGANISATION",
-    "#Kree": "ORGANISATION",
-    "#Thanos's Army": "ORGANISATION",
-    "#Deathless": "ORGANISATION",
-    "#A-Force": "ORGANISATION",
-    "#Illuminati": "ORGANISATION",
-    "#New Avengers": "ORGANISATION",
-    "#Defenders": "ORGANISATION",
-    "#Champions": "ORGANISATION",
-    "#Fantastic Four": "ORGANISATION",
-    "#Hydra": "ORGANISATION",
-    "#2014": "DATE DE SORTIE",
-    "#2015": "DATE DE SORTIE",
-    "#2016": "DATE DE SORTIE",
-    "#2017": "DATE DE SORTIE",
-    "#2018": "DATE DE SORTIE",
-    "#2019": "DATE DE SORTIE",
-    "#2020": "DATE DE SORTIE",
-    "#2021": "DATE DE SORTIE",
-    "#2022": "DATE DE SORTIE",
-    "#2023": "DATE DE SORTIE",
-    "#2024": "DATE DE SORTIE",
-    "#2025": "DATE DE SORTIE"
-  };
-
-  const categoryToTags = {};
   const orderedCategories = [
-    "SAGA",
-    "RARETE ET JOUABLE",
-    "QUETES DALLIANCE",
-    "SAISON DE GUERRE D'ALLIANCE",
-    "ATTRIBUTS",
-    "CHALLENGERS DE CARINAS",
-    "STYLE DE COMBAT",
-    "ORGANISATION",
-    "DATE DE SORTIE"
+    'Rareté',
+    'Classe',
+    'RAIDS',
+    'AW',
+    'Spécial',
+    'Traits',
+    'Alignement',
+    'Taille',
+    'Rôle',
+    'Équipe',
+    'Année',
+    'Divers'
   ];
 
+  const tagFilters = {
+    'Rareté': t => /^#\d-STAR$/.test(t),
+    'Classe': t => /^#(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
+    'RAIDS': t => t.startsWith('#RAIDS:'),
+    'AW': t => t.startsWith('#AW:'),
+    'Spécial': t => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Saga Champions)/.test(t),
+    'Traits': t => /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|getswole)/.test(t),
+    'Alignement': t => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(t),
+    'Taille': t => /^#Size:/.test(t),
+    'Rôle': t => /^#(Offensive|Defensive|Control):/.test(t),
+    'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
+    'Année': t => /^#20\d{2}$/.test(t),
+    'Divers': t => true
+  };
+
+  const tagsSet = new Set();
   data.champions.forEach(champ => {
-    if (!Array.isArray(champ.tags)) return;
-    champ.tags.forEach(tag => {
-      const category = tagToCategory[tag] || "AUTRE";
-      if (!categoryToTags[category]) categoryToTags[category] = new Set();
-      categoryToTags[category].add(tag);
-    });
+    if (Array.isArray(champ.tags)) {
+      champ.tags.forEach(tag => tagsSet.add(tag));
+    }
+    // Ne pas ajouter champ.class sans #
   });
 
-  orderedCategories.forEach(category => {
-    const tagSet = categoryToTags[category];
-    if (!tagSet) return;
+  const allTags = Array.from(tagsSet);
+  tagsContainer.innerHTML = '';
 
-    const sortedTags = Array.from(tagSet).sort();
+  orderedCategories.forEach(category => {
+    const filter = tagFilters[category];
+    const sortedTags = allTags.filter(filter).sort();
+    if (sortedTags.length === 0) return;
+
     const section = document.createElement('div');
     section.classList.add('tag-category');
 
@@ -515,7 +414,6 @@ function renderTags() {
     tagsContainer.appendChild(section);
   });
 }
-
 
 function updateUI() {
   tagsContainer.querySelectorAll('.tag').forEach(tagEl => {
