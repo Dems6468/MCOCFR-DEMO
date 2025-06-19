@@ -347,20 +347,37 @@ function renderTags() {
     'Divers'
   ];
 
-  const tagFilters = {
-    'Rareté': t => /^#\d-STAR$/.test(t),
-    'Classe': t => /^#(Science|Mystic|Cosmic|Skill|Tech|Mutant|Combined)$/i.test(t),
-    'RAIDS': t => t.startsWith('#RAIDS:'),
-    'AW': t => t.startsWith('#AW:'),
-    'Spécial': t => /^#(Clarity|Coda|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis|Saga Champions)/.test(t),
-    'Traits': t => /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|getswole)/.test(t),
-    'Alignement': t => /^#(Hero|Villain|Villain of the Contest|Mercenary)/.test(t),
-    'Taille': t => /^#Size:/.test(t),
-    'Rôle': t => /^#(Offensive|Defensive|Control):/.test(t),
-    'Équipe': t => /^#(Guardians|Inhuman|Thunderbolts|Hydra|Avengers|X-Men|Fantastic|S.H.I.E.L.D|Alpha Flight|Symbiote|Champions|New Avengers|Illuminati|Defenders|Young Avengers|Cul's Worthy|Brotherhood|Sinister|Kree|Deathless|Legion)/.test(t),
-    'Année': t => /^#20\d{2}$/.test(t),
-    'Divers': t => true
-  };
+const tagFilters = {
+  'SAGA': t => /^#Saga:/.test(t),
+
+  'RARETE ET JOUABLE': t =>
+    /^#(1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR|Jouable)/.test(t),
+
+  'QUÊTES D’ALLIANCE': t =>
+    /^#(AQ:|Map\d|Alliance Quest)/.test(t),
+
+  'SAISON DE GUERRE D’ALLIANCE': t =>
+    /^#AW:/.test(t),
+
+  'ATTRIBUTS': t =>
+    /^#(Robot|Flying|Metal|Psychic Shielding|Dimensional Being|Gamma|Wakandan|Canadian|Mystical Being|Tech-Enhanced|Mutant Gene)/.test(t),
+
+  'CHALLENGERS DE CARINAS': t =>
+    /^#Carina:/.test(t),
+
+  'STYLE DE COMBAT': t =>
+    /^#(Offensif|Défensif|Polyvalent|Contrôle|Burst|DoT|Tank|Counter)/.test(t),
+
+  'ORGANISATION': t =>
+    /^#(X-Men|Avengers|Brotherhood|Fantastic Four|Shield|Hydra|Thunderbolts|Inhumans|Kree|Guardians|Symbiote|Deathless|Cul's Worthy|Legion)/.test(t),
+
+  'DATE DE SORTIE': t =>
+    /^#20\d{2}$/.test(t),
+
+  // Si un tag ne correspond à rien, il tombe ici
+  'Divers': t => true
+};
+
 
   const tagsSet = new Set();
   data.champions.forEach(champ => {
