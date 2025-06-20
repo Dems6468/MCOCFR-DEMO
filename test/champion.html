@@ -535,7 +535,9 @@ function displayChampion(champion) {
     const championImage = document.querySelector('.champion-portrait');
     const classColor = getClassColor((champion.class || '').trim());
     if (championImage && classColor) {
-        championImage.style.boxShadow = `0 0 20px 8px ${classColor}cc`; // ombre colorée avec un peu de transparence
+        championImage.style.boxShadow = `0 0 10px 2px ${classColor}66`;
+        championImage.style.filter = `drop-shadow(0 0 10px ${classColor})`;
+
     }
 }
 
