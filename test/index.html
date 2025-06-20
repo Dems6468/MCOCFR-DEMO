@@ -655,21 +655,10 @@ function updateUI() {
       this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     };
     
-    // Nom du champion (optionnel, pour un meilleur UX)
-    const nameLabel = document.createElement('span');
-    nameLabel.textContent = champ.name;
-    nameLabel.style.fontSize = '10px';
-    nameLabel.style.color = '#fff';
-    nameLabel.style.textAlign = 'center';
-    nameLabel.style.marginTop = '4px';
-    nameLabel.style.maxWidth = '64px';
-    nameLabel.style.overflow = 'hidden';
-    nameLabel.style.textOverflow = 'ellipsis';
-    nameLabel.style.whiteSpace = 'nowrap';
+   
     
     // Ajouter les éléments au conteneur
     championContainer.appendChild(img);
-    championContainer.appendChild(nameLabel);
     
     // Effet hover
     championContainer.addEventListener('mouseenter', function() {
