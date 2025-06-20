@@ -430,7 +430,7 @@ function renderTags() {
 
   const orderedCategories = [
     'SAGA',
-    'RARETE ET JOUABLE',
+    'RARETÉ ET DISPONIBILITÉ',
     'QUÊTES D\'ALLIANCE',
     'SAISON DE GUERRE D\'ALLIANCE',
     'ATTRIBUTS',
@@ -442,7 +442,7 @@ function renderTags() {
 
   const tagFilters = {
     'SAGA': t => /^#Saga Champions$/.test(t),
-    'RARETE ET JOUABLE': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
+    'RARETÉ ET DISPONIBILITÉ': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
     'QUÊTES D\'ALLIANCE': t => /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
     'SAISON DE GUERRE D\'ALLIANCE': t => /^#(AW: Subdue|AW: Crush 2\.0|Clarity|Coda|AW: Armor Burn|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis)$/.test(t),
     'ATTRIBUTS': t => /^#(Metal|Psychic Shielding|Flying|Elder|Canadian|1000% Awesome|getswole|EQ: It's Complicated|EQ: Romance|Robot|Gamma|Dimensional Being|God|Wakandan|blessed|shrednation|Hero|Villain of the Contest|Spider-Verse Heroes|Rising Power|Eidol|winning|mcm|Villain|Mercenary|Silver|Devilishly Handsome|goals|nofilter|noexcuses|Size: S|Size: M|Size: L|Size: XL)$/.test(t),
