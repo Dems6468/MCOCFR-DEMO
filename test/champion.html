@@ -60,11 +60,8 @@
 .champion-img {
   width: 64px;
   height: 64px;
-  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ff5722;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background: #222;
   margin-bottom: 4px;
 }
 
@@ -433,7 +430,18 @@ function getUrlParameter(name) {
     const results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
+function getClassColor(className) {
+  const classColors = {
+    Tech: '#1c2bdc',
+    Science: '#28931c',
+    Skill: '#e32c2c',
+    Cosmic: '#289bc3',
+    Mutant: '#f0bc1c',
+    Mystic: '#7922b6',
+    Combined: '#00f392'
+  };
 
+  if (!className) return '#ff5722';
 function loadChampionData() {
     const championName = getUrlParameter('name');
     if (!championName) {
