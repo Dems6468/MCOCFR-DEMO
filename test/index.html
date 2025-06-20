@@ -56,7 +56,109 @@
   user-select: none;
   display: inline-block;
 }
+/* champion-page.css - Styles spécifiques pour les pages champion */
 
+/* Ajustements pour la grille des champions avec noms */
+.champions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  
+  /* Ajout du scroll */
+  max-height: 400px;          
+  overflow-y: auto;           
+  overflow-x: hidden;         
+  padding: 15px;
+  border: 1px solid #444;     
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3); 
+  
+  /* Style de la scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #FF5722 transparent;
+}
+
+/* Style des conteneurs champion */
+.champion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  padding: 5px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.champion-container:hover {
+  transform: scale(1.05);
+  background: rgba(255, 87, 34, 0.1);
+}
+
+/* Ajustement des images champion */
+.champion-img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff5722;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #222;
+  margin-bottom: 4px;
+}
+
+.champion-img:hover {
+  box-shadow: 0 0 15px #ff5722;
+}
+
+/* Labels des noms de champions */
+.champion-name-label {
+  font-size: 10px;
+  color: #fff;
+  text-align: center;
+  margin-top: 4px;
+  max-width: 70px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* Responsive pour les conteneurs */
+@media (max-width: 600px) {
+  .champions-grid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    max-height: 300px;
+  }
+  
+  .champion-img {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .champion-name-label {
+    font-size: 9px;
+    max-width: 50px;
+  }
+}
+
+/* Style pour les très grands écrans */
+@media (min-width: 1400px) {
+  .champions-grid {
+    max-height: 500px;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+}
+
+/* Style pour les écrans moyens */
+@media (min-width: 768px) and (max-width: 1399px) {
+  .champions-grid {
+    max-height: 450px;
+  }
+}
 #toggleFilters:hover,
 #resetFilters:hover {
   background-color: #ff784e;
