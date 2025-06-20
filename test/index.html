@@ -441,16 +441,24 @@ function renderTags() {
   ];
 
   const tagFilters = {
-    'SAGA': t => /^#Saga Champions$/.test(t),
-    'RARETÉ ET DISPONIBILITÉ': t => /^#(PLAYABLE|UNPLAYABLE|LEGACY|1-STAR|2-STAR|3-STAR|4-STAR|5-STAR|6-STAR|7-STAR)$/.test(t),
-    'QUÊTES D\'ALLIANCE': t => /^#RAIDS: (Assault|Tactician|Vanguard)$/.test(t),
-    'SAISON DE GUERRE D\'ALLIANCE': t => /^#(AW: Subdue|AW: Crush 2\.0|Clarity|Coda|AW: Armor Burn|X-Magica|Provocateur|Frightful|Decay|Magic Thief|Secutor|Fantastic|Sugar Pill|House of Mirrors|Genesis)$/.test(t),
-    'ATTRIBUTS': t => /^#(Metal|Psychic Shielding|Flying|Elder|Canadian|1000% Awesome|getswole|EQ: It's Complicated|EQ: Romance|Robot|Gamma|Dimensional Being|God|Wakandan|blessed|shrednation|Hero|Villain of the Contest|Spider-Verse Heroes|Rising Power|Eidol|winning|mcm|Villain|Mercenary|Silver|Devilishly Handsome|goals|nofilter|noexcuses|Size: S|Size: M|Size: L|Size: XL)$/.test(t),
-    'CHALLENGERS DE CARINAS': t => /^#(10 Year Challenge|Carina's Challengers)$/.test(t),
-    'STYLE DE COMBAT': t => /^#(Offensive: Burst|Offensive: Damage Over Time|Offensive: Raw Damage|Defensive: Guard|Defensive: Tank|Defensive: Utility|Control: Counter|Control: Denial)$/.test(t),
-    'ORGANISATION': t => /^#(Guardians of the Galaxy|Inhuman|Mighty Avengers|Sinister Six|Legion of Monsters|Chronos Corps|Alpha Flight|Symbiote|Inhuman Royal Family|Cul's Worthy|Brotherhood of Mutants|X-Force|Stark Tech|Young Avengers|X-Men|Avengers|S\.H\.I\.E\.L\.D|Thunderbolts|Kree|Thanos's Army|Deathless|A-Force|Illuminati|New Avengers|Defenders|Champions|Fantastic Four|Hydra)$/.test(t),
+    'SAGA': t => /^#(Saga Champions|Champions Saga)$/.test(t),
+    
+    'RARETÉ ET DISPONIBILITÉ': t => /^#(PLAYABLE|Jouable|UNPLAYABLE|Non-Jouable|LEGACY|1-STAR|1★ÉTOILE|2-STAR|2★ÉTOILE|3-STAR|3★ÉTOILE|4-STAR|4★ÉTOILE|5-STAR|5★ÉTOILE|6-STAR|6★ÉTOILE|7-STAR|7★ÉTOILE)$/.test(t),
+    
+    'QUÊTES D\'ALLIANCE': t => /^#(RAIDS: Assault|RAIDS : Assaut|RAIDS: Tactician|RAIDS : Tacticien|RAIDS: Vanguard|RAIDS : Avant-garde)$/.test(t),
+    
+    'SAISON DE GUERRE D\'ALLIANCE': t => /^#(AW: Subdue|GA : Subjugation|AW: Crush 2\.0|GA : Écrasement 2\.0|Clarity|Clarté|Coda|AW: Armor Burn|GA : Brûle armure|X-Magica|Provocateur|Frightful|Decay|Décomposition|Magic Thief|Voleur magique|Secutor|Fantastic|Sugar Pill|Placébo|House of Mirrors|Évasion|Genesis|Genèse)$/.test(t),
+    
+    'ATTRIBUTS': t => /^#(Metal|Métal|Psychic Shielding|Bouclier Psychique|Flying|Volant|Elder|Doyen|Canadian|Canadien|1000% Awesome|1000% incroyable|getswole|devientbalèze|EQ: It's Complicated|QE : C'est compliqué|EQ: Romance|QE : Romance|Robot|Gamma|Dimensional Being|Êtres dimensionnels|God|Dieu|Wakandan|blessed|béni|shrednation|nationdechiquée|Hero|Héros|Villain of the Contest|Méchant du Tournoi|Spider-Verse Heroes|Héros du Spider-Verse|Rising Power|Montée de pouvoir|Eidol|winning|gagnant|mcm|Villain|Méchant|Mercenary|Mercenaire|Silver|Argent|Devilishly Handsome|Diablement séduisant|goals|buts|nofilter|sansfiltre|noexcuses|zéroexcuse|Size: S|Taille : S|Size: M|Taille : M|Size: L|Taille : L|Size: XL|Taille : XL)$/.test(t),
+    
+    'CHALLENGERS DE CARINAS': t => /^#(10 Year Challenge|Défi des 10 ans|Carina's Challengers|Challengers de Carina)$/.test(t),
+    
+    'STYLE DE COMBAT': t => /^#(Offensive: Burst|Offensive : Rayon|Offensive: Damage Over Time|Offensive : Dégâts sur la durée|Offensive: Raw Damage|Offensive : Dégâts purs|Defensive: Guard|Défense : Garde|Defensive: Tank|Défense : Tank|Defensive: Utility|Défense : Utilité|Control: Counter|Contrôle : Contre|Control: Denial|Contrôle : Négation)$/.test(t),
+    
+    'ORGANISATION': t => /^#(Guardians of the Galaxy|Guardiens de la Galaxie|Inhuman|Inhumains|Mighty Avengers|Puissants Avengers|Sinister Six|Legion of Monsters|Légion des monstres|Chronos Corps|Alpha Flight|Division Alpha|Symbiote|Inhuman Royal Family|Famille royale des Inhumains|Cul's Worthy|Digne de Cul|Brotherhood of Mutants|Confrérie des Mutans|X-Force|Stark Tech|Technologie Stark|Young Avengers|X-Men|Avengers|S\.H\.I\.E\.L\.D|Thunderbolts|Kree|Thanos's Army|Armée de Thanos|Deathless|Sans mort|A-Force|Illuminati|New Avengers|Nouveaux Avengers|Defenders|Défenseurs|Champions|Fantastic Four|Les Quatres Fantastiques|Hydra)$/.test(t),
+    
     'DATE DE SORTIE': t => /^#(2014|2015|2016|2017|2018|2019|2020|2021|2022|2023|2024|2025)$/.test(t)
-  };
+};
 
   const tagsSet = new Set();
   data.champions.forEach(champ => {
