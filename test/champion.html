@@ -508,7 +508,7 @@ function displayChampion(champion) {
                     <span class="class-name">${champion.class || 'Classe inconnue'}</span>
                 </div>
             </div>
-             <div class="champion-info" style="color: ${classColor};">
+             <div class="champion-info">
                 <h1 class="champion-name">${champion.name}</h1>
                 <div class="champion-description">
                     <p>Découvrez les capacités et les tags de <strong>${champion.name}</strong>, un champion de classe <strong>${champion.class || 'inconnue'}</strong> dans Marvel Contest of Champions.</p>
@@ -517,7 +517,7 @@ function displayChampion(champion) {
             </div>
         </div>
 
-        <div class="champion-info" style="color: ${classColor};">
+        <div class="champion-info">
             <h2>Capacités et Tags</h2>
             <div class="tags-grid">
                 ${generateTagCategoriesHTML(tagCategories)}
@@ -532,6 +532,8 @@ function displayChampion(champion) {
     document.getElementById('content').innerHTML = content;
       // --- AJOUT DU BOX-SHADOW ---
     const championImage = document.querySelector('.champion-portrait');
+    const headers = document.querySelectorAll('#content h1, #content h2, #content h3');
+    headers.forEach(h => h.style.color = classColor);
     const classColor = getClassColor((champion.class || '').trim());
     if (championImage && classColor) {
         championImage.style.boxShadow = `0 0 10px 2px ${classColor}66`;
