@@ -217,11 +217,6 @@ main {
   border: 3px solid transparent; /* Bordure par défaut */
 }
 
-.champion-img:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 12px #ff5722;
-}
-
 /* Message si aucun résultat */
 .no-selection {
   margin-top: 20px;
@@ -487,16 +482,21 @@ function renderClassFilters() {
 }
 function getClassColor(className) {
   const classColors = {
-    'Tech': '#2196F3',
-    'Science': '#4CAF50', 
-    'Skill': '#FF9800',
-    'Cosmic': '#FFEB3B',
-    'Mutant': '#9C27B0',
-    'Mystic': '#E91E63',
-    'Combined': '#607D8B'
+    Tech: '#2196F3',
+    Science: '#4CAF50',
+    Skill: '#FF9800',
+    Cosmic: '#FFEB3B',
+    Mutant: '#9C27B0',
+    Mystic: '#E91E63',
+    Combined: '#607D8B'
   };
-  return classColors[className] || '#ff5722';
+
+  if (!className) return '#ff5722';
+
+  const formatted = className.trim();
+  return classColors[formatted] || '#ff5722';
 }
+
 function renderTags() {
   if (!tagsContainer) return;
 
