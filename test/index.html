@@ -434,13 +434,13 @@ function initializeApp() {
 
 function renderClassFilters() {
   const classes = [
-    { id: 'Tech', label: 'Tech', imgSrc: './tech.png', color: '#2196F3' },
-    { id: 'Science', label: 'Science', imgSrc: './science.png', color: '#4CAF50' },
-    { id: 'Skill', label: 'Skill', imgSrc: './skill.png', color: '#FF9800' },
-    { id: 'Cosmic', label: 'Cosmic', imgSrc: './cosmic.png', color: '#FFEB3B' },
-    { id: 'Mutant', label: 'Mutant', imgSrc: './mutant.png', color: '#9C27B0' },
-    { id: 'Mystic', label: 'Mystic', imgSrc: './mystic.png', color: '#E91E63' },
-    { id: 'Combined', label: 'Combined', imgSrc: './superior.png', color: '#607D8B' },
+    { id: 'Tech', label: 'Tech', imgSrc: './tech.png', color: '#1c2bdc' },
+    { id: 'Science', label: 'Science', imgSrc: './science.png', color: '#28931c' },
+    { id: 'Skill', label: 'Skill', imgSrc: './skill.png', color: '#e32c2c' },
+    { id: 'Cosmic', label: 'Cosmic', imgSrc: './cosmic.png', color: '#289bc3' },
+    { id: 'Mutant', label: 'Mutant', imgSrc: './mutant.png', color: '#f0bc1c' },
+    { id: 'Mystic', label: 'Mystic', imgSrc: './mystic.png', color: '#7922b6' },
+    { id: 'Combined', label: 'Combined', imgSrc: './superior.png', color: '#00f392' },
   ];
 
   const classFiltersContainer = document.getElementById('classFiltersContainer');
@@ -482,13 +482,13 @@ function renderClassFilters() {
 }
 function getClassColor(className) {
   const classColors = {
-    Tech: '#2196F3',
-    Science: '#4CAF50',
-    Skill: '#FF9800',
-    Cosmic: '#FFEB3B',
-    Mutant: '#9C27B0',
-    Mystic: '#E91E63',
-    Combined: '#607D8B'
+    Tech: '#1c2bdc',
+    Science: '#28931c',
+    Skill: '#e32c2c',
+    Cosmic: '##289bc3',
+    Mutant: '#f0bc1c',
+    Mystic: '#7922b6',
+    Combined: '#00f392'
   };
 
   if (!className) return '#ff5722';
