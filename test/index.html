@@ -214,6 +214,7 @@ main {
   object-fit: cover;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  border: 3px solid transparent; /* Bordure par défaut */
 }
 
 .champion-img:hover {
@@ -660,36 +661,38 @@ function updateUI() {
     img.src = champ.photo || `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     img.alt = champ.name;
     img.title = champ.name;
+    
+    // Obtenir la couleur de la classe et l'appliquer correctement
     const classColor = getClassColor(champ.class);
-    img.style.borderColor = classColor;
-    img.background = classColor;
+    img.style.borderColor = classColor;           // ✅ Applique la bordure colorée
+    img.style.backgroundColor = `${classColor}20`; // ✅ Applique un fond coloré avec transparence
+    img.style.boxShadow = `0 0 8px ${classColor}`;  // ✅ Ajoute une ombre colorée
+    
     img.onerror = function() {
       this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     };
     
-   
-    
     // Ajouter les éléments au conteneur
     championContainer.appendChild(img);
     
- // Effet hover avec la couleur de classe
-  championContainer.addEventListener('mouseenter', function() {
-    this.style.transform = 'scale(1.05)';
-    img.style.boxShadow = `0 0 15px ${classColor}`;
+    // Effet hover avec la couleur de classe
+    championContainer.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+      img.style.boxShadow = `0 0 15px ${classColor}`;
+    });
+    
+    championContainer.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      img.style.boxShadow = `0 0 8px ${classColor}`;
+    });
+    
+    championContainer.addEventListener('click', function() {
+      const championUrl = `champion.html?name=${encodeURIComponent(champ.name)}`;
+      window.location.href = championUrl;
+    });
+    
+    championsGrid.appendChild(championContainer);
   });
-  
-  championContainer.addEventListener('mouseleave', function() {
-    this.style.transform = 'scale(1)';
-    img.style.boxShadow = `0 0 12px ${classColor}`;
-  });
-  
-  championContainer.addEventListener('click', function() {
-    const championUrl = `champion.html?name=${encodeURIComponent(champ.name)}`;
-    window.location.href = championUrl;
-  });
-  
-  championsGrid.appendChild(championContainer);
-});
 }
 
 // Event listeners
