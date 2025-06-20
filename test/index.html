@@ -633,6 +633,16 @@ function updateUI() {
   }
 
   champs.forEach(champ => {
+    // Créer un conteneur cliquable pour chaque champion
+    const championContainer = document.createElement('div');
+    championContainer.className = 'champion-container';
+    championContainer.style.cursor = 'pointer';
+    championContainer.style.display = 'flex';
+    championContainer.style.flexDirection = 'column';
+    championContainer.style.alignItems = 'center';
+    championContainer.style.transition = 'transform 0.2s ease';
+    
+    // Image du champion
     const img = document.createElement('img');
     img.className = 'champion-img';
     img.src = champ.photo || `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
@@ -643,7 +653,41 @@ function updateUI() {
       this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     };
     
-    championsGrid.appendChild(img);
+    // Nom du champion (optionnel, pour un meilleur UX)
+    const nameLabel = document.createElement('span');
+    nameLabel.textContent = champ.name;
+    nameLabel.style.fontSize = '10px';
+    nameLabel.style.color = '#fff';
+    nameLabel.style.textAlign = 'center';
+    nameLabel.style.marginTop = '4px';
+    nameLabel.style.maxWidth = '64px';
+    nameLabel.style.overflow = 'hidden';
+    nameLabel.style.textOverflow = 'ellipsis';
+    nameLabel.style.whiteSpace = 'nowrap';
+    
+    // Ajouter les éléments au conteneur
+    championContainer.appendChild(img);
+    championContainer.appendChild(nameLabel);
+    
+    // Effet hover
+    championContainer.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.05)';
+      img.style.boxShadow = '0 0 15px #ff5722';
+    });
+    
+    championContainer.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      img.style.boxShadow = '0 0 12px #ff5722';
+    });
+    
+    // Rendre cliquable - redirection vers la page du champion
+    championContainer.addEventListener('click', function() {
+      // Créer l'URL avec le nom du champion en paramètre
+      const championUrl = `champion.html?name=${encodeURIComponent(champ.name)}`;
+      window.location.href = championUrl;
+    });
+    
+    championsGrid.appendChild(championContainer);
   });
 }
 
