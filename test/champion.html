@@ -508,7 +508,7 @@ function displayChampion(champion) {
                     <span class="class-name">${champion.class || 'Classe inconnue'}</span>
                 </div>
             </div>
-            <div class="champion-info">
+             <div class="champion-info" style="color: ${classColor};">
                 <h1 class="champion-name">${champion.name}</h1>
                 <div class="champion-description">
                     <p>Découvrez les capacités et les tags de <strong>${champion.name}</strong>, un champion de classe <strong>${champion.class || 'inconnue'}</strong> dans Marvel Contest of Champions.</p>
@@ -517,7 +517,7 @@ function displayChampion(champion) {
             </div>
         </div>
 
-        <div class="tags-section">
+        <div class="champion-info" style="color: ${classColor};">
             <h2>Capacités et Tags</h2>
             <div class="tags-grid">
                 ${generateTagCategoriesHTML(tagCategories)}
