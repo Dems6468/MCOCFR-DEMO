@@ -22,7 +22,6 @@
 
         /* Styles pour la page champion */
         .champion-page {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             padding-top: 80px;
         }
@@ -93,7 +92,7 @@
     grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     gap: 10px;
     padding: 10px;
-    max-height: 300px;
+    min-height: 100%;
   }
   
   .champion-img {
@@ -110,7 +109,7 @@
 /* Style pour les très grands écrans */
 @media (min-width: 1400px) {
   .champions-grid {
-    max-height: 500px;
+    min-height: 100%;
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }
 }
@@ -122,7 +121,7 @@
   }
 }
         .champion-container {
-            max-width: 1200px;
+            min-height: 100%;
             margin: 0 auto;
             padding: 20px;
             background: rgba(0, 0, 0, 0.75);
