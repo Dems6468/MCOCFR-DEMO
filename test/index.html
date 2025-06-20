@@ -214,7 +214,7 @@ main {
   object-fit: cover;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  border: 3px solid transparent; /* Bordure par défaut */
+  border: 2px solid transparent; /* Bordure par défaut */
 }
 
 /* Message si aucun résultat */
@@ -665,7 +665,7 @@ function updateUI() {
     // Obtenir la couleur de la classe et l'appliquer correctement
     const classColor = getClassColor(champ.class);
     img.style.borderColor = classColor;           // ✅ Applique la bordure colorée
-    img.style.backgroundColor = `${classColor}20`; // ✅ Applique un fond coloré avec transparence
+    img.style.backgroundColor = `${classColor}80`; // ✅ Applique un fond coloré avec transparence
     img.style.boxShadow = `0 0 8px ${classColor}`;  // ✅ Ajoute une ombre colorée
     
     img.onerror = function() {
