@@ -529,16 +529,23 @@ function displayChampion(champion) {
         </div>
     `;
 
-    document.getElementById('content').innerHTML = content;
-      // --- AJOUT DU BOX-SHADOW ---
-    const championImage = document.querySelector('.champion-portrait');
-    const classColor = getClassColor((champion.class || '').trim());
-    if (championImage && classColor) {
-        championImage.style.boxShadow = `0 0 10px 2px ${classColor}66`;
-        championImage.style.filter = `drop-shadow(0 0 10px ${classColor})`;
+  document.getElementById('content').innerHTML = content;
 
-    }
+const classColor = getClassColor((champion.class || '').trim());
+
+// Appliquer le box-shadow sur l'image
+const championImage = document.querySelector('.champion-portrait');
+if (championImage && classColor) {
+    championImage.style.boxShadow = `0 0 10px 2px ${classColor}66`;
+    championImage.style.filter = `drop-shadow(0 0 10px ${classColor})`;
 }
+
+// Appliquer la couleur sur les titres h1, h2, h3
+const headers = document.querySelectorAll('#content h1, #content h2, #content h3');
+headers.forEach(h => {
+    h.style.color = classColor;
+});
+
 
 function organizeTagsByCategory(tags) {
     const categories = {
