@@ -26,7 +26,7 @@
   background: rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 2em rgba(255, 87, 34, 0.3);
   border-radius: 12px;
-  padding: 30px 5%; /* garde ce padding pour l’intérieur */
+  padding: 30px 5%; /* garde ce padding pour l'intérieur */
   width: 100%;
   /* max-width: 1200px;  <-- supprimé pour prendre toute la largeur */
   box-sizing: border-box;
@@ -143,13 +143,47 @@ main {
   border-color: #ff784e;
 }
 
-/* Grille des champions */
+/* Grille des champions - MODIFIÉE POUR LE SCROLL */
 .champions-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
   gap: 12px;
   justify-items: center;
+  
+  /* Ajout du scroll */
+  max-height: 400px;          /* Hauteur maximum fixe */
+  overflow-y: auto;           /* Scroll vertical */
+  overflow-x: hidden;         /* Pas de scroll horizontal */
+  padding: 10px;
+  border: 1px solid #444;     /* Bordure pour délimiter la zone */
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.3); /* Fond légèrement différent */
+  
+  /* Style de la scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #FF5722 transparent;
 }
+
+/* Style de la scrollbar pour Webkit (Chrome, Safari, Edge) */
+.champions-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.champions-grid::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.champions-grid::-webkit-scrollbar-thumb {
+  background-color: #FF5722;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.champions-grid::-webkit-scrollbar-thumb:hover {
+  background-color: #ff784e;
+}
+
 .tag-category {
   margin-bottom: 12px;
 }
@@ -192,6 +226,8 @@ main {
   margin-top: 20px;
   font-style: italic;
   color: #bbb;
+  grid-column: 1 / -1; /* Prend toute la largeur de la grille */
+  text-align: center;
 }
 
 /* Responsive tweaks */
@@ -199,19 +235,26 @@ main {
   .champion-section {
     padding: 20px 3%;
     margin-top : 15%;
-
   }
 
-   .champion-section h1 {
+  .champion-section h1 {
     font-size: 1.4rem;      /* Slightly smaller, but still readable */
     margin-top: 10px;       /* Reduce top margin for tighter layout */
     margin-bottom: 15px;    /* Slightly smaller bottom margin */
   }
+  
   .tag {
     padding: 5px 10px;
     font-size: 11px;
   }
+  
+  /* Ajustements pour mobile */
+  .champions-grid {
+    max-height: 300px;       /* Hauteur réduite sur mobile */
+    grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); /* Colonnes plus petites */
+  }
 }
+
 .class-filter-img {
   width: 8%;
   height: 8%;
@@ -224,9 +267,23 @@ main {
 .class-filter-img.selected {
   filter: none;
 }
-  .champion-img {
-    width: 48px;
-    height: 48px;
+
+.champion-img {
+  width: 48px;
+  height: 48px;
+}
+
+/* Style spécial pour les très grands écrans */
+@media (min-width: 1400px) {
+  .champions-grid {
+    max-height: 500px;       /* Plus de hauteur sur grands écrans */
+  }
+}
+
+/* Style pour les écrans moyens */
+@media (min-width: 768px) and (max-width: 1399px) {
+  .champions-grid {
+    max-height: 450px;
   }
 }
 
