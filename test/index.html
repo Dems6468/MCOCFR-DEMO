@@ -440,13 +440,13 @@ function initializeApp() {
 
 function renderClassFilters() {
   const classes = [
-    { id: 'Tech', label: 'Tech', imgSrc: 'tech.png' },
-    { id: 'Science', label: 'Science', imgSrc: 'science.png' },
-    { id: 'Skill', label: 'Skill', imgSrc: 'skill.png' },
-    { id: 'Cosmic', label: 'Cosmic', imgSrc: 'cosmic.png' },
-    { id: 'Mutant', label: 'Mutant', imgSrc: 'mutant.png' },
-    { id: 'Mystic', label: 'Mystic', imgSrc: 'mystic.png' },
-    { id: 'Combined', label: 'Combined', imgSrc: 'superior.png' },
+    { id: 'Tech', label: 'Tech', imgSrc: './tech.png', color: '#2196F3' },
+    { id: 'Science', label: 'Science', imgSrc: './science.png', color: '#4CAF50' },
+    { id: 'Skill', label: 'Skill', imgSrc: './skill.png', color: '#FF9800' },
+    { id: 'Cosmic', label: 'Cosmic', imgSrc: './cosmic.png', color: '#FFEB3B' },
+    { id: 'Mutant', label: 'Mutant', imgSrc: './mutant.png', color: '#9C27B0' },
+    { id: 'Mystic', label: 'Mystic', imgSrc: './mystic.png', color: '#E91E63' },
+    { id: 'Combined', label: 'Combined', imgSrc: './superior.png', color: '#607D8B' },
   ];
 
   const classFiltersContainer = document.getElementById('classFiltersContainer');
@@ -462,6 +462,7 @@ function renderClassFilters() {
     img.classList.add('class-filter-img');
     img.style.filter = 'grayscale(100%)';
     img.style.cursor = 'pointer';
+    img.dataset.classColor = cl.color; // Stocker la couleur
 
     img.addEventListener('click', () => {
       const classTag = cl.id;
@@ -485,7 +486,18 @@ function renderClassFilters() {
     classFiltersContainer.appendChild(img);
   });
 }
-
+function getClassColor(className) {
+  const classColors = {
+    'Tech': '#2196F3',
+    'Science': '#4CAF50', 
+    'Skill': '#FF9800',
+    'Cosmic': '#FFEB3B',
+    'Mutant': '#9C27B0',
+    'Mystic': '#E91E63',
+    'Combined': '#607D8B'
+  };
+  return classColors[className] || '#ff5722';
+}
 function renderTags() {
   if (!tagsContainer) return;
 
@@ -650,7 +662,8 @@ function updateUI() {
     img.src = champ.photo || `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     img.alt = champ.name;
     img.title = champ.name;
-    
+    const classColor = getClassColor(champ.class);
+  img.style.borderColor = classColor;
     img.onerror = function() {
       this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     };
@@ -660,26 +673,24 @@ function updateUI() {
     // Ajouter les éléments au conteneur
     championContainer.appendChild(img);
     
-    // Effet hover
-    championContainer.addEventListener('mouseenter', function() {
-      this.style.transform = 'scale(1.05)';
-      img.style.boxShadow = '0 0 15px #ff5722';
-    });
-    
-    championContainer.addEventListener('mouseleave', function() {
-      this.style.transform = 'scale(1)';
-      img.style.boxShadow = '0 0 12px #ff5722';
-    });
-    
-    // Rendre cliquable - redirection vers la page du champion
-    championContainer.addEventListener('click', function() {
-      // Créer l'URL avec le nom du champion en paramètre
-      const championUrl = `champion.html?name=${encodeURIComponent(champ.name)}`;
-      window.location.href = championUrl;
-    });
-    
-    championsGrid.appendChild(championContainer);
+ // Effet hover avec la couleur de classe
+  championContainer.addEventListener('mouseenter', function() {
+    this.style.transform = 'scale(1.05)';
+    img.style.boxShadow = `0 0 15px ${classColor}`;
   });
+  
+  championContainer.addEventListener('mouseleave', function() {
+    this.style.transform = 'scale(1)';
+    img.style.boxShadow = `0 0 12px ${classColor}`;
+  });
+  
+  championContainer.addEventListener('click', function() {
+    const championUrl = `champion.html?name=${encodeURIComponent(champ.name)}`;
+    window.location.href = championUrl;
+  });
+  
+  championsGrid.appendChild(championContainer);
+});
 }
 
 // Event listeners
