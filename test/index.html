@@ -212,10 +212,8 @@ main {
   height: 64px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ff5722;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  background: #222;
 }
 
 .champion-img:hover {
@@ -663,7 +661,8 @@ function updateUI() {
     img.alt = champ.name;
     img.title = champ.name;
     const classColor = getClassColor(champ.class);
-  img.style.borderColor = classColor;
+    img.style.borderColor = classColor;
+    img.background = classColor;
     img.onerror = function() {
       this.src = `https://via.placeholder.com/64x64/ff5722/ffffff?text=${champ.name.charAt(0)}`;
     };
