@@ -442,6 +442,9 @@ function getClassColor(className) {
   };
 
   if (!className) return '#ff5722';
+
+  const formatted = className.trim();
+  return classColors[formatted] || '#ff5722';
 }
 
     
