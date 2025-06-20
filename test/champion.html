@@ -525,6 +525,12 @@ function displayChampion(champion) {
     `;
 
     document.getElementById('content').innerHTML = content;
+      // --- AJOUT DU BOX-SHADOW ---
+    const championImage = document.querySelector('.champion-portrait');
+    const classColor = getClassColor((champion.class || '').trim());
+    if (championImage && classColor) {
+        championImage.style.boxShadow = `0 0 20px 8px ${classColor}cc`; // ombre colorée avec un peu de transparence
+    }
 }
 
 function organizeTagsByCategory(tags) {
