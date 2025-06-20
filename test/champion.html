@@ -116,7 +116,7 @@
 /* Style pour les écrans moyens */
 @media (min-width: 768px) and (max-width: 1399px) {
   .champions-grid {
-    max-height: 450px;
+    min-height: 100%;
   }
 }
         .champion-container {
@@ -474,7 +474,7 @@ function displayChampion(champion) {
     const tagCategories = organizeTagsByCategory(champion.tags || []);
     
     // Déterminer l'icône de classe
-    const classIcon = getClassIcon(champion.class);
+    const classIcon = getClassIcon((champion.class || '').trim());
     
     const content = `
         <nav class="breadcrumb">
