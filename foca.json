@@ -1431,7 +1431,7 @@
     },
     {
         "rang": "111",
-        "photo": "faces/portrait_nightcrawler1e72.png",
+        "photo": "faces/portrait_diablo04f1.png",
         "nom": "Diablo ( De Ablo)",
         "prestige": "33146",
         "relique_nom": "ScarletWitch",
@@ -1531,7 +1531,7 @@
         "focalisation_attaque_img": "focalisation/Tcoupcrit.png",
         "focalisation_defense": "Perforation",
         "focalisation_defense_img": "focalisation/perfo.png",
-        "classe": "mystique"
+        "classe": "mutante"
     },
     {
         "rang": "119",
