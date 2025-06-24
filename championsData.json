@@ -2437,7 +2437,7 @@
         "classe": "Science", 
         "classe2": "faces/class_chemicalf5fb.png", 
         "buff": {"Indestructible": ["Dupe → Lose Combo → 25-100% Chance"], "Unblockable": ["SP1 & Overpowering Light", "SP2 & Absolute Strength"], "Fury": ["SP1"], "Perfect Block": ["Steadfast Approach"], "Armor Break": ["SP2"], "Regeneration": ["SP3 & Below 50% Health & 1+ Reality Warp"], "Power Sting": ["Synergy [Mister Fantastic] & Debuffs"], "Agility": ["Synergy [Void] & SP3 → Fear of the Void"], "Fatigue": ["Synergy [Void] & SP3 → Fear of the Void"], "Petrify": ["Synergy [Void] & SP3→ Fear of the Void"], "Unstoppable": ["Synergy [Gladiator] & Far from Opponent"]}, 
-        "immunite": {}, 
+        "immunite": {"Destin Scellé": [], "Purge": [], "Incinération": []}, 
         "photo": "faces/portrait_sentry_current31c3.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
