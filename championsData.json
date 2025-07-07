@@ -1084,7 +1084,7 @@
         "classe": "Science", 
         "classe2": "faces/class_chemicalf5fb.png", 
         "buff": {}, 
-        "immunite": {"Neutralisation": [], "Rupture": [], "Buff": ["Infligé par l'adversaire"]}, 
+        "immunite": {"Neutralisation": [], "Rupture": [], "Buffs": ["Infligé par l'adversaire"]}, 
         "photo": "faces/highevo.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
