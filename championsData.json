@@ -1077,6 +1077,17 @@
         "photo": "faces/portrait_hercules1005.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
+    },  
+    {
+        "nom": "High Evolutionary", 
+        "Short Name": "High Evolutionary", 
+        "classe": "Science", 
+        "classe2": "faces/class_chemicalf5fb.png", 
+        "buff": {}, 
+        "immunite": {"Neutralisation": [], "Rupture": [], "Buff": ["Infligé par l'adversaire"]}, 
+        "photo": "faces/highevo.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
     }, 
     {
         "nom": "Hit-Monkey", 
@@ -2901,6 +2912,17 @@
         "buff": {"Spectre": ["Either Champion's 1st Light Attack → 18s, Max 10 stacks", "SP1 → Each Hit", "Dupe & Intercept"], "Wither": ["Either Champion's 3rd Light Attack → 18s, Max 10 stacks", "SP2 → Each Hit", "Dupe & Intercept"], "Fury": ["Passive, Opened Green Door → per Personal Debuff", "Passive, SP3 & Green Door Opened → Gain 10 stacks"], "Degeneration": ["Instant, Opponent above opened Green Door → Damage per Personal Debuff", "SP3 → 14s"], "Vitality": ["Passive, SP1 → Opponent's Regen Rate ≤ 0% → 9s"], "Power Dissolve": ["SP2 → Opponent's Ability Power Rate ≤ 0% → 18s"], "Degeneration Vulnerability": ["Passive, SP3 & Green Door Opened → Indefinite"], "Steadfast": ["Passive, Dupe & 12+ personal Debuffs", "Dupe & Against Mystic → 4+ personal Debuffs"]}, 
         "immunite": {"Poison": []}, 
         "photo": "faces/portrait_leaderf0a8.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }, 
+      {
+        "nom": "The Maker", 
+        "Short Name": "The Maker", 
+        "classe": "Tech", 
+        "classe2": "faces/class_techbdb1.png", 
+        "buff": {}, 
+        "immunite": {"Neuroshock": [], "Contrôles Inversés": []}, 
+        "photo": "faces/maker.png", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
