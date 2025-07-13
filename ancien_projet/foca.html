@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil | MCOCFR BETA</title>
+    <meta property="og:title" content=" Accueil | MCOCFR BETA">
+    <meta property="og:description" content="Bienvenue sur le site français de MCOC.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta property="og:url" content="https://www.mcocfr.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title"  content=" Accueil | MCOCFR BETA">
+    <meta name="twitter:description" content="Bienvenue sur le site français de MCOC.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/Dems6468/MCOCFR-DEMO/4f245fcae05b3cca47f50c283444917ad7ae5ac2/favicon-96x96.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style_foca.css"> <!-- Nouveau fichier CSS -->
+    </style>
+</head>
+<body>
+
+<!-- Header Mobile -->
+<header id="header-mobile">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" />
+            MCOCFR BETA
+        </a>
+    </div>
+    <!-- Icône pour ouvrir et fermer le menu -->
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+</header>
+
+<!-- Menu Latéral -->
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="#aaaa">Champions</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="foca.html">Liste 7*</a>
+    <a href="#contact">Contact</a>
+</div>
+<header id="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" class="logo-pc" />
+            MCOC FR BETA
+        </a>
+    </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="#aaaa">Champions</a></li>
+                <li><a href="debuff.html">Debuffs</a></li>
+                <li><a href="foca.html">Liste 7*</a></li>
+                <li><a href="#contact">Contact</a></li>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<div class="container">
+    <!-- Champ de recherche -->
+    <div style="display: flex; align-items: center;">
+        <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Rechercher...">
+        <!-- Lien vers MTCGuia à côté de la barre de recherche -->
+    </div>
+
+    <!-- Texte d'attribution sous la barre de recherche -->
+    <p class="attribution-text">Données provenant du site<a href="https://www.guiamtc.com/" target="_blank" class="mtcguia-link">GuiaMTC</a> traduites en français par JosianeJoestar.</p>
+    <p class="attribution-text">Prestige pour un 7* de rang 4 ( 7R4 ) .</p>
+
+    <!-- Tableau pour afficher les données -->
+    <table id="dataTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable('rang')">Rang</th>
+                <th>Photo</th>
+                <th onclick="sortTable('nom')">Nom</th>
+                <th onclick="sortTable('prestige')">Prestige</th>
+                <th>Relique</th>
+                <th>Attaque</th>
+                <th>Défense</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Les données du tableau seront injectées ici -->
+        </tbody>
+    </table>
+</div>
+
+<!-- Footer -->
+<div id="footer-container"></div>
+
+<script>
+  fetch('/footer.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('footer-container').innerHTML = data;
+    })
+    .catch(error => {
+      console.error('Erreur de chargement du footer :', error);
+    });
+</script>
+
+
+
+<script>
+    // Initialiser le menu à l'état fermé
+    window.onload = function() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = "-250px";  // Assure que le menu est caché dès le départ
+    };
+
+    // Fonction pour ouvrir ou fermer le menu latéral
+    function toggleMenu() {
+        const menu = document.getElementById("side-menu");
+
+        // Vérifie si le menu est caché à gauche ou ouvert
+        if (menu.style.left === "-250px") {
+            menu.style.left = "0";  // Ouvre le menu (glissement vers la droite)
+        } else {
+            menu.style.left = "-250px";  // Ferme le menu (glissement vers la gauche)
+        }
+    }
+
+    // Fonction pour fermer le menu en cliquant sur la croix
+    function closeMenu() {
+        document.getElementById("side-menu").style.left = "-250px";
+    }
+
+    // Ferme le menu en cliquant en dehors de celui-ci
+    window.onclick = function(event) {
+        const menu = document.getElementById("side-menu");
+        const menuIcon = document.querySelector(".menu-icon");
+
+        // Si l'utilisateur clique en dehors du menu et de l'icône du menu
+        if (!menu.contains(event.target) && event.target !== menuIcon) {
+            menu.style.left = "-250px"; // Ferme le menu
+        }
+    }
+</script>
+ 
+    <script src="script_foca.js"></script>
+</body>
+</html>

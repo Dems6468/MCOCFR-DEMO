@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Panther | MCOCFR BETA</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="favicon-96x96.png" sizes="96x96" />
+    <meta property="og:title" content="Black Panther | MCOCFR BETA">
+    <meta property="og:description" content="Infos sur Black Panther dans MCOC.">
+    <meta property="og:image" content="relic_blackpanther_featured.webp">
+    <meta property="og:url" content="https://www.mcocfr.com/blackpanther.html">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="reliqueskill.css">
+</head>
+<body>
+
+<header id="header-mobile">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" />
+            MCOCFR BETA
+        </a>
+    </div>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+</header>
+
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="close-btn" onclick="closeMenu()">×</a>
+    <a href="index.html">Accueil</a>
+    <a href="#aaaa">Champions</a>
+    <a href="debuff.html">Debuffs</a>
+    <a href="foca.html">Liste 7*</a>
+    <a href="#contact">Contact</a>
+</div>
+
+<header id="header">
+    <div class="logo">
+        <a href="index.html">
+            <img src="favicon-96x96.png" alt="Logo MCOCFR" class="logo-pc" />
+            MCOC FR BETA
+        </a>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="#aaaa">Champions</a></li>
+            <li><a href="debuff.html">Debuffs</a></li>
+            <li><a href="foca.html">Liste 7*</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="title-card">
+    <h1 class="title-flex">Black Panther <span>— Skill</span></h1>
+</div>
+
+<div class="flex-container">
+    <div class="left-column section">
+        <div class="relic-container">
+            <img src="skill.webp" alt="Skill Background" class="watermark-img" />
+            <img src="../reliques/relic_portrait_blackpanther.png" alt="Black Panther Relic" class="relic-img" />
+        </div>
+        <h2>🗡️ Classe : Skill</h2>
+        <p><strong>Rareté :</strong> 6⭐</p>
+        </div>
+
+    <div class="middle-column section">
+        <h2> Recommandé avec</h2>
+        <ul>
+            <li><img src="shangchi.webp" class="champ-img" /> Shang-Chi</li>
+            <li><img src="moleman.webp" class="champ-img" /> Mole Man</li>
+            <li><img src="hitmonkey.webp" class="champ-img" /> Hit-Monkey</li>
+            <li><img src="killmonger.webp" class="champ-img" /> Killmonger</li>
+            <li><img src="moondragon.webp" class="champ-img" /> Moondragon</li>
+        </ul>
+        <p><strong>Recommandé par :</strong> bullseye, lumatrix, simula67</p>
+    </div>
+
+    <div class="right-column section">
+        <h2> Striker Release — Capacité Innée</h2>
+        <div class="ability-block">
+            <h3>Black Panther</h3>
+            <p><strong>[Combo: MLM]</strong> Le dernier coup donne un Buff de <strong>Cruauté</strong>, augmentant le Critical Damage Rating de 16–32% pendant 10 secondes.</p>
+        </div>
+        <div class="ability-block">
+            <h3>Pride of Wakanda</h3>
+            <p><strong>INNÉE</strong> : Les coups critiques garantis ajoutent +10–20 de Critical Damage Rating plat à chaque coup critique pour le reste du combat. Max 24–48 coups.</p>
+        </div>
+    </div>
+</div>
+
+<div class="capacities-runes-container">
+    <div class="capacities-column section">
+        <h2>Capacités</h2>
+        <div class="ability-block">
+            <h3>Vibranium Strikes</h3>
+            <p>Les coups critiques infligent un affaiblissement passif, réduisant la [statistique non précisée] de 6–12% pendant 4 secondes. Max 3 charges.</p>
+        </div>
+        <div class="ability-block">
+            <h3>Adaptive Targeting</h3>
+            <p>Quand l’**Évasion** de l’adversaire échoue, gagne une Cruauté Passive, augmentant le Critical Damage Rating de +6–12% pendant 4 secondes. Max 3 charges.</p>
+        </div>
+    </div>
+
+    <div class="runes-column section">
+        <h2>Runes d'Attributs</h2>
+        <div class="ability-block">
+            <h3>Critical Resist</h3>
+            <p>-6–12% de Résistance Critique de l’adversaire.</p>
+        </div>
+        <div class="ability-block">
+            <h3>Burst Physical</h3>
+            <p>Les coups critiques garantis infligent une explosion de 4–8% de dégâts physiques.</p>
+        </div>
+        <div class="ability-block">
+            <h3>Special 2 Finisher</h3>
+            <p>+6–12% d’Attaque sur les coups de SP2.</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.onload = function() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = "-250px";
+    };
+
+    function toggleMenu() {
+        const menu = document.getElementById("side-menu");
+        menu.style.left = (menu.style.left === "-250px") ? "0" : "-250px";
+    }
+
+    function closeMenu() {
+        document.getElementById("side-menu").style.left = "-250px";
+    }
+
+    window.onclick = function(event) {
+        const menu = document.getElementById("side-menu");
+        const menuIcon = document.querySelector(".menu-icon");
+        if (!menu.contains(event.target) && event.target !== menuIcon) {
+            menu.style.left = "-250px";
+        }
+    };
+</script>
+
+<footer>
+    <p>Version 0.0 • Dernière mise à jour : 19 mai 2025 • Made in FRANCE •</p>
+    <p>Ce site n'est pas sponsorisé, endossé ou affilié à Kabam ou Marvel.</p>
+</footer>
+
+</body>
+</html>

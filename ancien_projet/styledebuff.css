@@ -1,0 +1,1125 @@
+/* Style global */
+@media (min-width: 768px) {
+    html, body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+    }
+    #header-mobile {
+        display: none;
+    }
+    body {
+        font-family: 'Arial', sans-serif;
+        background: url('espace.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    .logo a {
+        text-decoration: none; /* Supprime le soulignement */
+        color: inherit; /* Utilise la couleur par défaut du texte */
+        font-weight: bold; /* Pour garder l'effet du logo */
+    }
+    .side-menu {
+        display: none;
+    }
+    body {
+    font-family: 'Arial', sans-serif;
+    background: url('espace.webp') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+.logo a {
+    text-decoration: none; /* Supprime le soulignement */
+    color: inherit; /* Utilise la couleur par défaut du texte */
+    font-weight: bold; /* Pour garder l'effet du logo */
+}
+
+/* Header */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #111;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    animation: slide-down 0.5s ease-out;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(0);
+}
+.logo-pc {
+    height: 40px; /* Ajuste la taille selon ton design */
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+#header.scrolled {
+    background-color: #333; /* Changement de couleur lorsque la page est scrollée */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+/* Effet de survol des liens du header */
+#header nav ul li a:hover {
+    color: #ff5722;
+}
+
+/* Effet de survol des liens du header */
+#header nav ul {
+    display: flex; /* Onglets côte à côte */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#header nav ul li {
+    margin-right: 20px;
+}
+
+#header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Effet de déplacement et surlignage diagonal */
+#header nav ul li a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FF5722;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s ease-in-out;
+    z-index: -1; /* Place le surlignage derrière le texte */
+}
+
+/* Au survol, on applique l'effet diagonal avec une animation */
+#header nav ul li a:hover {
+    color: #000; /* Changer la couleur du texte sur le survol */
+    transform: translateY(-5px) rotate(-5deg); /* Effet de déplacement et de rotation */
+}
+
+#header nav ul li a:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Dropdown Menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown .dropbtn {
+    background-color: #111;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #FF5722;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #222;
+    min-width: 160px;
+    z-index: 1;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #fff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #FF5722;
+}
+
+#filter-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+}
+
+#filter-container h2 {
+    margin-bottom: 10px;
+    color: #FF5722;
+}
+
+.immunite-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.immunite-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.immunite-btn:hover {
+    background-color: #ff5722;
+}
+
+.immunite-btn.active {
+    background-color: #ff5722;
+    box-shadow: 0 0 10px rgba(255, 87, 34, 0.8);
+}
+
+.clear-filters-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.clear-filters-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Filtre et Liste des personnages */
+#home {
+    margin-top: 120px; /* Added margin to make space for the fixed header */
+    padding: 20px;
+    text-align: center;
+}
+
+#immunite-filter {
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#immunite-filter:hover {
+    background-color: #FF5722;
+}
+
+.personnage-card {
+    background: rgba(34, 34, 34, 0.5); /* Fond semi-transparent */
+    backdrop-filter: blur(5px);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Arrange le contenu verticalement */
+    align-items: center;
+}
+
+.personnage-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(137, 34, 255, 0.6);
+}
+
+/* Tooltip bien positionné même sur les bords */
+.debuff-tooltip {
+    display: none;
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Ajustement du tooltip pour éviter les coupures */
+.debuff-tooltip.left-align {
+    left: 0;
+    transform: translateX(0);
+}
+
+.debuff-tooltip.right-align {
+    right: 0;
+    left: auto;
+    transform: translateX(0);
+}
+
+/* Réduction de la taille des cartes pour en afficher plus */
+.personnages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Colonnes dynamiques */
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+    margin-left: 20px; /* Marge à gauche du conteneur */
+    margin-right: 20px; /* Marge à droite du conteneur */
+}
+
+
+.personnage-card img {
+    width: 100%;
+    max-width: 120px; /* Taille max pour éviter qu'elles ne deviennent trop grandes */
+    height: auto; /* Ajustement automatique */
+    border-radius: 50%;
+    object-fit: cover;
+    
+}
+
+.personnage-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #e89f00;
+    text-align: center;
+    white-space: normal; /* Permet les retours à la ligne */
+    word-wrap: break-word; /* Coupe les mots longs si nécessaire */
+    overflow-wrap: break-word; /* Version alternative pour compatibilité */
+    width: 100%;
+     min-height: 3.2em; /* Ajuste selon la longueur moyenne des noms */
+     display: flex;
+    align-items: center;
+     justify-content: center;
+     text-align: center;
+    }
+    
+
+
+
+.immunite-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center; /* Centrer les icônes */
+    max-width: 100%;
+    min-height: 40px; /* Hauteur minimum pour garder l'alignement */
+}
+
+
+/* Effet de zoom sur les icônes de debuff au survol */
+.immunite-icons img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.immunite-icons img:hover {
+    transform: scale(1.2); /* Agrandissement de l'icône à 120% */
+}
+
+
+/* Assure que la page prend toute la hauteur de l'écran */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Fait en sorte que le contenu pousse le footer en bas */
+main {
+    flex: 1;
+}
+
+/* Footer normal, pas fixe */
+footer {
+    background-color: #111;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    margin-top: auto; /* Assurez-vous que le footer soit en bas */
+}
+
+
+/* Animations */
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Scrolling behavior for smooth transitions */
+html {
+    scroll-behavior: smooth;
+}
+/* Contour coloré en fonction de la classe */
+.science .photo-container img {
+    border: 4px solid #00FF00; /* Vert */
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.tech .photo-container img {
+    border: 4px solid #00008B; /* Bleu foncé */
+    box-shadow: 0 0 10px #00008B;
+}
+
+.cosmique .photo-container img {
+    border: 4px solid #87CEEB; /* Bleu clair */
+    box-shadow: 0 0 10px #87CEEB;
+}
+
+.virtuose .photo-container img {
+    border: 4px solid #FF0000; /* Rouge */
+    box-shadow: 0 0 10px #FF0000;
+}
+
+.mutant .photo-container img {
+    border: 4px solid #FFD700; /* Jaune */
+    box-shadow: 0 0 10px #FFD700;
+}
+
+.mystique .photo-container img {
+    border: 4px solid #4B0082; /* Violet foncé */
+    box-shadow: 0 0 10px #4B0082;
+}
+
+/* Effet au survol */
+.photo-container img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+/* Style général pour la zone des icônes de debuffs */
+.immunite-icons {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante si nécessaire */
+    gap: 5px; /* Espace entre les images */
+    justify-content: start; /* Aligne les images au début de la ligne */
+    max-width: 100%; /* Assure que la zone des icônes ne dépasse pas la largeur du parent */
+}
+
+/* Ajuster la taille des images pour éviter qu'elles ne soient trop grandes */
+.immunite-icons img {
+    width: 32px; /* Taille fixe pour les images */
+    height: 32px;
+    object-fit: contain; /* Maintient les proportions des images */
+}
+
+
+.personnage-card .photo-container img {
+    width: min(10vw, 120px);
+height: min(10vw, 120px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajoute ce CSS pour styler le rectangle d'info sous chaque débuff */
+.debuff-info {
+    display: none; /* Cache initialement l'info */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.debuff-icon-container {
+    position: relative; /* Assure que le tooltip soit positionné par rapport à l'icône */
+}
+
+.debuff-tooltip {
+    display: none;
+    position: fixed; /* Pour s'afficher au-dessus de tout */
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    max-width: 250px; /* Taille raisonnable mais large */
+    word-wrap: break-word; /* Permet le retour à la ligne si nécessaire */
+    white-space: normal; /* Autorise le retour à la ligne */
+    z-index: 999999; /* Priorité MAXIMALE */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    transform: translateY(-100%) translateX(-50%); /* Centre mieux au lieu de décaler complètement */
+}
+
+/* Empêcher le tooltip de dépasser à gauche */
+.debuff-tooltip.left-limit {
+    left: 10px !important; /* Bloque le tooltip au bord gauche */
+    transform: translateY(-100%) translateX(0); /* Supprime le décalage latéral */
+}
+
+/* Empêcher le tooltip de dépasser à droite */
+.debuff-tooltip.right-limit {
+    right: 10px !important; /* Bloque le tooltip au bord droit */
+    left: auto !important;
+    transform: translateY(-100%) translateX(0);
+}
+
+.debuff-icon-container:hover .debuff-tooltip {
+    display: block;
+    z-index: 10000000; /* Met au-dessus des autres éléments */
+}
+
+.debuff-tooltip.right-align {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.debuff-tooltip.bottom-align {
+    top: auto !important;
+    bottom: 110% !important;
+}
+.debuff-tooltip img {
+    width: 30px; /* Taille de l'icône */
+    height: 30px;
+    object-fit: contain; /* Garde la proportion */
+    margin-bottom: 5px; /* Espace entre l'image et le texte */
+}
+}
+@media (max-width: 768px) {
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', sans-serif;
+        background: url('espace.webp') no-repeat center center fixed;
+        background-size: cover;
+        color: #fff;
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; /* Permet d'empiler les éléments verticalement */
+    }
+    welcome-screen {
+        display: none;
+    }.welcome-link {
+        display: none;
+    }
+    /* Section d'accueil pleine page */
+    #welcome-screen img {
+       display: none;
+    }
+    /* Overlay avec transparence */
+    #welcome-screen .overlay {
+      display: none;
+    }
+    
+    /* Texte visible sur l'image */
+    #welcome-screen .welcome-text {
+       display: none;
+    }
+    
+    
+    body {
+        font-size: 1rem; /* Taille de police adaptée */
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center; /* Centre tout le contenu horizontalement */
+    }
+
+    .logo a {
+        text-decoration: none;
+        color: inherit;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+   /* Masquer le header classique */
+    #header {
+        display: none;
+    }
+
+    /* Afficher le header mobile */
+    #header-mobile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #111;
+        padding: 10px 15px;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        box-sizing: border-box;
+    }
+
+    #header-mobile .logo {
+        display: flex;
+        align-items: center;
+        color: #fff;
+    }
+
+    #header-mobile .logo img {
+        height: 30px;  /* Ajuste la taille du logo favicon */
+        margin-right: 10px;
+    }
+
+    #header-mobile a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    /* Icône de menu sur mobile */
+    .menu-icon {
+        font-size: 30px;
+        cursor: pointer;
+        color: white;
+    }    
+
+    #header.scrolled {
+        background-color: #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+    }
+
+    #header nav ul {
+        display: flex;
+        flex-direction: column; /* Onglets verticalement sur mobile */
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    #header nav ul li {
+        margin-bottom: 2rem;
+    }
+
+    #header nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.5rem;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    #header nav ul li a::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #FF5722;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.4s ease-in-out;
+        z-index: -1;
+    }
+
+    #header nav ul li a:hover {
+        color: #000;
+        transform: translateY(-5%) rotate(-5deg);
+    }
+
+    #header nav ul li a:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    /* Dropdown Menu */
+    .dropdown {
+        position: relative;
+    }
+
+    .dropdown .dropbtn {
+        background-color: #111;
+        color: white;
+        padding: 3%;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: #FF5722;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #222;
+        min-width: 80%;
+        z-index: 1;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        color: #fff;
+        padding: 4% 5%;
+        text-decoration: none;
+        display: block;
+        font-size: 1.5rem;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #FF5722;
+    }
+
+#filter-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 3vw;
+    border-radius: 1em;
+    text-align: center;
+    width: 90%;
+    max-width: 90vw;
+    margin: 2em auto;
+    box-shadow: 0px 0px 2em rgba(255, 255, 255, 0.2);
+}
+
+#filter-container h2 {
+    margin-bottom: 1em;
+    color: #FF5722;
+}
+
+.immunite-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    justify-content: center;
+}
+
+.immunite-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 1.2vw 2vw;
+    border-radius: 0.5em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.immunite-btn:hover {
+    background-color: #FF5722;
+}
+
+.immunite-btn.active {
+    background-color: #FF5722;
+    box-shadow: 0 0 2em rgba(255, 87, 34, 0.8);
+}
+
+.clear-filters-btn {
+    background-color: #d9534f;
+    color: white;
+    padding: 1vw 2vw;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-top: 2vw;
+    transition: 0.3s;
+}
+
+.clear-filters-btn:hover {
+    background-color: #c9302c;
+}
+
+#home {
+    margin-top: 12vh;
+    padding: 4vw;
+    text-align: center;
+}
+
+#immunite-filter {
+    margin-bottom: 2vw;
+    padding: 1.5vw;
+    font-size: 1.1em;
+    border-radius: 0.5em;
+    background-color: #333;
+    border: 1px solid #444;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+#immunite-filter:hover {
+    background-color: #FF5722;
+}
+
+.personnage-card {
+    background: rgba(34, 34, 34, 0.5);
+    backdrop-filter: blur(5px);
+    padding: 2vw;
+    border-radius: 1.2em;
+    box-shadow: 0 1em 2em rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personnage-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 1.5em 3em rgba(137, 34, 255, 0.6);
+}
+
+.debuff-tooltip {
+    display: none;
+    position: absolute;
+    top: 3vw;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 1vw 2vw;
+    border-radius: 0.5em;
+    font-size: 1em;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.5);
+}
+
+.debuff-tooltip.left-align {
+    left: 0;
+    transform: translateX(0);
+}
+
+.debuff-tooltip.right-align {
+    right: 0;
+    left: auto;
+    transform: translateX(0);
+}
+
+.personnages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+    gap: 2em;
+    justify-content: center;
+    padding: 4vw;
+}
+
+.personnage-card img {
+    width: 100%;
+    max-width: 15em;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.personnage-card h3 {
+    font-size: 1.3em;
+    margin: 2vw 0;
+    color: #e89f00;
+    text-align: center;
+}
+
+.immunite-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vw;
+    justify-content: center;
+}
+
+.immunite-icons img {
+    width: 5em;
+    height: 5em;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.immunite-icons img:hover {
+    transform: scale(1.2);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    width: 100vw; /* 100% de la largeur de l'écran */
+    box-sizing: border-box; /* important pour que le padding n'empiète pas sur la largeur */
+    background-color: #111;
+    padding: 2vw;
+    text-align: center;
+    color: #fff;
+    margin-top: auto;
+}
+
+
+/* Contour coloré en fonction de la classe */
+.science .photo-container img {
+    border: 4px solid #00FF00; /* Vert */
+    box-shadow: 0 0 10px #00FF00;
+}
+
+.tech .photo-container img {
+    border: 4px solid #00008B; /* Bleu foncé */
+    box-shadow: 0 0 10px #00008B;
+}
+
+.cosmique .photo-container img {
+    border: 4px solid #87CEEB; /* Bleu clair */
+    box-shadow: 0 0 10px #87CEEB;
+}
+
+.virtuose .photo-container img {
+    border: 4px solid #FF0000; /* Rouge */
+    box-shadow: 0 0 10px #FF0000;
+}
+
+.mutant .photo-container img {
+    border: 4px solid #FFD700; /* Jaune */
+    box-shadow: 0 0 10px #FFD700;
+}
+
+.mystique .photo-container img {
+    border: 4px solid #4B0082; /* Violet foncé */
+    box-shadow: 0 0 10px #4B0082;
+}
+
+/* Effet au survol */
+.photo-container img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Style général pour la zone des icônes de debuffs */
+.immunite-icons {
+    display: flex;
+    flex-wrap: wrap; /* Permet de passer à la ligne suivante si nécessaire */
+    gap: 2vw; /* Espace entre les images */
+    justify-content: center; /* Centrer les images */
+    max-width: 100%; /* Assure que la zone des icônes ne dépasse pas la largeur du parent */
+}
+
+/* Ajuster la taille des images pour éviter qu'elles ne soient trop grandes */
+.immunite-icons img {
+    width: 8vw; /* Taille relative pour les images */
+    height: 8vw;
+    object-fit: contain; /* Maintient les proportions des images */
+}
+
+/* Personnage Card image */
+.personnage-card .photo-container img {
+    width: 20vw; /* Utilise la largeur de l'écran */
+    height: 20vw;
+    max-width: 120px;
+    max-height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ajoute ce CSS pour styler le rectangle d'info sous chaque débuff */
+.debuff-info {
+    display: none; /* Cache initialement l'info */
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 3vw;
+    border-radius: 5px;
+    margin-top: 3vw;
+    font-size: 3.5vw;
+    text-align: center;
+    width: 80%;
+    box-sizing: border-box;
+}
+
+/* Tooltip */
+.debuff-tooltip {
+    display: none;
+    position: fixed; /* Pour s'afficher au-dessus de tout */
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 5vw;
+    border-radius: 5px;
+    font-size: 3.5vw;
+    max-width: 60vw; /* Taille raisonnable mais large */
+    word-wrap: break-word; /* Permet le retour à la ligne si nécessaire */
+    white-space: normal; /* Autorise le retour à la ligne */
+    z-index: 999999; /* Priorité MAXIMALE */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    transform: translateY(-100%) translateX(-50%); /* Centre mieux au lieu de décaler complètement */
+}
+
+/* Empêcher le tooltip de dépasser à gauche */
+.debuff-tooltip.left-limit {
+    left: 10px !important; /* Bloque le tooltip au bord gauche */
+    transform: translateY(-100%) translateX(0); /* Supprime le décalage latéral */
+}
+
+/* Empêcher le tooltip de dépasser à droite */
+.debuff-tooltip.right-limit {
+    right: 10px !important; /* Bloque le tooltip au bord droit */
+    left: auto !important;
+    transform: translateY(-100%) translateX(0);
+}
+
+.debuff-icon-container:hover .debuff-tooltip {
+    display: block;
+    z-index: 10000000; /* Met au-dessus des autres éléments */
+}
+
+.debuff-tooltip.right-align {
+    left: auto !important;
+    right: 0 !important;
+}
+
+.debuff-tooltip.bottom-align {
+    top: auto !important;
+    bottom: 110% !important;
+}
+
+/* Ajustement de la taille des images pour mobile */
+.debuff-tooltip img {
+    width: 15vw; /* Utilisation de la largeur de l'écran */
+    height: 15vw;
+    object-fit: contain; /* Garde la proportion */
+    margin-bottom: 5vw; /* Espace entre l'image et le texte */
+}
+#header {
+    display: none; /* Cache le header classique sur mobile */
+}
+/* Menu latéral (caché par défaut) */
+.side-menu {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Menu complètement à gauche, hors de la vue */
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 60px;
+    z-index: 1000;
+    transition: left 0.3s ease;  /* Animation pour l'ouverture/fermeture */
+}
+
+/* L'icône du menu */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.side-menu a {
+    font-size: 1.6rem; /* Taille de police plus petite pour mobile */
+    color: #fff; /* Couleur du texte */
+    text-decoration: none;
+    padding: 10px 20px; /* Espacement plus généreux pour améliorer la lisibilité */
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.side-menu a {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Ombre pour le texte */
+}
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+/* Effet au survol */
+.side-menu a:hover {
+    background-color: #FF5722; /* Changer la couleur de fond au survol */
+    color: #fff; /* Garder le texte blanc au survol */
+    border-radius: 5px; /* Ajouter des coins arrondis */
+}
+
+/* Si tu veux styliser la croix de fermeture */
+.side-menu .close-btn {
+    font-size: 2rem; /* Taille plus grande pour la croix */
+    color: white; /* Couleur blanche pour la croix */
+    padding: 10px 20px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    cursor: pointer;
+}
+
+/* Assurer que la croix est toujours visible */
+.side-menu .close-btn:hover {
+    background-color: rgba(255, 87, 34, 0.8); /* Couleur de fond au survol */
+    border-radius: 5px;
+}
+
+/* Icône de menu sur mobile */
+.menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    display: block; /* Affiche l'icône sur mobile */
+}
+  .menu-icon {
+        display: block; /* Affiche l'icône sur mobile */
+    }
+
+    .side-menu {
+        width: 250px; /* Taille du menu latéral */
+    }
+
+    #header {
+        display: none; /* Cache le header classique sur mobile */
+    }
+
+}
