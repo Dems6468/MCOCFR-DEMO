@@ -6,20 +6,21 @@ import { ArrowRight } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <div className='relative flex items-center justify-center min-h-[80vh] bg-gradient-to-b from-red-900 to-black overflow-hidden'>
-      <div className='relative z-10 max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-center py-20'>
+    <div className='relative px-6 lg:px-8 py-16 flex items-center justify-center bg-gradient-to-b from-red-900 to-black overflow-hidden'>
+      <div className='relative z-10 w-full mx-auto  flex items-center justify-center'>
         <div className='text-center w-full mx-auto'>
-          <div className='mb-8'>
-            <img 
-              src="/favicon-96x96.png" 
-              alt="MCOC FR Logo" 
+          <div>
+            {/* TODO METTRE UNE IMAGE */}
+            {/* <img
+              src='/favicon-96x96.png'
+              alt='MCOC FR Logo'
               className='mx-auto w-24 h-24 mb-6'
-            />
+            /> */}
             <h1 className='text-4xl md:text-6xl font-bold text-white mb-6 leading-tight'>
               Bienvenue sur <span className='text-red-500'>MCOC FR</span>
             </h1>
             <p className='text-xl text-gray-300 mb-6 max-w-4xl mx-auto'>
-              La référence française pour Marvel Contest of Champions
+              Site communautaire pour Marvel Contest of Champions
             </p>
             <p className='text-lg text-red-400 font-medium mb-8'>
               MISE À JUIN 2025 - NICO MINORU / KAROLINA DEAN / CAPTAIN BRITAIN (REWORK)
@@ -31,19 +32,25 @@ export default function HeroSection() {
               Je ne comptais pas supprimer un outil que je juge utile à la commu FR
             </p>
           </div>
-          
+
           <div className='flex flex-col sm:flex-row gap-4 justify-center items-center'>
-            <Link href='/champions' passHref>
+            <Link
+              href='/guides'
+              passHref
+            >
               <Button className='bg-red-600 hover:bg-red-700 text-white px-6 py-3 text-lg flex items-center justify-center gap-2'>
-                Voir les champions <ArrowRight className='w-5 h-5' />
+                Voir les guides <ArrowRight className='w-5 h-5' />
               </Button>
             </Link>
-            <Link href='#features' passHref>
+            <Link
+              href='/debuffs'
+              passHref
+            >
               <Button
                 variant='outline'
-                className='text-white border-white px-6 py-3 text-lg hover:bg-red-900/50'
+                className='bg-red-600 hover:bg-red-700 text-white px-6 py-3 text-lg flex items-center justify-center gap-2'
               >
-                Découvrir les fonctionnalités
+                Voir les immunités <ArrowRight className='w-5 h-5' />
               </Button>
             </Link>
           </div>

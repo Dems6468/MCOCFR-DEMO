@@ -1,30 +1,17 @@
 'use client';
 
-import Link from 'next/link';
-import MainCesiZenLogo from '@/app/ui/CesiZenLogo';
 import NavLinks from './nav-links';
+import MCOCFRLogo from '@/app/ui/mcoc-fr-logo';
 
 export default function SideNavBar() {
   return (
-    <div className='flex h-full flex-col px-3 py-4 md:px-2'>
-      {/* Logo Section */}
-      <Link
-        href='/'
-        className='mb-2 flex h-20 items-center rounded-md bg-blue-400 p-4 transition hover:bg-blue-500 w-full'
-        aria-label='Accueil'
-      >
-        <div className='w-full'>
-          <MainCesiZenLogo />
-        </div>
-      </Link>
+    <div className='flex h-full flex-col bg-gray-900/80 backdrop-blur-sm'>
+      <div className='md:block px-4 py-4 border-b border-gray-700/50'>
+        <MCOCFRLogo />
+      </div>
 
-      {/* Navigation Links Section */}
-      <div className='flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2'>
+      <div className='flex-1 overflow-y-auto p-1'>
         <NavLinks />
-        <div
-          className='hidden h-auto w-full grow rounded-md bg-gray-50 md:block'
-          aria-hidden='true'
-        ></div>
       </div>
     </div>
   );
