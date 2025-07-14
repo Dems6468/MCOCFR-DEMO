@@ -338,7 +338,5 @@
   {"name": "Wong", "tags": ["#Jouable", "#2★ÉTOILE", "#3★ÉTOILE", "#4★ÉTOILE", "#5★ÉTOILE", "#6★ÉTOILE", "#7★ÉTOILE", "#GA : Subjugation", "#Héros", "#Taille : M", "#Défi des 10 ans", "#Offensive : Rayon", "#Défense : Utilité", "#Contrôle : Négation", "#2022"], "photo": "../faces/portrait_wong3210.png", "class": "Mystic "},
   {"name": "Yelena Belova", "tags": ["#Jouable", "#2★ÉTOILE", "#3★ÉTOILE", "#4★ÉTOILE", "#5★ÉTOILE", "#6★ÉTOILE", "#7★ÉTOILE", "#Mercenaire", "#Taille : M", "#Défense : Utilité", "#2025"], "photo": "../faces/portrait_yelena.webp", "class": "Skill "},
   {"name": "Yellowjacket", "tags": ["#Jouable", "#2★ÉTOILE", "#3★ÉTOILE", "#4★ÉTOILE", "#5★ÉTOILE", "#6★ÉTOILE", "#GA : Écrasement 2.0", "#Métal", "#Méchant du Tournoi", "#Taille : M", "#Contrôle : Négation", "#2015"], "photo": "../faces/portrait_yellowjacketfa9b.png", "class": "Science "},
-  {"name": "Yondu", "tags": ["#Jouable", "#2★ÉTOILE", "#3★ÉTOILE", "#4★ÉTOILE", "#5★ÉTOILE", "#6★ÉTOILE", "#Mercenaire", "#Taille : M", "#Défense : Utilité", "#2017"], "photo": "../faces/portrait_yondu735f.png", "class": "Tech "},
-
- 
+  {"name": "Yondu", "tags": ["#Jouable", "#2★ÉTOILE", "#3★ÉTOILE", "#4★ÉTOILE", "#5★ÉTOILE", "#6★ÉTOILE", "#Mercenaire", "#Taille : M", "#Défense : Utilité", "#2017"], "photo": "../faces/portrait_yondu735f.png", "class": "Tech "}
 ]}
