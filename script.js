@@ -206,6 +206,7 @@ const debuffIcons = {
 "Provocation":"debuff/taunt.png",
 "Réduction de Précision des Effets Directs":"debuff/rped.png",
 "Neuroshock":"debuff/Neuroshock.png",
+"Ecrasement":"debuff/ecras.png",
 
 
 };
