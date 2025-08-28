@@ -175,14 +175,14 @@
     </div>
 
     <script>
-        // Configuration Supabase - REMPLACE CES VALEURS !
+        // Configuration Supabase
         const SUPABASE_URL = 'https://hhqaqbdhvyyjtzhhxiiu.supabase.co'
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhocWFxYmRodnl5anR6aGh4aWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzNzE4NzUsImV4cCI6MjA3MTk0Nzg3NX0.U8DNHnsmlKWbRWFoBOr55wwMUJh7-U5nZcV_Qldz39o'
 
         // Fonction pour récupérer les champions depuis Supabase
         async function getChampions() {
             try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/champions`, {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/Prestige List`, {
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
                         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
