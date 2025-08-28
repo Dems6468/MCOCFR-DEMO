@@ -3376,7 +3376,27 @@
     "photo": "faces/portrait_yelena.webp",
     "description": "JOSIANE JOESTAR",
     "photos": []
-  }
-
-    
+  },
+    {
+        "nom": "Solvarch", 
+        "Short Name": "Solvarch", 
+        "classe": "Tech", 
+        "classe2": "faces/class_techbdb1.png", 
+        "buff": {}, 
+        "immunite": {"Saignement": [], "Poison": [], "Ecrasement": ["Eveil 2-5 avec Armures"]}, 
+        "photo": "faces/solvarch.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }, 
+    {
+        "nom": "Cassandra Nova", 
+        "Short Name": "Cassandra Nova", 
+        "classe": "Mutant", 
+        "classe2": "faces/class_mutant7e84.png", 
+        "buff": {}, 
+        "immunite": {}, 
+        "photo": "faces/cassandranova.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }
 ]
