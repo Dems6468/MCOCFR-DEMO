@@ -5,163 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCOC Champions Database</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-
-        .header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-
-        .loading {
-            text-align: center;
-            color: white;
-            font-size: 1.2rem;
-            margin: 50px 0;
-        }
-
-        .champions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .champion-card {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .champion-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-        }
-
-        .champion-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .champion-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            margin-right: 15px;
-            border: 3px solid #667eea;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .champion-name {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 5px;
-        }
-
-        .champion-info {
-            margin: 15px 0;
-            padding: 10px;
-            background: rgba(102, 126, 234, 0.1);
-            border-radius: 8px;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            margin: 5px 0;
-            font-size: 0.9rem;
-            color: #555;
-        }
-
-        .stats {
-            margin-top: 15px;
-        }
-
-        .stat-bar {
-            margin: 12px 0;
-        }
-
-        .stat-label {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #333;
-        }
-
-        .bar {
-            background: #eee;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 0.8s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .fill.attack {
-            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
-        }
-
-        .fill.defense {
-            background: linear-gradient(90deg, #4ecdc4, #44a08d);
-        }
-
-        .error {
-            text-align: center;
-            color: #ff6b6b;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px auto;
-            max-width: 500px;
-        }
-
-        @media (max-width: 768px) {
-            .champions-grid {
-                grid-template-columns: 1fr;
-                padding: 0 10px;
-            }
-            
-            .header h1 {
-                font-size: 2rem;
-            }
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: Arial,sans-serif; background:linear-gradient(135deg,#667eea 0%,#764ba2 100%); min-height:100vh; padding:20px; }
+        .header { text-align:center; margin-bottom:30px; color:white; }
+        .header h1 { font-size:2.5rem; margin-bottom:10px; text-shadow:2px 2px 4px rgba(0,0,0,0.5); }
+        .header p { font-size:1.1rem; opacity:0.9; }
+        .loading { text-align:center; color:white; font-size:1.2rem; margin:50px 0; }
+        .champions-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
+        .champion-card { background:rgba(255,255,255,0.95); border-radius:15px; padding:20px; box-shadow:0 8px 32px rgba(0,0,0,0.1); backdrop-filter:blur(10px); border:1px solid rgba(255,255,255,0.2); transition:transform 0.3s ease,box-shadow 0.3s ease; }
+        .champion-card:hover { transform:translateY(-5px); box-shadow:0 12px 40px rgba(0,0,0,0.2); }
+        .champion-header { display:flex; align-items:center; margin-bottom:15px; }
+        .champion-card img { width:80px; height:80px; border-radius:50%; margin-right:15px; border:3px solid #667eea; box-shadow:0 4px 8px rgba(0,0,0,0.2); }
+        .champion-name { font-size:1.4rem; font-weight:bold; color:#333; margin-bottom:5px; }
+        .champion-info { margin:15px 0; padding:10px; background:rgba(102,126,234,0.1); border-radius:8px; }
+        .info-row { display:flex; justify-content:space-between; margin:5px 0; font-size:0.9rem; color:#555; }
+        .stats { margin-top:15px; }
+        .stat-bar { margin:12px 0; }
+        .stat-label { display:flex; justify-content:space-between; font-weight:bold; margin-bottom:5px; color:#333; }
+        .bar { background:#eee; height:8px; border-radius:4px; overflow:hidden; }
+        .fill { height:100%; border-radius:4px; transition:width 0.8s ease; }
+        .fill.attack { background:linear-gradient(90deg,#ff6b6b,#ff8e53); }
+        .fill.defense { background:linear-gradient(90deg,#4ecdc4,#44a08d); }
+        .error { text-align:center; color:#ff6b6b; background:rgba(255,255,255,0.9); padding:20px; border-radius:10px; margin:20px auto; max-width:500px; }
+        @media(max-width:768px){.champions-grid{grid-template-columns:1fr;padding:0 10px;}.header h1{font-size:2rem;}}
     </style>
 </head>
 <body>
@@ -175,104 +41,82 @@
     </div>
 
     <script>
-        // Configuration Supabase
-        const SUPABASE_URL = 'https://hhqaqbdhvyyjtzhhxiiu.supabase.co'
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhocWFxYmRodnl5anR6aGh4aWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzNzE4NzUsImV4cCI6MjA3MTk0Nzg3NX0.U8DNHnsmlKWbRWFoBOr55wwMUJh7-U5nZcV_Qldz39o'
+        const SUPABASE_URL = 'https://hhqaqbdhvyyjtzhhxiiu.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhocWFxYmRodnl5anR6aGh4aWl1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzNzE4NzUsImV4cCI6MjA3MTk0Nzg3NX0.U8DNHnsmlKWbRWFoBOr55wwMUJh7-U5nZcV_Qldz39o';
 
-        // Fonction pour récupérer les champions depuis Supabase
         async function getChampions() {
             try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/prestige_list?select=*`, { ... })
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/prestige_list?select=*`, {
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Content-Type': 'application/json'
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
                     }
-                })
-                
-                if (!response.ok) {
-                    throw new Error(`Erreur HTTP: ${response.status}`)
-                }
-                
-                const champions = await response.json()
-                return champions
+                });
+
+                console.log("Réponse brute:", response);
+                if (!response.ok) throw new Error(`Erreur HTTP: ${response.status}`);
+
+                const data = await response.json();
+                console.log("Données Supabase:", data);
+                return data;
             } catch (error) {
-                console.error('Erreur lors de la récupération des données:', error)
-                throw error
+                console.error('Erreur lors de la récupération des données:', error);
+                throw error;
             }
         }
 
-        // Fonction pour afficher les champions
         async function displayChampions() {
-            const container = document.getElementById('champions-container')
-            
+            const container = document.getElementById('champions-container');
             try {
-                const champions = await getChampions()
-                
-                if (champions.length === 0) {
-                    container.innerHTML = '<div class="error">Aucun champion trouvé dans la base de données.</div>'
-                    return
+                const champions = await getChampions();
+
+                if (!champions || champions.length === 0) {
+                    container.innerHTML = '<div class="error">Aucun champion trouvé dans la base de données.</div>';
+                    return;
                 }
 
-                // Crée la grille
-                const grid = document.createElement('div')
-                grid.className = 'champions-grid'
-                
-                // Affiche chaque champion
+                const grid = document.createElement('div');
+                grid.className = 'champions-grid';
+
                 champions.forEach(champion => {
-                    const championDiv = document.createElement('div')
-                    championDiv.className = 'champion-card'
-                    
+                    const attaque = Math.min(champion.Attaque || 0, 5);
+                    const defense = Math.min(champion.Defense || 0, 5);
+
+                    const championDiv = document.createElement('div');
+                    championDiv.className = 'champion-card';
+
                     championDiv.innerHTML = `
                         <div class="champion-header">
-                            <img src="${champion.Photo || '/placeholder.png'}" alt="${champion.Nom}" loading="lazy" 
-                                 onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ddd%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>?</text></svg>'">
+                            <img src="${champion.Photo || '/placeholder.png'}" alt="${champion.Nom}" loading="lazy"
+                                onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23ddd%22/><text x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22>?</text></svg>'">
                             <div>
                                 <div class="champion-name">${champion.Nom || 'Champion inconnu'}</div>
                             </div>
                         </div>
-                        
+
                         <div class="champion-info">
-                            <div class="info-row">
-                                <span><strong>Prestige:</strong></span>
-                                <span>${champion.Prestige || 'N/A'}</span>
-                            </div>
-                            <div class="info-row">
-                                <span><strong>Relique:</strong></span>
-                                <span>${champion.Relique || 'Aucune'}</span>
-                            </div>
+                            <div class="info-row"><span><strong>Prestige:</strong></span><span>${champion.Prestige || 'N/A'}</span></div>
+                            <div class="info-row"><span><strong>Relique:</strong></span><span>${champion.Relique || 'Aucune'}</span></div>
                         </div>
-                        
+
                         <div class="stats">
                             <div class="stat-bar">
-                                <div class="stat-label">
-                                    <span>⚔️ Attaque</span>
-                                    <span>${champion.Attaque || 0}/5</span>
-                                </div>
-                                <div class="bar">
-                                    <div class="fill attack" style="width: ${((champion.Attaque || 0)/5)*100}%"></div>
-                                </div>
+                                <div class="stat-label"><span>⚔️ Attaque</span><span>${champion.Attaque || 0}/5</span></div>
+                                <div class="bar"><div class="fill attack" style="width:${(attaque/5)*100}%"></div></div>
                             </div>
-                            
                             <div class="stat-bar">
-                                <div class="stat-label">
-                                    <span>🛡️ Défense</span>
-                                    <span>${champion.Defense || 0}/5</span>
-                                </div>
-                                <div class="bar">
-                                    <div class="fill defense" style="width: ${((champion.Defense || 0)/5)*100}%"></div>
-                                </div>
+                                <div class="stat-label"><span>🛡️ Défense</span><span>${champion.Defense || 0}/5</span></div>
+                                <div class="bar"><div class="fill defense" style="width:${(defense/5)*100}%"></div></div>
                             </div>
                         </div>
-                    `
-                    
-                    grid.appendChild(championDiv)
-                })
-                
-                // Remplace le contenu
-                container.innerHTML = ''
-                container.appendChild(grid)
-                
+                    `;
+
+                    grid.appendChild(championDiv);
+                });
+
+                container.innerHTML = '';
+                container.appendChild(grid);
+
             } catch (error) {
                 container.innerHTML = `
                     <div class="error">
@@ -280,12 +124,11 @@
                         <p>Impossible de charger les champions. Vérifiez votre configuration Supabase.</p>
                         <p><small>Erreur: ${error.message}</small></p>
                     </div>
-                `
+                `;
             }
         }
 
-        // Lance l'affichage quand la page se charge
-        document.addEventListener('DOMContentLoaded', displayChampions)
+        document.addEventListener('DOMContentLoaded', displayChampions);
     </script>
 </body>
 </html>
