@@ -1727,6 +1727,17 @@
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
+       {
+        "nom": "Mister Knight", 
+        "Short Name": "Mister Knight", 
+        "classe": "Virtuose", 
+        "classe2": "faces/class_trainede488.png", 
+        "buff": {}, 
+        "immunite": {}, 
+        "photo": "faces/mrknight.webp", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }, 
     {
         "nom": "Mister Sinister", 
         "Short Name": "Mister Sinister", 
@@ -2560,6 +2571,17 @@
         "buff": {"Shock": ["Dupe & Intercept with Light or Medium → Additional Shock", "Light and Medium Attacks → 40% Chance, 20s", "Instant, Sable Mine Triggers", "Critical Passive, SP2 & Knock Opponent into a Mine → Convert Shock"], "Cannot Miss": ["Heavy Attack"], "Disorient": ["Passive, Heavy Attack → 20s"], "Burst Damage": ["Energy, Shock fails to apply due to Immunity", "Energy, SP3"], "Tracking": ["Passive, SP1"], "Purify": ["As Attacker → Go over a Mine"], "Frevor": ["Passive, As Attacker & Pass over a Mine"], "Cruelty": ["Dupe & Special Attack → per Shock", "SP2 → 20s"]}, 
         "immunite": {"Contrôles Inversés": ["#Psychic Shielding"]}, 
         "photo": "faces/portrait_silversable2bb8.png", 
+        "description": "JOSIANE JOESTAR", 
+        "photos": []
+    }, 
+    {
+        "nom": "Silver Samurai", 
+        "Short Name": "Silver Samurai", 
+        "classe": "Mutant", 
+        "classe2": "faces/class_mutant7e84.png", 
+        "buff": {}, 
+        "immunite": {"Saignement": ["100% Resistance"]}, 
+        "photo": "faces/samurai.webp", 
         "description": "JOSIANE JOESTAR", 
         "photos": []
     }, 
