@@ -3,140 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Liste des Champions MCOC</title>
+  <title>Champions MCOC</title>
   <style>
-    body {
-      background-color: #0a0a0a;
-      color: #f5f5f5;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    h1 {
-      text-align: center;
-      color: #ff6600;
-      margin-top: 20px;
-      font-size: 2em;
-    }
-
-    #champions {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .champion-card {
-      background: #1a1a1a;
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .champion-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(255, 102, 0, 0.3);
-    }
-
-    .champion-card img {
-      width: 100%;
-      height: 150px;
-      object-fit: contain;
-      border-radius: 10px;
-      background-color: #000;
-    }
-
-    .champion-name {
-      color: #ff6600;
-      font-weight: bold;
-      margin-top: 10px;
-      font-size: 1.1em;
-    }
-
-    .champion-details {
-      color: #ccc;
-      font-size: 0.9em;
-      margin-top: 5px;
-    }
-
-    .champion-player {
-      margin-top: 10px;
-      color: #aaa;
-      font-size: 0.85em;
-    }
-
-    .champion-player span {
-      color: #ffb84d;
-      font-weight: 600;
-    }
-
-    .loading {
-      text-align: center;
-      padding: 40px;
-      font-size: 1.2em;
-      color: #888;
-    }
-
-    .error {
-      text-align: center;
-      color: red;
-      padding: 20px;
-    }
+    body { background:#0a0a0a; color:#fff; font-family:sans-serif; text-align:center; }
+    select { margin:20px; padding:10px; border-radius:8px; background:#1a1a1a; color:#ff6600; }
+    #champions { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; padding:20px; max-width:1200px; margin:auto; }
+    .champion-card { background:#1a1a1a; border-radius:10px; padding:10px; }
+    img { width:100%; height:150px; object-fit:contain; border-radius:8px; }
   </style>
 </head>
-
 <body>
   <h1>Liste des Champions</h1>
-  <div id="loading" class="loading">Chargement des champions...</div>
+  <select id="guild-select"><option value="">-- Choisir une guilde --</option></select>
   <div id="champions"></div>
-  <div id="error" class="error" style="display: none;">Erreur lors du chargement des données.</div>
 
   <script>
-    const guildId = "123456789012345678"; // 🧩 Remplace par ton vrai guild_id Discord
-    const apiUrl = `/api/champions?guild_id=${guildId}`;
+    const API_BASE = "https://mcoc-api.up.railway.app"; // ton URL Railway
 
-    async function fetchChampions() {
-      const loadingEl = document.getElementById("loading");
-      const errorEl = document.getElementById("error");
-      const container = document.getElementById("champions");
-
-      try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) throw new Error("Erreur serveur");
-        const champions = await response.json();
-
-        loadingEl.style.display = "none";
-
-        champions.forEach((c) => {
-          const card = document.createElement("div");
-          card.className = "champion-card";
-
-          card.innerHTML = `
-            <img src="${c.image_url}" alt="${c.nom}">
-            <div class="champion-name">${c.nom}</div>
-            <div class="champion-details">
-              ⭐ ${c.rarete} — Rang ${c.rang}${c.ascension ? ` — Asc. ${c.ascension}` : ""}
-              ${c.eveille ? `<br>Éveillé (niv. ${c.competence_eveil})` : ""}
-            </div>
-            <div class="champion-player">
-              <span>${c.username}</span>${c.groupe ? ` — ${c.groupe}` : ""}
-            </div>
-          `;
-
-          container.appendChild(card);
-        });
-      } catch (err) {
-        console.error(err);
-        loadingEl.style.display = "none";
-        errorEl.style.display = "block";
-      }
+    async function loadGuilds() {
+      const res = await fetch(`${API_BASE}/api/guilds`);
+      const guilds = await res.json();
+      const select = document.getElementById("guild-select");
+      guilds.forEach(g => {
+        const opt = document.createElement("option");
+        opt.value = g.guild_id;
+        opt.textContent = g.name || g.guild_id;
+        select.appendChild(opt);
+      });
     }
 
-    fetchChampions();
+    async function loadChampions(guildId) {
+      const res = await fetch(`${API_BASE}/api/champions?guild_id=${guildId}`);
+      const champions = await res.json();
+      const container = document.getElementById("champions");
+      container.innerHTML = "";
+      champions.forEach(c => {
+        const card = document.createElement("div");
+        card.className = "champion-card";
+        card.innerHTML = `
+          <img src="${c.image_url}" alt="${c.nom}" />
+          <h3>${c.nom}</h3>
+          <p>${c.rarete}★ Rang ${c.rang}</p>
+          <p>${c.username || ""}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    document.getElementById("guild-select").addEventListener("change", e => {
+      if (e.target.value) loadChampions(e.target.value);
+    });
+
+    loadGuilds();
   </script>
 </body>
 </html>
