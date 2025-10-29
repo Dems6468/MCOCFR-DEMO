@@ -14,8 +14,12 @@
 </head>
 <body>
   <h1>Liste des Champions</h1>
-  <select id="guild-select"><option value="811185970149851166">-- Choisir une guilde --</option></select>
-  <div id="champions"></div>
+<select id="guild-select">
+  <option value="">-- Choisir une guilde --</option>
+  <option value="811185970149851166">Guilde 1</option>
+  <option value="123456789012345678">Guilde 2</option>
+</select>
+<div id="champions"></div>
 
   <script>
     const API_BASE = "https://mcoc-api.up.railway.app"; // ton URL Railway
