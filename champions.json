@@ -1,0 +1,44 @@
+{
+  "champions": [
+    {
+      "nom": "Hercules",
+      "image": "faces/hercules.png"
+    },
+    {
+      "nom": "Titania",
+      "image": "faces/titania.png"
+    },
+    {
+      "nom": "Doom",
+      "image": "faces/doom.png"
+    },
+    {
+      "nom": "Kushala",
+      "image": "faces/kushala.png"
+    },
+    {
+      "nom": "Nimrod",
+      "image": "faces/nimrod.png"
+    },
+    {
+      "nom": "Kate Bishop",
+      "image": "faces/kate_bishop.png"
+    },
+    {
+      "nom": "Shuri",
+      "image": "faces/shuri.png"
+    },
+    {
+      "nom": "Silk",
+      "image": "faces/silk.png"
+    },
+    {
+      "nom": "Galan",
+      "image": "faces/galan.png"
+    },
+    {
+      "nom": "Onslaught",
+      "image": "faces/onslaught.png"
+    }
+  ]
+}
