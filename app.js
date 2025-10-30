@@ -1,5 +1,5 @@
 // Configuration
-const API_URL = 'https://your-railway-api-url.railway.app'; // À MODIFIER avec l'URL de ton API Railway
+const API_URL = 'https://mcoc-api-production.up.railway.app'; // À MODIFIER avec l'URL de ton API Railway
 let currentUser = null;
 let currentGuild = null;
 let users = [];
